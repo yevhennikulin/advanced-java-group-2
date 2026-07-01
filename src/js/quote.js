@@ -1,56 +1,32 @@
-import { getQuote } from "./api.js";
-
-const QUOTE_STORAGE_KEY = "quote-of-the-day";
-
-/**
- * Read today's quote: from cache if it is from today, otherwise from the server.
- * @returns {Promise<{ quote: string, author: string, date: string }>}
+/* QUOTE OF THE DAY (Home + Favorites). Fetch + cache live in services/quote-service.js.
+ * DOM hooks: [data-quote-text] and [data-quote-author]
  */
-async function getDailyQuote() {
-  const today = new Date().toDateString();
 
-  const cachedRaw = localStorage.getItem(QUOTE_STORAGE_KEY);
-  if (cachedRaw) {
-    try {
-      const cached = JSON.parse(cachedRaw);
-      if (cached.date === today) {
-        return cached;
-      }
-    } catch {}
-  }
+import { getDailyQuote } from "./services/quote-service.js";
 
-  const { data } = await getQuote();
-  const fresh = { quote: data.quote, author: data.author, date: today };
-  localStorage.setItem(QUOTE_STORAGE_KEY, JSON.stringify(fresh));
-  return fresh;
-}
+const FALLBACK_QUOTE = {
+  quote: "The body achieves what the mind believes.",
+  author: "Unknown",
+};
 
-async function initQuote() {
+function renderQuote({ quote, author }) {
   const textEl = document.querySelector("[data-quote-text]");
   const authorEl = document.querySelector("[data-quote-author]");
-
   if (!textEl || !authorEl) return;
 
+  textEl.textContent = quote;
+  authorEl.textContent = author;
+}
+
+export async function initQuote() {
+  if (!document.querySelector("[data-quote-text]")) return;
+
   try {
-    const { quote, author } = await getDailyQuote();
-    textEl.textContent = quote;
-    authorEl.textContent = author;
+    const quote = await getDailyQuote();
+    renderQuote(quote);
   } catch {
-    const stale = localStorage.getItem(QUOTE_STORAGE_KEY);
-    if (stale) {
-      try {
-        const { quote, author } = JSON.parse(stale);
-        textEl.textContent = quote;
-        authorEl.textContent = author;
-        return;
-      } catch {}
-    }
-    textEl.textContent =
-      "Could not load the quote of the day. Please try again later.";
-    authorEl.textContent = "";
+    renderQuote(FALLBACK_QUOTE);
   }
 }
 
 initQuote();
-
-export { getDailyQuote, initQuote };

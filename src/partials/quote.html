@@ -1,42 +1,15 @@
-<!-- 
-  QUOTE SECTION
-  =============
-  
-  Requirements:
-  - Quote of the day (from API)
-  - Static info block about 110 minutes daily exercise
-  
-  QUOTE CACHING:
-  - Store quote in localStorage with current date
-  - On page load:
-    1. Check if stored date matches today
-    2. If yes: use cached quote (no API call)
-    3. If no: fetch new quote, update localStorage
-  
-  API usage:
-  import { getQuote } from './js/api.js';
-  
-  const today = new Date().toDateString();
-  const cached = JSON.parse(localStorage.getItem('quote'));
-  
-  if (cached && cached.date === today) {
-    // Use cached.quote and cached.author
-  } else {
-    const { data } = await getQuote();
-    localStorage.setItem('quote', JSON.stringify({
-      quote: data.quote,
-      author: data.author,
-      date: today
-    }));
-  }
--->
-
 <section class="quote-section">
   <ul class="quote-list">
-    <li class="quote-card js-quote-card">
+    <li class="quote-card">
       <div class="quote-icon-box">
-        <svg class="quote-icon" width="32" height="32">
-          <use href=""></use>
+        <svg
+          class="quote-icon"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="./img/quote-icons.svg#running"></use>
         </svg>
       </div>
 
@@ -44,8 +17,14 @@
         <div class="quote-header">
           <h2 class="quote-title">Quote of the day</h2>
 
-          <svg class="quote-mark-icon" width="20" height="20">
-            <use href=""></use>
+          <svg
+            class="quote-mark-icon"
+            width="20"
+            height="20"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <use href="./img/quote-icons.svg#quote"></use>
           </svg>
         </div>
 
@@ -59,26 +38,25 @@
         <source
           media="(min-width: 1440px)"
           srcset="
-            ./images/quote/quote-desktop.jpg    1x,
-            ./images/quote/quote-desktop@2x.jpg 2x
+            ./img/quote/quote-desktop.jpg    1x,
+            ./img/quote/quote-desktop@2x.jpg 2x
           "
         />
         <source
           media="(min-width: 768px)"
           srcset="
-            ./images/quote/quote-tablet.jpg    1x,
-            ./images/quote/quote-tablet@2x.jpg 2x
+            ./img/quote/quote-tablet.jpg    1x,
+            ./img/quote/quote-tablet@2x.jpg 2x
           "
         />
-
         <img
           class="quote-image"
-          src="./images/quote/quote-mobile.jpg"
+          src="./img/quote/quote-mobile.jpg"
           srcset="
-            ./images/quote/quote-mobile.jpg    1x,
-            ./images/quote/quote-mobile@2x.jpg 2x
+            ./img/quote/quote-mobile.jpg    1x,
+            ./img/quote/quote-mobile@2x.jpg 2x
           "
-          alt="Women drinking water after training"
+          alt=""
           width="335"
           height="242"
           loading="lazy"
@@ -88,8 +66,14 @@
 
     <li class="daily-card">
       <div class="daily-icon-box">
-        <svg class="daily-icon" width="32" height="32">
-          <use href=""></use>
+        <svg
+          class="daily-icon"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="./img/quote-icons.svg#dumbbell"></use>
         </svg>
       </div>
 
