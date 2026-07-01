@@ -6,7 +6,7 @@
   Add new imports as you create component styles.
 */
 
-@import './variables.css';
+@import "./variables.css";
 
 /* TODO: Add Google Fonts import for Roboto */
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
@@ -114,6 +114,6 @@ button {
 /* @import './hero.css'; */
 /* @import './filters.css'; */
 /* @import './exercises.css'; */
-/* @import './quote.css'; */
+@import "./quote.css";
 /* @import './modals.css'; */
 /* @import './loader.css'; */
