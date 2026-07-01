@@ -13,7 +13,7 @@ import "./exercises-test.js";
 // import './header.js';      // Burger menu functionality
 // import './filters.js';     // Filter buttons logic
 // import './exercises.js';   // Exercise/category cards
-import "./quote.js"; // Quote of the day with localStorage
+import "./quote"; // Quote of the day with localStorage
 // import './favorites.js';   // localStorage favorites management
 // import './modal.js';       // Modal open/close/ESC handlers
 // import './pagination.js';  // Pagination logic
