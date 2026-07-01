@@ -32,19 +32,19 @@
 -->
 
 <section class="quote-section">
-  <ul>
-    <li>
-      <div>
-        <svg>
+  <ul class="quote-list">
+    <li class="quote-card js-quote-card">
+      <div class="quote-icon-box">
+        <svg class="quote-icon" width="32" height="32">
           <use href=""></use>
         </svg>
       </div>
 
-      <div>
-        <div>
+      <div class="quote-content">
+        <div class="quote-header">
           <h2 class="quote-title">Quote of the day</h2>
 
-          <svg>
+          <svg class="quote-mark-icon" width="20" height="20">
             <use href=""></use>
           </svg>
         </div>
@@ -54,27 +54,50 @@
       </div>
     </li>
 
-    <li>
+    <li class="quote-image-card">
       <picture>
-        <source />
-        <source />
+        <source
+          media="(min-width: 1440px)"
+          srcset="
+            ./images/quote/quote-desktop.jpg    1x,
+            ./images/quote/quote-desktop@2x.jpg 2x
+          "
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="
+            ./images/quote/quote-tablet.jpg    1x,
+            ./images/quote/quote-tablet@2x.jpg 2x
+          "
+        />
 
-        <img src="" alt="" />
+        <img
+          class="quote-image"
+          src="./images/quote/quote-mobile.jpg"
+          srcset="
+            ./images/quote/quote-mobile.jpg    1x,
+            ./images/quote/quote-mobile@2x.jpg 2x
+          "
+          alt="Women drinking water after training"
+          width="335"
+          height="242"
+          loading="lazy"
+        />
       </picture>
     </li>
 
-    <li>
-      <div>
-        <svg>
+    <li class="daily-card">
+      <div class="daily-icon-box">
+        <svg class="daily-icon" width="32" height="32">
           <use href=""></use>
         </svg>
       </div>
 
-      <div>
-        <h3>110 min</h3>
-        <p>Daily norm of sports</p>
+      <div class="daily-content">
+        <h3 class="daily-title">110 min</h3>
+        <p class="daily-subtitle">Daily norm of sports</p>
 
-        <p>
+        <p class="daily-text">
           The World Health Organization recommends at least 150 minutes of
           moderate-intensity aerobic physical activity throughout the week for
           adults aged 18-64. However, what happens if we adjust that number to
