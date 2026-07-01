@@ -7,6 +7,7 @@
 */
 
 @import "./variables.css";
+@import "./exercises.css";
 @import "./quote.css";
 @import "./header.css";
 @import "./footer.css";
@@ -117,7 +118,6 @@ button {
 /* @import './footer.css'; */
 /* @import './hero.css'; */
 /* @import './filters.css'; */
-/* @import './exercises.css'; */
-/* @import './quote.css'; */
+/* Quote css imported at top */
 /* @import './modals.css'; */
 /* @import './loader.css'; */
