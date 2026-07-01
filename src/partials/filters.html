@@ -1,0 +1,29 @@
+<!-- 
+  FILTERS SECTION
+  ===============
+  
+  Requirements:
+  - Section title
+  - Filter buttons: Muscles, Body parts, Equipment
+  - Active button styling
+  - Default active filter: "Muscles"
+  
+  Behavior:
+  - Click on filter button:
+    1. Style button as active
+    2. Fetch categories for that filter
+    3. Display categories in exercises section
+  
+  Search input (shown when viewing exercises):
+  - Appears next to filter buttons when exercises are displayed
+  - Search by keyword in exercise name
+  - Triggers on form submit
+  
+  API usage:
+  import { getFilters } from './js/api.js';
+  const { data } = await getFilters({ filter: 'Muscles', page: 1, limit: 12 });
+-->
+
+<section class="filters">
+  <!-- TODO: Implement filters markup -->
+</section>

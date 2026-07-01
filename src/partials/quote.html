@@ -1,0 +1,36 @@
+<!-- 
+  QUOTE SECTION
+  =============
+  
+  Requirements:
+  - Quote of the day (from API)
+  - Static info block about 110 minutes daily exercise
+  
+  QUOTE CACHING:
+  - Store quote in localStorage with current date
+  - On page load:
+    1. Check if stored date matches today
+    2. If yes: use cached quote (no API call)
+    3. If no: fetch new quote, update localStorage
+  
+  API usage:
+  import { getQuote } from './js/api.js';
+  
+  const today = new Date().toDateString();
+  const cached = JSON.parse(localStorage.getItem('quote'));
+  
+  if (cached && cached.date === today) {
+    // Use cached.quote and cached.author
+  } else {
+    const { data } = await getQuote();
+    localStorage.setItem('quote', JSON.stringify({
+      quote: data.quote,
+      author: data.author,
+      date: today
+    }));
+  }
+-->
+
+<section class="quote">
+  <!-- TODO: Implement quote markup -->
+</section>

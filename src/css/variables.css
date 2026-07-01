@@ -1,0 +1,106 @@
+/*
+  CSS VARIABLES
+  =============
+  
+  UPDATE THESE VALUES FROM FIGMA DESIGN
+  
+  To edit: Open Figma, inspect elements, copy color/font values here.
+*/
+
+:root {
+  /* ==========================================
+     COLORS - UPDATE FROM FIGMA
+     ========================================== */
+  --color-primary: #242424;
+  --color-secondary: #f4f4f4;
+  --color-accent: #e6533c;
+  --color-text: #ffffff;
+  --color-text-secondary: rgba(244, 244, 244, 0.5);
+  --color-background: #040404;
+  --color-card-bg: rgba(28, 28, 28, 0.5);
+  --color-border: rgba(244, 244, 244, 0.2);
+  --color-success: #3cbf61;
+  --color-error: #d80027;
+  --color-rating: #eea10c;
+
+  /* ==========================================
+     TYPOGRAPHY - UPDATE FROM FIGMA
+     ========================================== */
+  --font-family: 'Roboto', sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
+  --font-size-hero: 66px;
+
+  /* ==========================================
+     SPACING
+     ========================================== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* ==========================================
+     BORDER RADIUS
+     ========================================== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 50%;
+
+  /* ==========================================
+     TRANSITIONS
+     ========================================== */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ==========================================
+     SHADOWS
+     ========================================== */
+  --shadow-card: 0 4px 14px rgba(228, 228, 228, 0.1);
+  --shadow-modal: 0 4px 50px rgba(0, 0, 0, 0.15);
+
+  /* ==========================================
+     CONTAINER WIDTHS
+     ========================================== */
+  --container-mobile: 320px;
+  --container-tablet: 768px;
+  --container-desktop: 1440px;
+}
+
+/*
+  BREAKPOINTS (use in media queries)
+  ==================================
+  
+  Mobile: 320px - 767px (default, mobile-first)
+  Tablet: 768px - 1439px
+  Desktop: 1440px+
+  
+  Example usage:
+  
+  .element {
+    // Mobile styles (default)
+    padding: 16px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .element {
+      // Tablet styles
+      padding: 24px;
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .element {
+      // Desktop styles
+      padding: 32px;
+    }
+  }
+*/
