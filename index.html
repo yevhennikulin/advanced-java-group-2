@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Energy</title>
+    <script type="module" crossorigin src="/final-advanced-js-2/assets/vendor-DhXgJQ-f.js"></script>
+    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-CP-XUFOX.js"></script>
+    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-C63zr_nk.css">
+  </head>
+  <body>
+    <!-- TODO: Implement header partial -->
+    <!-- 
+  HEADER COMPONENT
+  ================
+  
+  Requirements:
+  - Mobile: Logo + burger menu (opens full-height menu with nav + social links)
+  - Tablet/Desktop: Logo + navigation + social links
+  
+  Navigation:
+  - Home (link to index.html) - redirects to home page
+  - Favorites (link to favorites.html) - opens favorites page
+  
+  Social links (open in new tab):
+  - Facebook: https://www.facebook.com/goITclub/
+  - Instagram: https://www.instagram.com/goitclub/
+  - YouTube: https://www.youtube.com/c/GoIT
+  
+  Notes:
+  - Social icons should be SVG format
+  - Use <ul> for social links list
+  - Burger menu click expands to full viewport height
+-->
+
+<header class="header">
+  <!-- TODO: Implement header markup -->
+</header>
+
+
+    <main>
+      <!-- TODO: Implement hero partial -->
+      <!-- 
+  HERO SECTION
+  ============
+  
+  Requirements:
+  - Site title and subtitle (static content)
+  - List of popular tags
+  - Hero image (content image, not background)
+  
+  Notes:
+  - All content is static (no API calls)
+  - Images should be responsive (use srcset if needed)
+-->
+
+<section class="hero">
+  <!-- TODO: Implement hero markup -->
+</section>
+
+
+      <!-- TODO: Implement filters partial -->
+      <!-- 
+  FILTERS SECTION
+  ===============
+  
+  Requirements:
+  - Section title
+  - Filter buttons: Muscles, Body parts, Equipment
+  - Active button styling
+  - Default active filter: "Muscles"
+  
+  Behavior:
+  - Click on filter button:
+    1. Style button as active
+    2. Fetch categories for that filter
+    3. Display categories in exercises section
+  
+  Search input (shown when viewing exercises):
+  - Appears next to filter buttons when exercises are displayed
+  - Search by keyword in exercise name
+  - Triggers on form submit
+  
+  API usage:
+  import { getFilters } from './js/api.js';
+  const { data } = await getFilters({ filter: 'Muscles', page: 1, limit: 12 });
+-->
+
+<section class="filters">
+  <!-- TODO: Implement filters markup -->
+</section>
+
+
+      <!-- TODO: Implement exercises partial -->
+      <!-- 
+  EXERCISES TEST PAGE
+  ===================
+  
+  This partial displays data from all API endpoints for testing.
+  Each section shows the response from a different API method.
+-->
+
+<section class="exercises-test">
+  <div class="container">
+    <h1>API Test Output</h1>
+    
+    <!-- ========================================
+         1. FILTER CATEGORIES
+         ======================================== -->
+    <section class="test-section">
+      <h2>1. Filter Categories</h2>
+      <p>API: <code>getFilterCategories(filter, page, limit)</code></p>
+      
+      <h3>Muscles Categories</h3>
+      <div id="muscles-categories" class="output-box">Loading...</div>
+      
+      <h3>Body Parts Categories</h3>
+      <div id="bodyparts-categories" class="output-box">Loading...</div>
+      
+      <h3>Equipment Categories</h3>
+      <div id="equipment-categories" class="output-box">Loading...</div>
+    </section>
+    
+    <!-- ========================================
+         2. EXERCISES BY CATEGORY
+         ======================================== -->
+    <section class="test-section">
+      <h2>2. Exercises by Category</h2>
+      
+      <h3>Exercises by Muscle (lats)</h3>
+      <p>API: <code>getExercisesByMuscle('lats', 1, 5)</code></p>
+      <div id="exercises-by-muscle" class="output-box">Loading...</div>
+      
+      <h3>Exercises by Body Part (back)</h3>
+      <p>API: <code>getExercisesByBodyPart('back', 1, 5)</code></p>
+      <div id="exercises-by-bodypart" class="output-box">Loading...</div>
+      
+      <h3>Exercises by Equipment (barbell)</h3>
+      <p>API: <code>getExercisesByEquipment('barbell', 1, 5)</code></p>
+      <div id="exercises-by-equipment" class="output-box">Loading...</div>
+    </section>
+    
+    <!-- ========================================
+         3. SEARCH EXERCISES
+         ======================================== -->
+    <section class="test-section">
+      <h2>3. Search Exercises (dynamic)</h2>
+      <p>API: <code>searchExercises({ filter, category, keyword, page, limit })</code></p>
+      
+      <h3>Search: muscles=lats, keyword="pull"</h3>
+      <div id="search-muscles" class="output-box">Loading...</div>
+      
+      <h3>Search: bodypart=back, keyword="row"</h3>
+      <div id="search-bodypart" class="output-box">Loading...</div>
+      
+      <h3>Search: equipment=barbell, keyword="press"</h3>
+      <div id="search-equipment" class="output-box">Loading...</div>
+    </section>
+    
+    <!-- ========================================
+         4. EXERCISE DETAILS (by ID)
+         ======================================== -->
+    <section class="test-section">
+      <h2>4. Exercise Details (Modal Data)</h2>
+      <p>API: <code>getExerciseById(id)</code></p>
+      <p><em>ID will be taken from first exercise in "Exercises by Muscle" response</em></p>
+      <div id="exercise-details" class="output-box">Loading...</div>
+    </section>
+    
+    <!-- ========================================
+         5. QUOTE OF THE DAY
+         ======================================== -->
+    <section class="test-section">
+      <h2>5. Quote of the Day</h2>
+      <p>API: <code>getQuote()</code></p>
+      <div id="quote" class="output-box">Loading...</div>
+    </section>
+    
+    <!-- ========================================
+         6. SUBSCRIPTION (Form Test)
+         ======================================== -->
+    <section class="test-section">
+      <h2>6. Subscription Test</h2>
+      <p>API: <code>subscribe(email)</code></p>
+      <form id="subscription-form">
+        <input type="email" id="subscription-email" placeholder="Enter email" required />
+        <button type="submit">Test Subscribe</button>
+      </form>
+      <div id="subscription-result" class="output-box">Enter email and click to test</div>
+    </section>
+  </div>
+</section>
+
+<style>
+  .exercises-test {
+    padding: 20px 0;
+  }
+  
+  .test-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
+    border-radius: 8px;
+  }
+  
+  .test-section h2 {
+    color: var(--color-accent, #e6533c);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.2));
+    padding-bottom: 8px;
+  }
+  
+  .test-section h3 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .test-section code {
+    background: rgba(255,255,255,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .output-box {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .output-box.error {
+    border-color: var(--color-error, #d80027);
+    color: var(--color-error, #d80027);
+  }
+  
+  .output-box.success {
+    border-color: var(--color-success, #3cbf61);
+  }
+  
+  #subscription-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #subscription-form input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
+    border-radius: 4px;
+    background: transparent;
+    color: var(--color-text, #fff);
+  }
+  
+  #subscription-form button {
+    padding: 8px 16px;
+    background: var(--color-accent, #e6533c);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+
+
+      <!-- TODO: Implement quote partial -->
+      <!-- 
+  QUOTE SECTION
+  =============
+  
+  Requirements:
+  - Quote of the day (from API)
+  - Static info block about 110 minutes daily exercise
+  
+  QUOTE CACHING:
+  - Store quote in localStorage with current date
+  - On page load:
+    1. Check if stored date matches today
+    2. If yes: use cached quote (no API call)
+    3. If no: fetch new quote, update localStorage
+  
+  API usage:
+  import { getQuote } from './js/api.js';
+  
+  const today = new Date().toDateString();
+  const cached = JSON.parse(localStorage.getItem('quote'));
+  
+  if (cached && cached.date === today) {
+    // Use cached.quote and cached.author
+  } else {
+    const { data } = await getQuote();
+    localStorage.setItem('quote', JSON.stringify({
+      quote: data.quote,
+      author: data.author,
+      date: today
+    }));
+  }
+-->
+
+<section class="quote">
+  <!-- TODO: Implement quote markup -->
+</section>
+
+    </main>
+
+    <!-- TODO: Implement footer partial -->
+    <!-- 
+  FOOTER COMPONENT
+  ================
+  
+  Requirements:
+  - Logo (click redirects to home page)
+  - Social links list (same as header)
+  - Company slogan
+  - Subscription form for new exercises newsletter
+  
+  Subscription form:
+  - Email input (required)
+  - Pattern validation: ^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$
+  - Submit button "Send"
+  - On valid submit: POST to /subscription endpoint
+  - Use iziToast for success/error notifications
+  
+  Social links (open in new tab):
+  - Facebook: https://www.facebook.com/goITclub/
+  - Instagram: https://www.instagram.com/goitclub/
+  - YouTube: https://www.youtube.com/c/GoIT
+  
+  API usage:
+  import { subscribe } from './js/api.js';
+  await subscribe(email);
+-->
+
+<footer class="footer">
+  <!-- TODO: Implement footer markup -->
+</footer>
+
+
+    <!-- Modals -->
+    <!-- 
+  EXERCISE MODAL
+  ==============
+  
+  Triggered by: Click on "Start" button in exercise card
+  
+  Content:
+  - Exercise video (if available, use gifUrl from API)
+  - Exercise name
+  - Rating
+  - Target/goal
+  - Body part
+  - Popularity
+  - Calories burned (per 3 minutes)
+  - Description
+  - Add to Favorites button (or Remove if already in favorites)
+  - Give a rating button (OPTIONAL - only if rating feature implemented)
+  
+  FAVORITES:
+  - Store favorites in localStorage as array of exercise objects
+  - Toggle button text based on whether exercise is in favorites
+  
+  CLOSE MODAL:
+  - Click on backdrop
+  - Click on X button
+  - Press ESC key
+  - Remember to remove event listeners on close!
+  
+  API usage:
+  import { getExerciseById } from './js/api.js';
+  const { data } = await getExerciseById(exerciseId);
+-->
+
+<div class="modal exercise-modal is-hidden">
+  <div class="modal__backdrop"></div>
+  <div class="modal__content">
+    <!-- TODO: Implement exercise modal markup -->
+    <button class="modal__close" type="button" aria-label="Close modal">
+      <!-- X icon SVG -->
+    </button>
+  </div>
+</div>
+
+    <!-- 
+  RATING MODAL (OPTIONAL FEATURE)
+  ===============================
+  
+  Triggered by: Click on "Give a rating" button in exercise modal
+  
+  IMPORTANT: When this modal opens, exercise modal should close.
+             When this modal closes, exercise modal should reopen.
+  
+  Form fields (all required):
+  - Rating: Radio buttons (1-5 stars)
+  - Email: Input with pattern validation
+    Pattern: ^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$
+  - Review: Textarea
+  
+  Submit behavior:
+  - Validate all fields
+  - Send PATCH request to API
+  - On success: close modal, reopen exercise modal
+  - On error: show error notification (iziToast)
+  
+  CLOSE MODAL:
+  - Click on backdrop
+  - Click on X button
+  - Press ESC key
+  
+  API usage:
+  import { addExerciseRating } from './js/api.js';
+  
+  try {
+    await addExerciseRating(exerciseId, { rate: 5, email, review });
+    // Success: close modal
+  } catch (error) {
+    // Show error notification
+  }
+-->
+
+<div class="modal rating-modal is-hidden">
+  <div class="modal__backdrop"></div>
+  <div class="modal__content">
+    <!-- TODO: Implement rating modal markup -->
+    <button class="modal__close" type="button" aria-label="Close modal">
+      <!-- X icon SVG -->
+    </button>
+  </div>
+</div>
+
+
+  </body>
+</html>
