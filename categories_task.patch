@@ -1,0 +1,1298 @@
+diff --git a/src/css/exercises.css b/src/css/exercises.css
+new file mode 100644
+index 0000000..25e9ead
+--- /dev/null
++++ b/src/css/exercises.css
+@@ -0,0 +1,395 @@
++/*
++  EXERCISES & CATEGORIES STYLES
++  =============================
++*/
++
++.exercises-section {
++  background-color: #f4f4f4; /* Main body light background as per Figma root node */
++  color: #242424; /* Dark grey text */
++  padding-top: 40px;
++  padding-bottom: 40px;
++}
++
++@media screen and (min-width: 768px) {
++  .exercises-section {
++    padding-top: 80px;
++    padding-bottom: 80px;
++  }
++}
++
++.exercises-top-bar {
++  display: flex;
++  flex-direction: column;
++  gap: 20px;
++  margin-bottom: 32px;
++}
++
++@media screen and (min-width: 768px) {
++  .exercises-top-bar {
++    flex-direction: row;
++    justify-content: space-between;
++    align-items: center;
++    margin-bottom: 40px;
++  }
++}
++
++/* ------------------------------------------
++   Section Header
++   ------------------------------------------ */
++.exercises-title {
++  font-family: var(--font-family);
++  font-size: 32px;
++  font-weight: 400;
++  line-height: 1.12;
++  letter-spacing: -0.02em;
++  color: #242424;
++}
++
++@media screen and (min-width: 768px) {
++  .exercises-title {
++    font-size: 44px;
++    line-height: 1.09;
++  }
++}
++
++.exercises-title-divider {
++  color: rgba(36, 36, 36, 0.5);
++  margin-left: 4px;
++  margin-right: 4px;
++}
++
++.exercises-title-accent {
++  color: rgba(36, 36, 36, 0.5);
++  text-transform: capitalize;
++}
++
++/* ------------------------------------------
++   Controls: Search and Tabs
++   ------------------------------------------ */
++.exercises-controls {
++  display: flex;
++  flex-direction: column;
++  gap: 20px;
++}
++
++@media screen and (min-width: 768px) {
++  .exercises-controls {
++    flex-direction: row;
++    align-items: center;
++    gap: 32px;
++  }
++}
++
++/* Search input */
++.exercises-search-form {
++  position: relative;
++  width: 100%;
++  max-width: 335px;
++}
++
++@media screen and (min-width: 768px) {
++  .exercises-search-form {
++    width: 273px;
++  }
++}
++
++.exercises-search-input {
++  width: 100%;
++  height: 44px;
++  padding: 12px 40px 12px 14px;
++  background-color: transparent;
++  border: 1px solid rgba(36, 36, 36, 0.2);
++  border-radius: 30px;
++  color: #242424;
++  font-size: var(--font-size-sm);
++  line-height: 1.5;
++  outline: none;
++  transition: border-color var(--transition-base);
++}
++
++@media screen and (min-width: 768px) {
++  .exercises-search-input {
++    height: 48px;
++    font-size: var(--font-size-base);
++  }
++}
++
++.exercises-search-input:focus {
++  border-color: #242424;
++}
++
++.exercises-search-input::placeholder {
++  color: rgba(36, 36, 36, 0.5);
++}
++
++.exercises-search-btn {
++  position: absolute;
++  top: 50%;
++  right: 14px;
++  transform: translateY(-50%);
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  background: none;
++  border: none;
++  padding: 0;
++  color: #242424;
++  cursor: pointer;
++  transition: color var(--transition-base);
++}
++
++.exercises-search-btn:hover,
++.exercises-search-btn:focus {
++  color: var(--color-accent);
++}
++
++/* Tabs list */
++.exercises-tabs .tabs-list {
++  display: flex;
++  align-items: center;
++  gap: 20px;
++}
++
++.tabs-btn {
++  position: relative;
++  background: none;
++  border: none;
++  padding: 0 0 6px 0;
++  color: rgba(36, 36, 36, 0.5);
++  font-size: var(--font-size-sm);
++  font-weight: 400;
++  line-height: 1.5;
++  cursor: pointer;
++  transition: color var(--transition-base);
++}
++
++@media screen and (min-width: 768px) {
++  .tabs-btn {
++    font-size: var(--font-size-base);
++  }
++}
++
++.tabs-btn:hover,
++.tabs-btn:focus {
++  color: #242424;
++}
++
++.tabs-btn.active {
++  color: #242424;
++  font-weight: 500;
++}
++
++.tabs-active-line {
++  display: none;
++  position: absolute;
++  bottom: 0;
++  left: 0;
++  width: 100%;
++  height: 4px;
++  background-color: #242424;
++  border-radius: 2px;
++}
++
++.tabs-btn.active .tabs-active-line {
++  display: block;
++}
++
++/* ------------------------------------------
++   Categories Grid
++   ------------------------------------------ */
++.categories-grid {
++  display: grid;
++  grid-template-columns: 1fr;
++  gap: 20px;
++}
++
++@media screen and (min-width: 768px) {
++  .categories-grid {
++    grid-template-columns: repeat(3, 1fr);
++    gap: 16px;
++  }
++}
++
++@media screen and (min-width: 1440px) {
++  .categories-grid {
++    gap: 32px 16px;
++  }
++}
++
++.category-card {
++  position: relative;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  width: 100%;
++  height: 225px;
++  border-radius: 12px;
++  overflow: hidden;
++  cursor: pointer;
++  background-color: var(--color-primary); /* Fallback bg (#242424) */
++  transition: transform var(--transition-base), box-shadow var(--transition-base);
++}
++
++@media screen and (min-width: 1440px) {
++  .category-card {
++    height: 242px;
++  }
++}
++
++.category-card:hover,
++.category-card:focus {
++  transform: translateY(-4px);
++  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.15);
++}
++
++.category-card-img {
++  position: absolute;
++  top: 0;
++  left: 0;
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++  transition: transform var(--transition-base);
++}
++
++.category-card:hover .category-card-img,
++.category-card:focus .category-card-img {
++  transform: scale(1.05);
++}
++
++.category-card-overlay {
++  position: absolute;
++  top: 0;
++  left: 0;
++  width: 100%;
++  height: 100%;
++  background: rgba(17, 17, 17, 0.5); /* Figma overlay style */
++  z-index: 1;
++}
++
++.category-card-content {
++  position: relative;
++  z-index: 2;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  justify-content: center;
++  text-align: center;
++  gap: 2px;
++  padding: 16px;
++}
++
++.category-card-name {
++  font-family: var(--font-family);
++  font-size: 20px;
++  font-weight: 400;
++  line-height: 1.2;
++  color: #f4f4f4; /* White text */
++  text-transform: capitalize;
++}
++
++@media screen and (min-width: 1440px) {
++  .category-card-name {
++    font-size: 24px;
++  }
++}
++
++.category-card-filter {
++  font-family: var(--font-family);
++  font-size: 12px;
++  font-weight: 400;
++  line-height: 1.5;
++  color: rgba(244, 244, 244, 0.5); /* Muted white subtitle */
++  text-transform: capitalize;
++}
++
++/* ------------------------------------------
++   Fallback Empty State
++   ------------------------------------------ */
++.exercises-fallback {
++  display: flex;
++  justify-content: center;
++  align-items: center;
++  padding: 60px 16px;
++  text-align: center;
++}
++
++.fallback-text {
++  font-size: var(--font-size-base);
++  line-height: 1.5;
++  color: rgba(36, 36, 36, 0.6);
++  max-width: 400px;
++}
++
++/* ------------------------------------------
++   Pagination Styling
++   ------------------------------------------ */
++.pagination-container {
++  display: flex;
++  justify-content: center;
++  margin-top: 32px;
++}
++
++@media screen and (min-width: 768px) {
++  .pagination-container {
++    margin-top: 40px;
++  }
++}
++
++.pagination-list {
++  display: flex;
++  align-items: center;
++  gap: 8px;
++}
++
++.pagination-btn {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  min-width: 32px;
++  height: 32px;
++  background: none;
++  border: none;
++  padding: 0 4px;
++  border-radius: 50%;
++  color: rgba(36, 36, 36, 0.5);
++  font-size: var(--font-size-base);
++  font-weight: 400;
++  cursor: pointer;
++  transition: color var(--transition-base), background-color var(--transition-base);
++}
++
++.pagination-btn:hover,
++.pagination-btn:focus {
++  color: #242424;
++}
++
++.pagination-btn.active {
++  background-color: #242424;
++  color: #f4f4f4;
++}
++
++/* Spinner Loader */
++.loader {
++  width: 48px;
++  height: 48px;
++  border: 5px solid rgba(36, 36, 36, 0.2);
++  border-bottom-color: #242424;
++  border-radius: 50%;
++  display: inline-block;
++  box-sizing: border-box;
++  animation: rotation 1s linear infinite;
++  margin: 40px auto;
++  grid-column: 1 / -1; /* Center loader across grid columns */
++  justify-self: center;
++}
++
++@keyframes rotation {
++  0% {
++    transform: rotate(0deg);
++  }
++  100% {
++    transform: rotate(360deg);
++  }
++}
++
+diff --git a/src/css/index.css b/src/css/index.css
+index 0f869f3..e67183a 100644
+--- a/src/css/index.css
++++ b/src/css/index.css
+@@ -7,6 +7,8 @@
+ */
+ 
+ @import './variables.css';
++@import './exercises.css';
++@import './quote.css';
+ 
+ /* TODO: Add Google Fonts import for Roboto */
+ /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
+@@ -113,7 +115,6 @@ button {
+ /* @import './footer.css'; */
+ /* @import './hero.css'; */
+ /* @import './filters.css'; */
+-/* @import './exercises.css'; */
+-/* @import './quote.css'; */
++/* Quote css imported at top */
+ /* @import './modals.css'; */
+ /* @import './loader.css'; */
+diff --git a/src/css/quote.css b/src/css/quote.css
+new file mode 100644
+index 0000000..02600bd
+--- /dev/null
++++ b/src/css/quote.css
+@@ -0,0 +1,214 @@
++/*
++  QUOTE & WHO CARD STYLES
++  =======================
++*/
++
++.main-layout-container {
++  display: flex;
++  flex-direction: column;
++  gap: 40px;
++}
++
++.sidebar-aside {
++  width: 100%;
++  order: 2; /* Render below Exercises on mobile/tablet */
++  display: flex;
++  flex-direction: column;
++  gap: 20px;
++}
++
++.exercises-content-wrapper {
++  width: 100%;
++  order: 1; /* Render above Sidebar on mobile/tablet */
++}
++
++@media screen and (min-width: 1440px) {
++  .main-layout-container {
++    flex-direction: row;
++    gap: 32px;
++    align-items: flex-start;
++  }
++
++  .sidebar-aside {
++    width: 444px;
++    flex-shrink: 0;
++    order: 1; /* Sidebar on the left on desktop */
++    gap: 32px;
++  }
++
++  .exercises-content-wrapper {
++    flex-grow: 1;
++    width: 900px;
++    order: 2; /* Exercises on the right on desktop */
++  }
++}
++
++/* ------------------------------------------
++   Quote Card Styling
++   ------------------------------------------ */
++.quote-card-container {
++  background-color: var(--color-primary); /* #242424 */
++  border-radius: 12px;
++  padding: 24px;
++  color: #f4f4f4;
++}
++
++@media screen and (min-width: 768px) {
++  .quote-card-container {
++    padding: 40px;
++  }
++}
++
++.quote-header {
++  display: flex;
++  align-items: center;
++  gap: 8px;
++  margin-bottom: 20px;
++}
++
++.quote-icon-wrapper {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  width: 32px;
++  height: 32px;
++  background-color: #f4f4f4;
++  color: #242424;
++  border-radius: 50%;
++}
++
++.quote-title {
++  font-family: var(--font-family);
++  font-size: var(--font-size-base);
++  font-weight: 500;
++  line-height: 1.5;
++  letter-spacing: -0.02em;
++  text-transform: uppercase;
++}
++
++.quote-commas {
++  margin-left: auto;
++  color: rgba(244, 244, 244, 0.3);
++}
++
++.quote-body {
++  display: flex;
++  flex-direction: column;
++  gap: 16px;
++}
++
++.quote-text {
++  font-family: var(--font-family);
++  font-size: var(--font-size-sm);
++  font-weight: 400;
++  line-height: 1.43;
++  color: rgba(244, 244, 244, 0.8);
++}
++
++@media screen and (min-width: 768px) {
++  .quote-text {
++    font-size: var(--font-size-base);
++    line-height: 1.5;
++  }
++}
++
++.quote-author {
++  font-family: var(--font-family);
++  font-size: var(--font-size-sm);
++  font-weight: 400;
++  line-height: 1.43;
++  color: rgba(244, 244, 244, 0.5);
++}
++
++/* ------------------------------------------
++   Side Image Styling
++   ------------------------------------------ */
++.side-image-container {
++  width: 100%;
++  height: 225px;
++  border-radius: 12px;
++  overflow: hidden;
++}
++
++@media screen and (min-width: 1440px) {
++  .side-image-container {
++    height: 242px;
++  }
++}
++
++.side-decor-image {
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++}
++
++/* ------------------------------------------
++   WHO Info Card Styling
++   ------------------------------------------ */
++.info-card-container {
++  background-color: #ffffff;
++  border-radius: 12px;
++  padding: 24px;
++  color: #242424;
++  border: 1px solid rgba(36, 36, 36, 0.1);
++}
++
++@media screen and (min-width: 768px) {
++  .info-card-container {
++    padding: 32px 40px;
++  }
++}
++
++.info-card-header {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++  margin-bottom: 16px;
++}
++
++.info-icon-wrapper {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  width: 32px;
++  height: 32px;
++  background-color: #242424;
++  color: #f4f4f4;
++  border-radius: 50%;
++}
++
++.info-header-titles {
++  display: flex;
++  flex-direction: column;
++}
++
++.info-number {
++  font-family: var(--font-family);
++  font-size: var(--font-size-lg);
++  font-weight: 700;
++  line-height: 1.1;
++  letter-spacing: -0.02em;
++}
++
++.info-subtitle {
++  font-family: var(--font-family);
++  font-size: 12px;
++  font-weight: 400;
++  line-height: 1.33;
++  color: rgba(36, 36, 36, 0.6);
++}
++
++.info-text {
++  font-family: var(--font-family);
++  font-size: var(--font-size-sm);
++  font-weight: 400;
++  line-height: 1.43;
++  color: rgba(36, 36, 36, 0.6);
++}
++
++@media screen and (min-width: 768px) {
++  .info-text {
++    font-size: var(--font-size-base);
++    line-height: 1.5;
++  }
++}
+diff --git a/src/favorites.html b/src/favorites.html
+index ae2b6b4..7f7abde 100644
+--- a/src/favorites.html
++++ b/src/favorites.html
+@@ -11,9 +11,6 @@
+     <load src="./partials/header.html" />
+ 
+     <main>
+-      <!-- TODO: Implement quote partial -->
+-      <load src="./partials/quote.html" />
+-
+       <!-- TODO: Implement favorites exercises list -->
+       <load src="./partials/exercises.html" />
+     </main>
+@@ -25,6 +22,6 @@
+     <load src="./partials/modals/exercise-modal.html" />
+     <load src="./partials/modals/rating-modal.html" />
+ 
+-    <script type="module" src="./js/main.js"></script>
++    <script type="module" src="./js/main.ts"></script>
+   </body>
+ </html>
+diff --git a/src/index.html b/src/index.html
+index 075b34a..07e3025 100644
+--- a/src/index.html
++++ b/src/index.html
+@@ -19,9 +19,6 @@
+ 
+       <!-- TODO: Implement exercises partial -->
+       <load src="./partials/exercises.html" />
+-
+-      <!-- TODO: Implement quote partial -->
+-      <load src="./partials/quote.html" />
+     </main>
+ 
+     <!-- TODO: Implement footer partial -->
+@@ -31,6 +28,6 @@
+     <load src="./partials/modals/exercise-modal.html" />
+     <load src="./partials/modals/rating-modal.html" />
+ 
+-    <script type="module" src="./js/main.js"></script>
++    <script type="module" src="./js/main.ts"></script>
+   </body>
+ </html>
+diff --git a/src/js/api.js b/src/js/api.ts
+similarity index 100%
+rename from src/js/api.js
+rename to src/js/api.ts
+diff --git a/src/js/exercises-test.js b/src/js/exercises-test.ts
+similarity index 99%
+rename from src/js/exercises-test.js
+rename to src/js/exercises-test.ts
+index 2a7b480..7e20423 100644
+--- a/src/js/exercises-test.js
++++ b/src/js/exercises-test.ts
+@@ -15,7 +15,7 @@ import {
+   getExerciseById,
+   getQuote,
+   subscribe,
+-} from './api.js';
++} from './api';
+ 
+ // Helper to render data to an element
+ function renderOutput(elementId, data, isError = false) {
+diff --git a/src/js/exercises.ts b/src/js/exercises.ts
+new file mode 100644
+index 0000000..a1b4a43
+--- /dev/null
++++ b/src/js/exercises.ts
+@@ -0,0 +1,164 @@
++/**
++  EXERCISES & CATEGORIES CONTROLLER
++  =================================
++*/
++
++import { getFilterCategories } from './api';
++
++document.addEventListener('DOMContentLoaded', () => {
++  const categoriesGrid = document.getElementById('categories-grid');
++  const paginationList = document.getElementById('pagination-list');
++  const fallbackBox = document.getElementById('exercises-fallback');
++  const categoryTitle = document.getElementById('exercises-category-title');
++  const titleDivider = document.getElementById('exercises-title-divider');
++  const searchForm = document.getElementById('exercises-search-form');
++  const gridContainer = document.getElementById('categories-container');
++  const exercisesGridContainer = document.getElementById('exercises-grid-container');
++
++  // Filter Buttons
++  const tabButtons = document.querySelectorAll('.tabs-btn');
++
++  let currentFilter = 'Muscles';
++  let currentPage = 1;
++  const limit = window.innerWidth >= 1440 ? 12 : 8;
++
++  // Initialize
++  loadCategories();
++
++  // Bind Tab Click Handlers
++  tabButtons.forEach(btn => {
++    btn.addEventListener('click', (e) => {
++      const target = e.currentTarget as HTMLButtonElement;
++      if (target.classList.contains('active')) return;
++
++      // Reset Active Tabs
++      tabButtons.forEach(b => b.classList.remove('active'));
++      target.classList.add('active');
++
++      // Update Filter State
++      currentFilter = target.getAttribute('data-filter') || 'Muscles';
++      currentPage = 1;
++
++      // Reset Title Accents (return to categories view)
++      if (categoryTitle) categoryTitle.classList.add('is-hidden');
++      if (titleDivider) titleDivider.classList.add('is-hidden');
++      if (gridContainer) gridContainer.classList.remove('is-hidden');
++      if (exercisesGridContainer) exercisesGridContainer.classList.add('is-hidden');
++
++      // Toggle Search Form based on filter
++      if (searchForm) {
++        if (currentFilter === 'Body parts') {
++          searchForm.classList.remove('is-hidden');
++        } else {
++          searchForm.classList.add('is-hidden');
++        }
++      }
++
++      loadCategories();
++    });
++  });
++
++  // Load and Render Categories
++  async function loadCategories() {
++    if (!categoriesGrid) return;
++    
++    // Show Loading state
++    categoriesGrid.innerHTML = '<div class="loader"></div>';
++    if (fallbackBox) fallbackBox.classList.add('is-hidden');
++    if (paginationList) paginationList.innerHTML = '';
++
++    try {
++      const response = await getFilterCategories(currentFilter, currentPage, limit);
++      const { results, totalPages } = response.data;
++
++      if (!results || results.length === 0) {
++        categoriesGrid.innerHTML = '';
++        if (fallbackBox) fallbackBox.classList.remove('is-hidden');
++        return;
++      }
++
++      // Render Cards
++      categoriesGrid.innerHTML = results.map((item: any) => `
++        <li class="category-card" data-category="${item.name}" data-filter="${item.filter}">
++          <img class="category-card-img" src="${item.imgURL}" alt="${item.name}" loading="lazy" />
++          <div class="category-card-overlay"></div>
++          <div class="category-card-content">
++            <h3 class="category-card-name">${item.name}</h3>
++            <p class="category-card-filter">${item.filter}</p>
++          </div>
++        </li>
++      `).join('');
++
++      // Render Pagination
++      renderPagination(totalPages);
++
++      // Bind Card Clicks
++      bindCardClicks();
++
++    } catch (error) {
++      console.error('Error loading categories:', error);
++      categoriesGrid.innerHTML = '';
++      if (fallbackBox) fallbackBox.classList.remove('is-hidden');
++    }
++  }
++
++  // Render Pagination Buttons
++  function renderPagination(totalPages: number) {
++    if (!paginationList || totalPages <= 1) return;
++
++    let paginationHtml = '';
++    for (let i = 1; i <= totalPages; i++) {
++      const isActive = i === currentPage ? 'active' : '';
++      paginationHtml += `
++        <li class="pagination-item">
++          <button type="button" class="pagination-btn ${isActive}" data-page="${i}">
++            ${i}
++          </button>
++        </li>
++      `;
++    }
++    paginationList.innerHTML = paginationHtml;
++
++    // Bind Pagination Clicks
++    const paginationButtons = paginationList.querySelectorAll('.pagination-btn');
++    paginationButtons.forEach(btn => {
++      btn.addEventListener('click', (e) => {
++        const target = e.currentTarget as HTMLButtonElement;
++        const page = parseInt(target.getAttribute('data-page') || '1', 10);
++        if (page === currentPage) return;
++
++        currentPage = page;
++        loadCategories();
++      });
++    });
++  }
++
++  // Bind Clicks on Category Cards
++  function bindCardClicks() {
++    const cards = document.querySelectorAll('.category-card');
++    cards.forEach(card => {
++      card.addEventListener('click', (e) => {
++        const target = e.currentTarget as HTMLLIElement;
++        const category = target.getAttribute('data-category');
++        
++        // Hide Categories list and show Exercises layout mock container
++        if (gridContainer) gridContainer.classList.add('is-hidden');
++        if (exercisesGridContainer) exercisesGridContainer.classList.remove('is-hidden');
++        
++        // Update Section Title Header format: Exercises / [Category]
++        if (categoryTitle && category) {
++          categoryTitle.textContent = category;
++          categoryTitle.classList.remove('is-hidden');
++        }
++        if (titleDivider) {
++          titleDivider.classList.remove('is-hidden');
++        }
++
++        // Show Search input panel for exercises search
++        if (searchForm) {
++          searchForm.classList.remove('is-hidden');
++        }
++      });
++    });
++  }
++});
+diff --git a/src/js/main.js b/src/js/main.ts
+similarity index 88%
+rename from src/js/main.js
+rename to src/js/main.ts
+index 0d91dab..018e6e8 100644
+--- a/src/js/main.js
++++ b/src/js/main.ts
+@@ -7,12 +7,12 @@
+ */
+ 
+ // Import test script to display API data
+-import './exercises-test.js';
++import './exercises-test';
+ 
+ // TODO: Uncomment and import as you create these modules
+ // import './header.js';      // Burger menu functionality
+ // import './filters.js';     // Filter buttons logic
+-// import './exercises.js';   // Exercise/category cards
++import './exercises';   // Exercise/category cards
+ // import './quote.js';       // Quote of the day with localStorage
+ // import './favorites.js';   // localStorage favorites management
+ // import './modal.js';       // Modal open/close/ESC handlers
+diff --git a/src/partials/exercises-content.html b/src/partials/exercises-content.html
+new file mode 100644
+index 0000000..88ac2ff
+--- /dev/null
++++ b/src/partials/exercises-content.html
+@@ -0,0 +1,29 @@
++<div class="exercises-content-wrapper">
++
++  <!-- Categories List Container -->
++  <div class="categories-container" id="categories-container">
++    <ul class="categories-grid" id="categories-grid">
++      <!-- Category cards will be injected here dynamically -->
++    </ul>
++  </div>
++
++  <!-- Exercises Cards Grid (initially hidden, dynamic rendering in Task 7) -->
++  <div class="exercises-grid-container is-hidden" id="exercises-grid-container">
++    <ul class="exercises-cards-grid" id="exercises-cards-grid">
++      <!-- Exercise cards will be injected here dynamically -->
++    </ul>
++  </div>
++
++  <!-- Fallback Empty State Message -->
++  <div class="exercises-fallback is-hidden" id="exercises-fallback">
++    <p class="fallback-text">Nothing was found for your request. Try another filter or search term.</p>
++  </div>
++
++  <!-- Pagination Container -->
++  <div class="pagination-container" id="pagination-container">
++    <ul class="pagination-list" id="pagination-list">
++      <!-- Pagination items will be injected here dynamically -->
++    </ul>
++  </div>
++
++</div>
+diff --git a/src/partials/exercises.html b/src/partials/exercises.html
+index df597e4..cd5bf16 100644
+--- a/src/partials/exercises.html
++++ b/src/partials/exercises.html
+@@ -1,177 +1,67 @@
+-<!-- 
+-  EXERCISES TEST PAGE
+-  ===================
+-  
+-  This partial displays data from all API endpoints for testing.
+-  Each section shows the response from a different API method.
+--->
+-
+-<section class="exercises-test">
+-  <div class="container">
+-    <h1>API Test Output</h1>
+-    
+-    <!-- ========================================
+-         1. FILTER CATEGORIES
+-         ======================================== -->
+-    <section class="test-section">
+-      <h2>1. Filter Categories</h2>
+-      <p>API: <code>getFilterCategories(filter, page, limit)</code></p>
+-      
+-      <h3>Muscles Categories</h3>
+-      <div id="muscles-categories" class="output-box">Loading...</div>
+-      
+-      <h3>Body Parts Categories</h3>
+-      <div id="bodyparts-categories" class="output-box">Loading...</div>
+-      
+-      <h3>Equipment Categories</h3>
+-      <div id="equipment-categories" class="output-box">Loading...</div>
+-    </section>
+-    
+-    <!-- ========================================
+-         2. EXERCISES BY CATEGORY
+-         ======================================== -->
+-    <section class="test-section">
+-      <h2>2. Exercises by Category</h2>
+-      
+-      <h3>Exercises by Muscle (lats)</h3>
+-      <p>API: <code>getExercisesByMuscle('lats', 1, 5)</code></p>
+-      <div id="exercises-by-muscle" class="output-box">Loading...</div>
+-      
+-      <h3>Exercises by Body Part (back)</h3>
+-      <p>API: <code>getExercisesByBodyPart('back', 1, 5)</code></p>
+-      <div id="exercises-by-bodypart" class="output-box">Loading...</div>
+-      
+-      <h3>Exercises by Equipment (barbell)</h3>
+-      <p>API: <code>getExercisesByEquipment('barbell', 1, 5)</code></p>
+-      <div id="exercises-by-equipment" class="output-box">Loading...</div>
+-    </section>
+-    
+-    <!-- ========================================
+-         3. SEARCH EXERCISES
+-         ======================================== -->
+-    <section class="test-section">
+-      <h2>3. Search Exercises (dynamic)</h2>
+-      <p>API: <code>searchExercises({ filter, category, keyword, page, limit })</code></p>
+-      
+-      <h3>Search: muscles=lats, keyword="pull"</h3>
+-      <div id="search-muscles" class="output-box">Loading...</div>
+-      
+-      <h3>Search: bodypart=back, keyword="row"</h3>
+-      <div id="search-bodypart" class="output-box">Loading...</div>
+-      
+-      <h3>Search: equipment=barbell, keyword="press"</h3>
+-      <div id="search-equipment" class="output-box">Loading...</div>
+-    </section>
+-    
+-    <!-- ========================================
+-         4. EXERCISE DETAILS (by ID)
+-         ======================================== -->
+-    <section class="test-section">
+-      <h2>4. Exercise Details (Modal Data)</h2>
+-      <p>API: <code>getExerciseById(id)</code></p>
+-      <p><em>ID will be taken from first exercise in "Exercises by Muscle" response</em></p>
+-      <div id="exercise-details" class="output-box">Loading...</div>
+-    </section>
+-    
+-    <!-- ========================================
+-         5. QUOTE OF THE DAY
+-         ======================================== -->
+-    <section class="test-section">
+-      <h2>5. Quote of the Day</h2>
+-      <p>API: <code>getQuote()</code></p>
+-      <div id="quote" class="output-box">Loading...</div>
+-    </section>
++<section class="exercises-section" id="exercises-section">
++  <div class="container exercises-container">
+     
+-    <!-- ========================================
+-         6. SUBSCRIPTION (Form Test)
+-         ======================================== -->
+-    <section class="test-section">
+-      <h2>6. Subscription Test</h2>
+-      <p>API: <code>subscribe(email)</code></p>
+-      <form id="subscription-form">
+-        <input type="email" id="subscription-email" placeholder="Enter email" required />
+-        <button type="submit">Test Subscribe</button>
+-      </form>
+-      <div id="subscription-result" class="output-box">Enter email and click to test</div>
+-    </section>
++    <!-- Top Bar: Title, Search, and Tabs (Spans entire container width) -->
++    <div class="exercises-top-bar">
++      <!-- Section Title (Dynamic Accent) -->
++      <h2 class="exercises-title">
++        Exercises<span class="exercises-title-divider is-hidden" id="exercises-title-divider"> /</span>
++        <span class="exercises-title-accent is-hidden" id="exercises-category-title"></span>
++      </h2>
++
++      <div class="exercises-controls">
++        <!-- Search Form (Static layout, visible only for Body parts tab and exercises view) -->
++        <form class="exercises-search-form is-hidden" id="exercises-search-form">
++          <input 
++            type="text" 
++            name="keyword" 
++            placeholder="Search" 
++            class="exercises-search-input"
++            id="exercises-search-input"
++            aria-label="Search exercises"
++          />
++          <button type="submit" class="exercises-search-btn" aria-label="Search">
++            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
++              <circle cx="11" cy="11" r="8"/>
++              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
++            </svg>
++          </button>
++        </form>
++
++        <!-- Filter Tabs (Muscles, Body parts, Equipment) -->
++        <nav class="exercises-tabs">
++          <ul class="tabs-list">
++            <li class="tabs-item">
++              <button type="button" class="tabs-btn active" data-filter="Muscles" id="tab-muscles">
++                Muscles
++                <span class="tabs-active-line"></span>
++              </button>
++            </li>
++            <li class="tabs-item">
++              <button type="button" class="tabs-btn" data-filter="Body parts" id="tab-body-parts">
++                Body parts
++                <span class="tabs-active-line"></span>
++              </button>
++            </li>
++            <li class="tabs-item">
++              <button type="button" class="tabs-btn" data-filter="Equipment" id="tab-equipment">
++                Equipment
++                <span class="tabs-active-line"></span>
++              </button>
++            </li>
++          </ul>
++        </nav>
++      </div>
++    </div>
++
++    <!-- Columns Block: Side-by-side content -->
++    <div class="main-layout-container">
++      <!-- Left Side: Quote, Side Image, WHO news -->
++      <load src="/partials/quote.html" />
++
++      <!-- Right Side: Exercises, grid, pagination -->
++      <load src="/partials/exercises-content.html" />
++    </div>
++
+   </div>
+ </section>
+-
+-<style>
+-  .exercises-test {
+-    padding: 20px 0;
+-  }
+-  
+-  .test-section {
+-    margin-bottom: 40px;
+-    padding: 20px;
+-    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
+-    border-radius: 8px;
+-  }
+-  
+-  .test-section h2 {
+-    color: var(--color-accent, #e6533c);
+-    margin-bottom: 16px;
+-    border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.2));
+-    padding-bottom: 8px;
+-  }
+-  
+-  .test-section h3 {
+-    margin-top: 16px;
+-    margin-bottom: 8px;
+-  }
+-  
+-  .test-section code {
+-    background: rgba(255,255,255,0.1);
+-    padding: 2px 6px;
+-    border-radius: 4px;
+-    font-size: 14px;
+-  }
+-  
+-  .output-box {
+-    background: rgba(0,0,0,0.3);
+-    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
+-    border-radius: 8px;
+-    padding: 16px;
+-    margin-top: 8px;
+-    font-family: monospace;
+-    font-size: 12px;
+-    white-space: pre-wrap;
+-    word-break: break-all;
+-    max-height: 300px;
+-    overflow-y: auto;
+-  }
+-  
+-  .output-box.error {
+-    border-color: var(--color-error, #d80027);
+-    color: var(--color-error, #d80027);
+-  }
+-  
+-  .output-box.success {
+-    border-color: var(--color-success, #3cbf61);
+-  }
+-  
+-  #subscription-form {
+-    display: flex;
+-    gap: 10px;
+-    margin-bottom: 10px;
+-  }
+-  
+-  #subscription-form input {
+-    flex: 1;
+-    padding: 8px 12px;
+-    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
+-    border-radius: 4px;
+-    background: transparent;
+-    color: var(--color-text, #fff);
+-  }
+-  
+-  #subscription-form button {
+-    padding: 8px 16px;
+-    background: var(--color-accent, #e6533c);
+-    border: none;
+-    border-radius: 4px;
+-    color: white;
+-    cursor: pointer;
+-  }
+-</style>
+diff --git a/src/partials/quote.html b/src/partials/quote.html
+index 298fa34..630e5d2 100644
+--- a/src/partials/quote.html
++++ b/src/partials/quote.html
+@@ -1,36 +1,60 @@
+ <!-- 
+   QUOTE SECTION
+   =============
+-  
+-  Requirements:
+-  - Quote of the day (from API)
+-  - Static info block about 110 minutes daily exercise
+-  
+-  QUOTE CACHING:
+-  - Store quote in localStorage with current date
+-  - On page load:
+-    1. Check if stored date matches today
+-    2. If yes: use cached quote (no API call)
+-    3. If no: fetch new quote, update localStorage
+-  
+-  API usage:
+-  import { getQuote } from './js/api.js';
+-  
+-  const today = new Date().toDateString();
+-  const cached = JSON.parse(localStorage.getItem('quote'));
+-  
+-  if (cached && cached.date === today) {
+-    // Use cached.quote and cached.author
+-  } else {
+-    const { data } = await getQuote();
+-    localStorage.setItem('quote', JSON.stringify({
+-      quote: data.quote,
+-      author: data.author,
+-      date: today
+-    }));
+-  }
+ -->
+ 
+-<section class="quote">
+-  <!-- TODO: Implement quote markup -->
+-</section>
++<aside class="sidebar-aside">
++  <!-- 1. Quote of the Day Card -->
++  <div class="quote-card-container">
++    <div class="quote-header">
++      <div class="quote-icon-wrapper">
++        <svg class="quote-run-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
++          <path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.7L7 13.5H4V15h4c.6 0 1.2-.3 1.5-.9l1.8-3.1 2.7 2.7V19h1.5v-6.2l-2.6-2.6 1-1.7c1 1.6 2.7 2.5 4.6 2.5V10c-1.3 0-2.5-.7-3.2-1.8l-1.1-1.8c-.4-.7-1.2-1.2-2.1-1.2-1.1 0-2.1.6-2.6 1.6L5.8 10.7c-.5.9-.2 2 .7 2.5l2.8 1.6c.4.2.9.2 1.3 0l1.8-1.1-2.6-5z"/>
++        </svg>
++      </div>
++      <h3 class="quote-title">Quote of the day</h3>
++      <div class="quote-commas">
++        <svg class="commas-icon" width="20" height="16" viewBox="0 0 20 16" fill="currentColor">
++          <path d="M0 8h5l2-4V0H2v4h3zm10 0h5l2-4V0h-5v4h3z"/>
++        </svg>
++      </div>
++    </div>
++    <div class="quote-body">
++      <p class="quote-text" id="quote-text-placeholder">
++        "A lot of times I find that people who are blessed with the most talent don’t ever develop that attitude, and the ones who aren't blessed in that way are the most competitive and have the most heart."
++      </p>
++      <p class="quote-author" id="quote-author-placeholder">Tom Brady</p>
++    </div>
++  </div>
++
++  <!-- 2. Middle Decorative Side Image -->
++  <div class="side-image-container">
++    <img 
++      src="./img/quote-home.jpg" 
++      alt="Women working out outdoors" 
++      class="side-decor-image" 
++      loading="lazy"
++    />
++  </div>
++
++  <!-- 3. WHO Info Card (News) -->
++  <div class="info-card-container">
++    <div class="info-card-header">
++      <div class="info-icon-wrapper">
++        <!-- Dumbbell Icon -->
++        <svg class="info-dumbell-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
++          <path d="M21 9h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zM5 9H3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm12 2H7v2h10v-2z"/>
++        </svg>
++      </div>
++      <div class="info-header-titles">
++        <h3 class="info-number">110 min</h3>
++        <p class="info-subtitle">Daily norm of sports</p>
++      </div>
++    </div>
++    <div class="info-card-body">
++      <p class="info-text">
++        The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical activity throughout the week for adults aged 18-64. However, what happens if we adjust that number to 110 minutes every day? While it might seem like a high number to hit, dedicating 110 minutes daily to sporting activities may offer unparalleled benefits to physical health, mental well-being, and overall quality of life.
++      </p>
++    </div>
++  </div>
++</aside>
+diff --git a/tsconfig.json b/tsconfig.json
+new file mode 100644
+index 0000000..3a802fb
+--- /dev/null
++++ b/tsconfig.json
+@@ -0,0 +1,16 @@
++{
++  "compilerOptions": {
++    "target": "ESNext",
++    "useDefineForClassFields": true,
++    "module": "ESNext",
++    "moduleResolution": "Node",
++    "strict": true,
++    "resolveJsonModule": true,
++    "isolatedModules": true,
++    "esModuleInterop": true,
++    "lib": ["ESNext", "DOM", "DOM.Iterable"],
++    "skipLibCheck": true,
++    "noEmit": true
++  },
++  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.html"]
++}
