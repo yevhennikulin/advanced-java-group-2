@@ -5,7 +5,7 @@
     --gap: 20px;
     --columns: 1;
 
-    .workouts__grid {
+    .exercise__grid {
         font-size: var(--fs-base);
         list-style: none;
         margin: 0 0 20px 0;
@@ -16,8 +16,8 @@
         width: 100%;
     }
 
-    .workout-card {
-        background: var(--color-text);
+    .exercise-card {
+        background: var(--color-card-bg);
         border-radius: var(--radius-15);
         padding: 16px;
         display: flex;
@@ -25,34 +25,34 @@
         width: calc((100% - var(--gap) * (var(--columns) - 1)) / var(--columns));
     }
 
-    .workout-card__header {
+    .exercise-card__header {
         display: flex;
         align-items: flex-start;
         gap: 16px;
         margin-bottom: 25px;
     }
 
-    .workout-card__badge {
+    .exercise-card__badge {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: row;
         gap: 10px;
-        border: 1px solid #242424;
+        border: 1px solid var(--color-text);
         border-radius: 15px;
         padding-block: 5px;
         padding-inline: 8px;
         height: 26px;
         text-transform: uppercase;
         font-weight: 500;
-        color: #242424;
+        color: var(--color-text);
         font-size: 12px;
     }
 
-    .workout-card__rating {
+    .exercise-card__rating {
         font-weight: 400;
         line-height: 1.5;
-        color: #242424;
+        color: var(--color-text);
         display: flex;
         align-items: center;
         gap: 2px;
@@ -60,7 +60,7 @@
         align-self: center;
     }
 
-    .workout-card__start {
+    .exercise-card__start {
         font-weight: 400;
         font-size: 14px;
 
@@ -73,14 +73,14 @@
         align-items: center;
     }
 
-    .workout-card__title {
+    .exercise-card__title {
         display: flex;
         align-items: center;
         font-weight: 400;
         font-size: 20px;
         /* line-height: 20px; */
         line-height: 1;
-        color: #242424;
+        color: var(--color-text);
         gap: 16px;
         margin-bottom: 16px;
         white-space: nowrap;
@@ -93,7 +93,7 @@
         }
     }
 
-    .workout-card__icon {
+    .exercise-card__icon {
         flex: none;
         width: 24px;
         height: 24px;
@@ -102,7 +102,7 @@
 
     }
 
-    .workout-card__meta {
+    .exercise-card__meta {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -130,7 +130,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 font-weight: 400;
-                color: #242424;
+                color: var(--color-text);
                 line-height: 1.5;
 
             }
@@ -163,17 +163,17 @@
         /* line-height: 32px; */
         line-height: 1.33333;
         letter-spacing: 0.04em;
-        color: #d4d4d4;
+        color: var(--color-shade1);
     }
 
     .pagination__link[aria-current="page"] {
-        border: 1px solid #242424;
+        border: 1px solid var(--color-primary);
         border-radius: 18px;
         padding-block: 0px;
         padding-inline: 12px;
         width: 32px;
         height: 32px;
-        color: var(--color-background);
+        color: var(--color-primary);
     }
 
 
