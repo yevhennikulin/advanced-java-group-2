@@ -10,7 +10,8 @@
 import "./exercises-test.js";
 
 // TODO: Uncomment and import as you create these modules
-// import './header.js';      // Burger menu functionality
+import './header.js';      // Burger menu functionality
+import './footer.js';      // Newsletter subscription logic
 // import './filters.js';     // Filter buttons logic
 // import './exercises.js';   // Exercise/category cards
 import "./quote"; // Quote of the day with localStorage

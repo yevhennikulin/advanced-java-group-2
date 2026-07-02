@@ -1,30 +1,77 @@
-<!-- 
-  FOOTER COMPONENT
-  ================
-  
-  Requirements:
-  - Logo (click redirects to home page)
-  - Social links list (same as header)
-  - Company slogan
-  - Subscription form for new exercises newsletter
-  
-  Subscription form:
-  - Email input (required)
-  - Pattern validation: ^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$
-  - Submit button "Send"
-  - On valid submit: POST to /subscription endpoint
-  - Use iziToast for success/error notifications
-  
-  Social links (open in new tab):
-  - Facebook: https://www.facebook.com/goITclub/
-  - Instagram: https://www.instagram.com/goitclub/
-  - YouTube: https://www.youtube.com/c/GoIT
-  
-  API usage:
-  import { subscribe } from './js/api.js';
-  await subscribe(email);
--->
-
 <footer class="footer">
-  <!-- TODO: Implement footer markup -->
+  <div class="container">
+    <div class="footer-top">
+      <!-- Left Column: Logo and Socials -->
+      <div class="footer-left">
+        <a href="./index.html" class="logo footer-logo" aria-label="Your Energy home">
+          your<span class="logo-accent">energy</span>
+        </a>
+        <div class="footer-socials">
+          <ul class="socials-list">
+            <li class="socials-item">
+              <a href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="Facebook">
+                <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+            </li>
+            <li class="socials-item">
+              <a href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="Instagram">
+                <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </a>
+            </li>
+            <li class="socials-item">
+              <a href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="YouTube">
+                <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Center Column: Slogan -->
+      <div class="footer-center">
+        <p class="footer-slogan">
+          Transforming your <span class="slogan-italic">body</span> shape with us
+        </p>
+      </div>
+
+      <!-- Right Column: Subscription Form -->
+      <div class="footer-right">
+        <p class="subscription-title">Subscribe and learn about new exercises!</p>
+        <form class="subscription-form" id="subscription-form">
+          <input
+            type="email"
+            class="subscription-input"
+            placeholder="Email"
+            required
+            pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+          />
+          <button type="submit" class="subscription-btn">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Bar: Policies, Copyright -->
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        Your Energy. All rights reserved.
+      </div>
+      <div class="footer-policies">
+        <a href="#" class="policy-link">Privacy Policy</a>
+        <span class="policy-divider">/</span>
+        <a href="#" class="policy-link">Terms of Service</a>
+      </div>
+      <div class="footer-year">
+        &copy;<span id="footer-year-span">2026</span>
+      </div>
+    </div>
+  </div>
 </footer>
