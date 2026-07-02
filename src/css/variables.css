@@ -22,6 +22,7 @@
   --color-success: #3cbf61;
   --color-error: #d80027;
   --color-rating: #eea10c;
+  --color-shade1: #d4d4d4;
 
   /* ==========================================
      TYPOGRAPHY - UPDATE FROM FIGMA
@@ -49,6 +50,8 @@
   /* ==========================================
      BORDER RADIUS
      ========================================== */
+  --radius-15: 15px;
+
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -70,7 +73,7 @@
   /* ==========================================
      CONTAINER WIDTHS
      ========================================== */
-  --container-mobile: 320px;
+  --container-mobile: 375px;
   --container-tablet: 768px;
   --container-desktop: 1440px;
 }
