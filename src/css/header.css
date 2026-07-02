@@ -1,0 +1,301 @@
+/*
+  HEADER COMPONENT STYLES
+  =======================
+*/
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  z-index: 100; /* Always accessible on top of page content */
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ------------------------------------------
+   Logo Styling
+   ------------------------------------------ */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-transform: lowercase;
+  transition: opacity var(--transition-fast);
+}
+
+.logo:hover,
+.logo:focus {
+  opacity: 0.8;
+}
+
+.logo-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+/* ------------------------------------------
+   Desktop Navigation & Links
+   ------------------------------------------ */
+.nav {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: block;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    background-color: #242424;
+    border-radius: 60px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(244, 244, 244, 0.5); /* Inactive link color */
+    padding: 6px 12px;
+    border-radius: 30px;
+    transition: color var(--transition-base), background-color var(--transition-base);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: #ffffff;
+  }
+
+  .nav-link.active {
+    background-color: #f4f4f4; /* Active link capsule bg */
+    color: #242424; /* Active text color */
+    font-weight: 400;
+  }
+}
+
+/* ------------------------------------------
+   Desktop Social Links
+   ------------------------------------------ */
+.header-socials {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .header-socials {
+    display: block;
+  }
+}
+
+.socials-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.socials-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text);
+  transition: border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+}
+
+.socials-link:hover,
+.socials-link:focus {
+  border-color: var(--color-text);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.socials-icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+/* ------------------------------------------
+   Mobile Burger Button
+   ------------------------------------------ */
+.burger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color var(--transition-base), transform var(--transition-fast);
+}
+
+@media screen and (min-width: 768px) {
+  .burger-btn {
+    display: none;
+  }
+}
+
+.burger-btn:hover,
+.burger-btn:focus {
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.burger-btn svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+}
+
+/* ------------------------------------------
+   Mobile Drawer Overlay
+   ------------------------------------------ */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-primary); /* #242424 dark background */
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 375px) {
+  .mobile-menu {
+    width: 210px;
+    left: auto;
+    border-left: 1px solid rgba(244, 244, 244, 0.2);
+  }
+}
+
+.mobile-menu-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 80px 20px 40px 20px;
+}
+
+.mobile-menu-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ffffff;
+  transition: color var(--transition-base), transform var(--transition-fast);
+}
+
+.mobile-menu-close-btn:hover,
+.mobile-menu-close-btn:focus {
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.mobile-menu-close-btn svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+}
+
+.mobile-nav {
+  margin-bottom: auto;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobile-nav-link {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(244, 244, 244, 0.5); /* Inactive Mobile Links */
+  transition: color var(--transition-base);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus {
+  color: #ffffff;
+}
+
+.mobile-nav-link.active {
+  color: #ffffff;
+  font-weight: 500;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 2px;
+}
+
+.mobile-menu-socials {
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-menu-socials .socials-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-menu-socials .socials-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(244, 244, 244, 0.2);
+  border-radius: 10px;
+  color: #ffffff;
+  transition: border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+}
+
+.mobile-menu-socials .socials-link:hover,
+.mobile-menu-socials .socials-link:focus {
+  border-color: #ffffff;
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
