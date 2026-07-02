@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites - Your Energy</title>
     <script type="module" crossorigin src="/final-advanced-js-2/assets/vendor-DhXgJQ-f.js"></script>
-    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-CP-XUFOX.js"></script>
-    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-C63zr_nk.css">
+    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-ELYJHTY3.js"></script>
+    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-CSYtne6j.css">
   </head>
   <body>
     <!-- TODO: Implement header partial -->
@@ -39,46 +39,73 @@
 
 
     <main>
-      <!-- TODO: Implement quote partial -->
-      <!-- 
-  QUOTE SECTION
-  =============
-  
-  Requirements:
-  - Quote of the day (from API)
-  - Static info block about 110 minutes daily exercise
-  
-  QUOTE CACHING:
-  - Store quote in localStorage with current date
-  - On page load:
-    1. Check if stored date matches today
-    2. If yes: use cached quote (no API call)
-    3. If no: fetch new quote, update localStorage
-  
-  API usage:
-  import { getQuote } from './js/api.js';
-  
-  const today = new Date().toDateString();
-  const cached = JSON.parse(localStorage.getItem('quote'));
-  
-  if (cached && cached.date === today) {
-    // Use cached.quote and cached.author
-  } else {
-    const { data } = await getQuote();
-    localStorage.setItem('quote', JSON.stringify({
-      quote: data.quote,
-      author: data.author,
-      date: today
-    }));
-  }
--->
+      <!-- Quote of the day — Favorites -->
+      <div class="container">
+        <div class="favorites-sidebar">
+  <div class="quote-card">
+    <div class="quote-icon-box">
+      <svg
+        class="quote-icon"
+        width="32"
+        height="32"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#running"></use>
+      </svg>
+    </div>
 
-<section class="quote">
-  <!-- TODO: Implement quote markup -->
-</section>
+    <div class="quote-content">
+      <div class="quote-header">
+        <h2 class="quote-title">Quote of the day</h2>
 
+        <svg
+          class="quote-mark-icon"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#quote"></use>
+        </svg>
+      </div>
 
-      <!-- TODO: Implement favorites exercises list -->
+      <p class="quote-text" data-quote-text>Loading quote...</p>
+      <p class="quote-author" data-quote-author></p>
+    </div>
+  </div>
+
+  <div class="favorites-sidebar-bottom">
+    <div class="favorites-daily-card">
+      <div class="favorites-daily-icon">
+        <svg width="20" height="20" aria-hidden="true" focusable="false">
+          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#food"></use>
+        </svg>
+      </div>
+
+      <div class="favorites-daily-content">
+        <h3 class="favorites-daily-title">110 min</h3>
+        <p class="favorites-daily-subtitle">Daily norm of sports</p>
+      </div>
+    </div>
+
+    <div class="favorites-image-card">
+      <img
+        class="favorites-image"
+        src="/final-advanced-js-2/assets/favorites-D4txrV4T.jpg"
+        srcset="/final-advanced-js-2/assets/favorites-D4txrV4T.jpg 1x, /final-advanced-js-2/assets/favorites@2x-D8gR77TF.jpg 2x"
+        alt=""
+        width="335"
+        height="119"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <!-- TODO: Favorites exercises list -->
       <!-- 
   EXERCISES TEST PAGE
   ===================

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Energy</title>
     <script type="module" crossorigin src="/final-advanced-js-2/assets/vendor-DhXgJQ-f.js"></script>
-    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-CP-XUFOX.js"></script>
-    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-C63zr_nk.css">
+    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-ELYJHTY3.js"></script>
+    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-CSYtne6j.css">
   </head>
   <body>
     <!-- TODO: Implement header partial -->
@@ -272,41 +272,92 @@
 
 
       <!-- TODO: Implement quote partial -->
-      <!-- 
-  QUOTE SECTION
-  =============
-  
-  Requirements:
-  - Quote of the day (from API)
-  - Static info block about 110 minutes daily exercise
-  
-  QUOTE CACHING:
-  - Store quote in localStorage with current date
-  - On page load:
-    1. Check if stored date matches today
-    2. If yes: use cached quote (no API call)
-    3. If no: fetch new quote, update localStorage
-  
-  API usage:
-  import { getQuote } from './js/api.js';
-  
-  const today = new Date().toDateString();
-  const cached = JSON.parse(localStorage.getItem('quote'));
-  
-  if (cached && cached.date === today) {
-    // Use cached.quote and cached.author
-  } else {
-    const { data } = await getQuote();
-    localStorage.setItem('quote', JSON.stringify({
-      quote: data.quote,
-      author: data.author,
-      date: today
-    }));
-  }
--->
+      <section class="quote-section">
+  <ul class="quote-list">
+    <li class="quote-card">
+      <div class="quote-icon-box">
+        <svg
+          class="quote-icon"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#running"></use>
+        </svg>
+      </div>
 
-<section class="quote">
-  <!-- TODO: Implement quote markup -->
+      <div class="quote-content">
+        <div class="quote-header">
+          <h2 class="quote-title">Quote of the day</h2>
+
+          <svg
+            class="quote-mark-icon"
+            width="20"
+            height="20"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#quote"></use>
+          </svg>
+        </div>
+
+        <p class="quote-text" data-quote-text>Loading quote...</p>
+        <p class="quote-author" data-quote-author></p>
+      </div>
+    </li>
+
+    <li class="quote-image-card">
+      <picture>
+        <source
+          media="(min-width: 1440px)"
+          srcset="/final-advanced-js-2/assets/quote-desktop-Dz6iVYVu.jpg 1x, /final-advanced-js-2/assets/quote-desktop@2x-ChJcmWIG.jpg 2x"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="/final-advanced-js-2/assets/quote-tablet-BkP8gky9.jpg 1x, /final-advanced-js-2/assets/quote-tablet@2x-DAWV1phb.jpg 2x"
+        />
+        <img
+          class="quote-image"
+          src="/final-advanced-js-2/assets/quote-mobile-CwmsA43i.jpg"
+          srcset="/final-advanced-js-2/assets/quote-mobile-CwmsA43i.jpg 1x, /final-advanced-js-2/assets/quote-mobile@2x-RuMAP1Uo.jpg 2x"
+          alt=""
+          width="335"
+          height="242"
+          loading="lazy"
+        />
+      </picture>
+    </li>
+
+    <li class="daily-card">
+      <div class="daily-icon-box">
+        <svg
+          class="daily-icon"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#dumbbell"></use>
+        </svg>
+      </div>
+
+      <div class="daily-content">
+        <h3 class="daily-title">110 min</h3>
+        <p class="daily-subtitle">Daily norm of sports</p>
+
+        <p class="daily-text">
+          The World Health Organization recommends at least 150 minutes of
+          moderate-intensity aerobic physical activity throughout the week for
+          adults aged 18-64. However, what happens if we adjust that number to
+          110 minutes every day? While it might seem like a high number to hit,
+          dedicating 110 minutes daily to sporting activities may offer
+          unparalleled benefits to physical health, mental well-being, and
+          overall quality of life.
+        </p>
+      </div>
+    </li>
+  </ul>
 </section>
 
     </main>
