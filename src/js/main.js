@@ -17,5 +17,6 @@ import './exercises-test.js';
 // import './favorites.js';   // localStorage favorites management
 // import './modal.js';       // Modal open/close/ESC handlers
 // import './pagination.js';  // Pagination logic
+import './scroll-up.js';
 
 console.log('Your Energy app initialized');
