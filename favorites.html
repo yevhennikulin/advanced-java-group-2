@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites - Your Energy</title>
-    <script type="module" crossorigin src="/final-advanced-js-2/assets/vendor-DdHXTJIf.js"></script>
-    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-6BMKoWTc.js"></script>
+    <script type="module" crossorigin src="/final-advanced-js-2/favorites.js"></script>
+    <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/vendor-DdHXTJIf.js">
+    <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/quote-Cn3xF0c_.js">
+    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/quote-DAPw9Fbn.css">
     <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/vendor-D_nxXpU-.css">
-    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-DIlilZ_t.css">
   </head>
   <body>
     <!-- TODO: Implement header partial -->
@@ -189,183 +190,320 @@
       </div>
 
       <!-- TODO: Favorites exercises list -->
-      <!-- 
-  EXERCISES TEST PAGE
-  ===================
-  
-  This partial displays data from all API endpoints for testing.
-  Each section shows the response from a different API method.
--->
+      <section class="exercises-section" id="exercises-section">
+  <div class="container exercises-container">
+    
+    <!-- Top Bar: Title, Search, and Tabs (Spans entire container width) -->
+    <div class="exercises-top-bar">
+      <!-- Section Title (Dynamic Accent) -->
+      <h2 class="exercises-title">
+        Exercises<span class="exercises-title-divider is-hidden" id="exercises-title-divider"> /</span>
+        <span class="exercises-title-accent is-hidden" id="exercises-category-title"></span>
+      </h2>
 
-<section class="exercises-test">
-  <div class="container">
-    <h1>API Test Output</h1>
-    
-    <!-- ========================================
-         1. FILTER CATEGORIES
-         ======================================== -->
-    <section class="test-section">
-      <h2>1. Filter Categories</h2>
-      <p>API: <code>getFilterCategories(filter, page, limit)</code></p>
-      
-      <h3>Muscles Categories</h3>
-      <div id="muscles-categories" class="output-box">Loading...</div>
-      
-      <h3>Body Parts Categories</h3>
-      <div id="bodyparts-categories" class="output-box">Loading...</div>
-      
-      <h3>Equipment Categories</h3>
-      <div id="equipment-categories" class="output-box">Loading...</div>
-    </section>
-    
-    <!-- ========================================
-         2. EXERCISES BY CATEGORY
-         ======================================== -->
-    <section class="test-section">
-      <h2>2. Exercises by Category</h2>
-      
-      <h3>Exercises by Muscle (lats)</h3>
-      <p>API: <code>getExercisesByMuscle('lats', 1, 5)</code></p>
-      <div id="exercises-by-muscle" class="output-box">Loading...</div>
-      
-      <h3>Exercises by Body Part (back)</h3>
-      <p>API: <code>getExercisesByBodyPart('back', 1, 5)</code></p>
-      <div id="exercises-by-bodypart" class="output-box">Loading...</div>
-      
-      <h3>Exercises by Equipment (barbell)</h3>
-      <p>API: <code>getExercisesByEquipment('barbell', 1, 5)</code></p>
-      <div id="exercises-by-equipment" class="output-box">Loading...</div>
-    </section>
-    
-    <!-- ========================================
-         3. SEARCH EXERCISES
-         ======================================== -->
-    <section class="test-section">
-      <h2>3. Search Exercises (dynamic)</h2>
-      <p>API: <code>searchExercises({ filter, category, keyword, page, limit })</code></p>
-      
-      <h3>Search: muscles=lats, keyword="pull"</h3>
-      <div id="search-muscles" class="output-box">Loading...</div>
-      
-      <h3>Search: bodypart=back, keyword="row"</h3>
-      <div id="search-bodypart" class="output-box">Loading...</div>
-      
-      <h3>Search: equipment=barbell, keyword="press"</h3>
-      <div id="search-equipment" class="output-box">Loading...</div>
-    </section>
-    
-    <!-- ========================================
-         4. EXERCISE DETAILS (by ID)
-         ======================================== -->
-    <section class="test-section">
-      <h2>4. Exercise Details (Modal Data)</h2>
-      <p>API: <code>getExerciseById(id)</code></p>
-      <p><em>ID will be taken from first exercise in "Exercises by Muscle" response</em></p>
-      <div id="exercise-details" class="output-box">Loading...</div>
-    </section>
-    
-    <!-- ========================================
-         5. QUOTE OF THE DAY
-         ======================================== -->
-    <section class="test-section">
-      <h2>5. Quote of the Day</h2>
-      <p>API: <code>getQuote()</code></p>
-      <div id="quote" class="output-box">Loading...</div>
-    </section>
-    
-    <!-- ========================================
-         6. SUBSCRIPTION (Form Test)
-         ======================================== -->
-    <section class="test-section">
-      <h2>6. Subscription Test</h2>
-      <p>API: <code>subscribe(email)</code></p>
-      <form id="subscription-form">
-        <input type="email" id="subscription-email" placeholder="Enter email" required />
-        <button type="submit">Test Subscribe</button>
-      </form>
-      <div id="subscription-result" class="output-box">Enter email and click to test</div>
-    </section>
+      <div class="exercises-controls">
+        <!-- Search Form (Static layout, visible only for Body parts tab and exercises view) -->
+        <form class="exercises-search-form is-hidden" id="exercises-search-form">
+          <input 
+            type="text" 
+            name="keyword" 
+            placeholder="Search" 
+            class="exercises-search-input"
+            id="exercises-search-input"
+            aria-label="Search exercises"
+          />
+          <button type="submit" class="exercises-search-btn" aria-label="Search">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Filter Tabs (Muscles, Body parts, Equipment) -->
+        <nav class="exercises-tabs">
+          <ul class="tabs-list">
+            <li class="tabs-item">
+              <button type="button" class="tabs-btn active" data-filter="Muscles" id="tab-muscles">
+                Muscles
+                <span class="tabs-active-line"></span>
+              </button>
+            </li>
+            <li class="tabs-item">
+              <button type="button" class="tabs-btn" data-filter="Body parts" id="tab-body-parts">
+                Body parts
+                <span class="tabs-active-line"></span>
+              </button>
+            </li>
+            <li class="tabs-item">
+              <button type="button" class="tabs-btn" data-filter="Equipment" id="tab-equipment">
+                Equipment
+                <span class="tabs-active-line"></span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Columns Block: Side-by-side content -->
+    <div class="main-layout-container">
+      <!-- Left Side: Exercises, grid, pagination -->
+      <div class="exercises-content-wrapper">
+  <div class="exercise-list">
+  <ul class="exercise__grid">
+    <li class="exercise-card">
+      <div class="exercise-card__header">
+        <span class="exercise-card__badge">Workout</span>
+        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
+          <span class="value">4.0</span>
+          <svg width="18" height="18">
+            <use href="../../img/icons.svg#star" />
+          </svg>
+        </span>
+
+        <a class="exercise-card__start" href="/exercise/air-bike">
+          Start
+          <svg width="16" height="16">
+            <use href="../../img/icons.svg#arrow" />
+          </svg>
+        </a>
+      </div>
+
+      <h3 class="exercise-card__title">
+        <svg class="exercise-card__icon" width="24" height="24">
+          <use href="../../img/icons.svg#runner" />
+        </svg>
+        <span>Barbell reverse preacher curl asdf asdf asdf</span>
+      </h3>
+
+      <ul class="exercise-card__meta">
+        <li>Burned calories: <span>312 / 3 min</span></li>
+        <li>Body part: <span>Waist</span></li>
+        <li>Target: <span>Abs</span></li>
+      </ul>
+    </li>
+    <li class="exercise-card">
+      <div class="exercise-card__header">
+        <span class="exercise-card__badge">Workout</span>
+        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
+          <span class="value">4.0</span>
+          <svg width="18" height="18">
+            <use href="../../img/icons.svg#star" />
+          </svg>
+        </span>
+
+        <a class="exercise-card__start" href="/exercise/air-bike">
+          Start
+          <svg width="16" height="16">
+            <use href="../../img/icons.svg#arrow" />
+          </svg>
+        </a>
+      </div>
+
+      <h3 class="exercise-card__title">
+        <svg class="exercise-card__icon" width="24" height="24">
+          <use href="../../img/icons.svg#runner" />
+        </svg>
+        <span>Barbell reverse preacher curl asdf asdf asdf</span>
+      </h3>
+
+      <ul class="exercise-card__meta">
+        <li>Burned calories: <span>312 / 3 min</span></li>
+        <li>Body part: <span>Waist</span></li>
+        <li>Target: <span>Abs</span></li>
+      </ul>
+    </li>
+    <li class="exercise-card">
+      <div class="exercise-card__header">
+        <span class="exercise-card__badge">Workout</span>
+        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
+          <span class="value">4.0</span>
+          <svg width="18" height="18">
+            <use href="../../img/icons.svg#star" />
+          </svg>
+        </span>
+
+        <a class="exercise-card__start" href="/exercise/air-bike">
+          Start
+          <svg width="16" height="16">
+            <use href="../../img/icons.svg#arrow" />
+          </svg>
+        </a>
+      </div>
+
+      <h3 class="exercise-card__title">
+        <svg class="exercise-card__icon" width="24" height="24">
+          <use href="../../img/icons.svg#runner" />
+        </svg>
+        <span>Barbell reverse preacher curl asdf asdf asdf</span>
+      </h3>
+
+      <ul class="exercise-card__meta">
+        <li>Burned calories: <span>312 / 3 min</span></li>
+        <li>Body part: <span>Waist</span></li>
+        <li>Target: <span>Abs</span></li>
+      </ul>
+    </li>
+    <li class="exercise-card">
+      <div class="exercise-card__header">
+        <span class="exercise-card__badge">Workout</span>
+        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
+          <span class="value">4.0</span>
+          <svg width="18" height="18">
+            <use href="../../img/icons.svg#star" />
+          </svg>
+        </span>
+
+        <a class="exercise-card__start" href="/exercise/air-bike">
+          Start
+          <svg width="16" height="16">
+            <use href="../../img/icons.svg#arrow" />
+          </svg>
+        </a>
+      </div>
+
+      <h3 class="exercise-card__title">
+        <svg class="exercise-card__icon" width="24" height="24">
+          <use href="../../img/icons.svg#runner" />
+        </svg>
+        <span>Barbell reverse preacher curl asdf asdf asdf</span>
+      </h3>
+
+      <ul class="exercise-card__meta">
+        <li>Burned calories: <span>312 / 3 min</span></li>
+        <li>Body part: <span>Waist</span></li>
+        <li>Target: <span>Abs</span></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+  <!-- Categories List Container -->
+  <div class="categories-container" id="categories-container">
+    <ul class="categories-grid" id="categories-grid">
+      <!-- Category cards will be injected here dynamically -->
+    </ul>
   </div>
+
+  <!-- Exercises Cards Grid (initially hidden, dynamic rendering in Task 7) -->
+  <div class="exercises-grid-container is-hidden" id="exercises-grid-container">
+    <ul class="exercises-cards-grid" id="exercises-cards-grid">
+      <!-- Exercise cards will be injected here dynamically -->
+    </ul>
+  </div>
+
+  <!-- Fallback Empty State Message -->
+  <div class="exercises-fallback is-hidden" id="exercises-fallback">
+    <p class="fallback-text">Nothing was found for your request. Try another filter or search term.</p>
+  </div>
+
+  <!-- Pagination Container -->
+
+  <nav class="pagination" aria-label="Сторінки тренувань">
+    <ul class="pagination__list">
+      <li><a class="pagination__link" href="?page=1" aria-current="page">1</a></li>
+      <li><a class="pagination__link" href="?page=2">2</a></li>
+      <li><a class="pagination__link" href="?page=3">3</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+
+      <!-- Right Side: Quote, Side Image, WHO news -->
+      <section class="quote-section">
+  <ul class="quote-list">
+    <li class="quote-card">
+      <div class="quote-icon-box">
+        <svg
+          class="quote-icon"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#running"></use>
+        </svg>
+      </div>
+
+      <div class="quote-content">
+        <div class="quote-header">
+          <h2 class="quote-title">Quote of the day</h2>
+
+          <svg
+            class="quote-mark-icon"
+            width="20"
+            height="20"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#quote"></use>
+          </svg>
+        </div>
+
+        <p class="quote-text" data-quote-text>Loading quote...</p>
+        <p class="quote-author" data-quote-author></p>
+      </div>
+    </li>
+
+    <li class="quote-image-card">
+      <picture>
+        <source
+          media="(min-width: 1440px)"
+          srcset="/final-advanced-js-2/assets/quote-desktop-Dz6iVYVu.jpg 1x, /final-advanced-js-2/assets/quote-desktop@2x-ChJcmWIG.jpg 2x"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="/final-advanced-js-2/assets/quote-tablet-BkP8gky9.jpg 1x, /final-advanced-js-2/assets/quote-tablet@2x-DAWV1phb.jpg 2x"
+        />
+        <img
+          class="quote-image"
+          src="/final-advanced-js-2/assets/quote-mobile-CwmsA43i.jpg"
+          srcset="/final-advanced-js-2/assets/quote-mobile-CwmsA43i.jpg 1x, /final-advanced-js-2/assets/quote-mobile@2x-RuMAP1Uo.jpg 2x"
+          alt=""
+          width="335"
+          height="242"
+          loading="lazy"
+        />
+      </picture>
+    </li>
+
+    <li class="daily-card">
+      <div class="daily-icon-box">
+        <svg
+          class="daily-icon"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#dumbbell"></use>
+        </svg>
+      </div>
+
+      <div class="daily-content">
+        <h3 class="daily-title">110 min</h3>
+        <p class="daily-subtitle">Daily norm of sports</p>
+
+        <p class="daily-text">
+          The World Health Organization recommends at least 150 minutes of
+          moderate-intensity aerobic physical activity throughout the week for
+          adults aged 18-64. However, what happens if we adjust that number to
+          110 minutes every day? While it might seem like a high number to hit,
+          dedicating 110 minutes daily to sporting activities may offer
+          unparalleled benefits to physical health, mental well-being, and
+          overall quality of life.
+        </p>
+      </div>
+    </li>
+  </ul>
 </section>
 
-<style>
-  .exercises-test {
-    padding: 20px 0;
-  }
-  
-  .test-section {
-    margin-bottom: 40px;
-    padding: 20px;
-    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
-    border-radius: 8px;
-  }
-  
-  .test-section h2 {
-    color: var(--color-accent, #e6533c);
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.2));
-    padding-bottom: 8px;
-  }
-  
-  .test-section h3 {
-    margin-top: 16px;
-    margin-bottom: 8px;
-  }
-  
-  .test-section code {
-    background: rgba(255,255,255,0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .output-box {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
-    border-radius: 8px;
-    padding: 16px;
-    margin-top: 8px;
-    font-family: monospace;
-    font-size: 12px;
-    white-space: pre-wrap;
-    word-break: break-all;
-    max-height: 300px;
-    overflow-y: auto;
-  }
-  
-  .output-box.error {
-    border-color: var(--color-error, #d80027);
-    color: var(--color-error, #d80027);
-  }
-  
-  .output-box.success {
-    border-color: var(--color-success, #3cbf61);
-  }
-  
-  #subscription-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  
-  #subscription-form input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid var(--color-border, rgba(255,255,255,0.2));
-    border-radius: 4px;
-    background: transparent;
-    color: var(--color-text, #fff);
-  }
-  
-  #subscription-form button {
-    padding: 8px 16px;
-    background: var(--color-accent, #e6533c);
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  }
-</style>
+    </div>
+
+  </div>
+</section>
 
     </main>
 
