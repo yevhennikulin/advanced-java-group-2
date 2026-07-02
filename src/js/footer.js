@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle subscription form submissions
-  const form = document.getElementById('subscription-form');
+  const form = document.getElementById('footer-subscription-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
