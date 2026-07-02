@@ -7,7 +7,9 @@
 */
 
 @import "./variables.css";
+@import "./pagination.css";
 @import "./exercises.css";
+@import './exercise-list.css';
 @import "./quote.css";
 @import "./header.css";
 @import "./footer.css";

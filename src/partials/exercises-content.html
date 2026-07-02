@@ -1,5 +1,5 @@
 <div class="exercises-content-wrapper">
-
+  <load src="./exercise-list.html" />
   <!-- Categories List Container -->
   <div class="categories-container" id="categories-container">
     <ul class="categories-grid" id="categories-grid">
@@ -20,15 +20,13 @@
   </div>
 
   <!-- Pagination Container -->
-  <div class="pagination-container" id="pagination-container">
-    <ul class="pagination-list" id="pagination-list">
-      <li class="pagination-item">
-        <button type="button" class="pagination-btn active">1</button>
-      </li>
-      <li class="pagination-item">
-        <button type="button" class="pagination-btn">2</button>
-      </li>
+
+  <nav class="pagination" aria-label="Сторінки тренувань">
+    <ul class="pagination__list">
+      <li><a class="pagination__link" href="?page=1" aria-current="page">1</a></li>
+      <li><a class="pagination__link" href="?page=2">2</a></li>
+      <li><a class="pagination__link" href="?page=3">3</a></li>
     </ul>
-  </div>
+  </nav>
 
 </div>
