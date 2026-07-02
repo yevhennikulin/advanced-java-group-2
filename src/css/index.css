@@ -8,6 +8,7 @@
 
 @import './variables.css';
 @import './exercises.css';
+@import './exercise-list.css';
 @import './quote.css';
 
 /* TODO: Add Google Fonts import for Roboto */
