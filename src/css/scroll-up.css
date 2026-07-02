@@ -1,0 +1,44 @@
+.scroll-up {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #242424;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
+}
+
+.scroll-up--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-up__icon {
+  width: 33px;
+  height: 33px;
+}
+
+@media (max-width: 1439.98px) {
+  .scroll-up {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .scroll-up__icon {
+    width: 13.2px;
+    height: 13.2px;
+  }
+}

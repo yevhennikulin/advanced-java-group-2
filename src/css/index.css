@@ -13,6 +13,7 @@
 @import "./quote.css";
 @import "./header.css";
 @import "./footer.css";
+@import './scroll-up.css';
 
 /* TODO: Add Google Fonts import for Roboto */
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
