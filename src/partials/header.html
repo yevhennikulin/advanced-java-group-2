@@ -1,26 +1,108 @@
-<!-- 
-  HEADER COMPONENT
-  ================
-  
-  Requirements:
-  - Mobile: Logo + burger menu (opens full-height menu with nav + social links)
-  - Tablet/Desktop: Logo + navigation + social links
-  
-  Navigation:
-  - Home (link to index.html) - redirects to home page
-  - Favorites (link to favorites.html) - opens favorites page
-  
-  Social links (open in new tab):
-  - Facebook: https://www.facebook.com/goITclub/
-  - Instagram: https://www.instagram.com/goitclub/
-  - YouTube: https://www.youtube.com/c/GoIT
-  
-  Notes:
-  - Social icons should be SVG format
-  - Use <ul> for social links list
-  - Burger menu click expands to full viewport height
--->
-
 <header class="header">
-  <!-- TODO: Implement header markup -->
+  <div class="container header-container">
+    <!-- Logo -->
+    <a href="./index.html" class="logo" aria-label="Your Energy home">
+      your<span class="logo-accent">energy</span>
+    </a>
+
+    <!-- Navigation (Tablet/Desktop) -->
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="./index.html" class="nav-link" id="nav-home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="./favorites.html" class="nav-link" id="nav-favorites">Favorites</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Social Links (Tablet/Desktop) -->
+    <div class="header-socials">
+      <ul class="socials-list">
+        <li class="socials-item">
+          <a href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="Facebook">
+            <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="Instagram">
+            <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </li>
+        <li class="socials-item">
+          <a href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="YouTube">
+            <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Burger Menu Button (Mobile) -->
+    <button type="button" class="burger-btn" aria-label="Open mobile menu">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 8H28M4 16H28M4 24H28"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Drawer Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-container">
+      <button type="button" class="mobile-menu-close-btn" aria-label="Close mobile menu">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M8 8L24 24M24 8L8 24"/>
+        </svg>
+      </button>
+
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a href="./index.html" class="mobile-nav-link" id="mobile-nav-home">Home</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="./favorites.html" class="mobile-nav-link" id="mobile-nav-favorites">Favorites</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="mobile-menu-socials">
+        <ul class="socials-list">
+          <li class="socials-item">
+            <a href="https://www.facebook.com/goITclub/" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="Facebook">
+              <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </li>
+          <li class="socials-item">
+            <a href="https://www.instagram.com/goitclub/" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="Instagram">
+              <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </li>
+          <li class="socials-item">
+            <a href="https://www.youtube.com/c/GoIT" target="_blank" rel="noopener noreferrer" class="socials-link" aria-label="YouTube">
+              <svg class="socials-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </header>
