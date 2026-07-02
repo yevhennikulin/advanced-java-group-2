@@ -1,214 +1,370 @@
-/*
-  QUOTE & WHO CARD STYLES
-  =======================
-*/
-
-.main-layout-container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+/* HOME */
+.quote-section {
+  width: 100%;
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.sidebar-aside {
+@media screen and (min-width: 768px) {
+  .quote-section {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .quote-section {
+    max-width: 1440px;
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+.quote-list {
+  display: grid;
   width: 100%;
-  order: 2; /* Render below Exercises on mobile/tablet */
+  gap: 20px;
+}
+
+.quote-card,
+.daily-card {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.quote-card {
+  background-color: var(--color-primary); /* #242424 */
+}
+
+.daily-card {
+  background-color: #fff;
+}
+
+.quote-icon,
+.daily-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.quote-icon {
+  background-color: rgba(244, 244, 244, 0.2);
+  color: var(--color-secondary);
+}
+
+.daily-icon {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.quote-mark-icon {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: var(--color-secondary);
+}
+
+.quote-content,
+.daily-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.quote-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.quote-title {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-secondary);
+}
+
+.quote-text {
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(244, 244, 244, 0.6);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.quote-author {
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--color-secondary);
+}
+
+.quote-image-card {
+  width: 100%;
+}
+
+.quote-image {
+  width: 100%;
+  height: 242px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.daily-title {
+  margin-bottom: 2px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.daily-subtitle {
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(36, 36, 36, 0.6);
+}
+
+.daily-text {
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--color-primary);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* HOME TABLET */
+@media screen and (min-width: 768px) {
+  .quote-list {
+    grid-template-columns: 400px 288px;
+    gap: 32px 16px;
+    align-items: start;
+  }
+
+  .quote-card,
+  .daily-card {
+    width: 400px;
+    height: 249px;
+    padding: 40px;
+  }
+
+  .quote-image-card,
+  .quote-image {
+    width: 288px;
+    height: 249px;
+  }
+
+  .quote-title {
+    margin-bottom: 6px;
+  }
+
+  .quote-title,
+  .daily-title {
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .daily-text {
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+}
+
+/* HOME DESKTOP */
+@media screen and (min-width: 1440px) {
+  .quote-list {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .quote-card,
+  .quote-image-card,
+  .daily-card {
+    width: 444px;
+    height: auto;
+  }
+
+  .quote-image {
+    width: 444px;
+    height: 242px;
+  }
+
+  .quote-text,
+  .daily-text {
+    display: block;
+    overflow: visible;
+  }
+}
+
+/* FAVORITES */
+.favorites-sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.exercises-content-wrapper {
+.favorites-sidebar .quote-card {
   width: 100%;
-  order: 1; /* Render above Sidebar on mobile/tablet */
+  height: auto;
+  min-height: 206px;
+  padding: 20px;
 }
 
-@media screen and (min-width: 1440px) {
-  .main-layout-container {
-    flex-direction: row;
-    gap: 32px;
-    align-items: flex-start;
-  }
-
-  .sidebar-aside {
-    width: 444px;
-    flex-shrink: 0;
-    order: 1; /* Sidebar on the left on desktop */
-    gap: 32px;
-  }
-
-  .exercises-content-wrapper {
-    flex-grow: 1;
-    width: 900px;
-    order: 2; /* Exercises on the right on desktop */
-  }
-}
-
-/* ------------------------------------------
-   Quote Card Styling
-   ------------------------------------------ */
-.quote-card-container {
-  background-color: var(--color-primary); /* #242424 */
-  border-radius: 12px;
-  padding: 24px;
-  color: #f4f4f4;
-}
-
-@media screen and (min-width: 768px) {
-  .quote-card-container {
-    padding: 40px;
-  }
-}
-
-.quote-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.quote-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background-color: #f4f4f4;
-  color: #242424;
-  border-radius: 50%;
-}
-
-.quote-title {
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-.quote-commas {
-  margin-left: auto;
-  color: rgba(244, 244, 244, 0.3);
-}
-
-.quote-body {
+.favorites-sidebar .quote-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.quote-text {
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm);
-  font-weight: 400;
-  line-height: 1.43;
-  color: rgba(244, 244, 244, 0.8);
+.favorites-sidebar .quote-text {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+  padding-right: 25px;
 }
 
-@media screen and (min-width: 768px) {
-  .quote-text {
-    font-size: var(--font-size-base);
-    line-height: 1.5;
-  }
+.favorites-sidebar .quote-author {
+  margin-top: auto;
 }
 
-.quote-author {
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm);
-  font-weight: 400;
-  line-height: 1.43;
-  color: rgba(244, 244, 244, 0.5);
+.favorites-sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* ------------------------------------------
-   Side Image Styling
-   ------------------------------------------ */
-.side-image-container {
+.favorites-daily-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
-  height: 225px;
-  border-radius: 12px;
+  max-width: 335px;
+  height: 119px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.favorites-daily-icon {
+  display: flex;
+  color: var(--color-primary);
+}
+
+.favorites-daily-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.favorites-daily-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.favorites-daily-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.favorites-daily-subtitle {
+  font-size: 14px;
+  line-height: 1.28;
+  color: rgba(36, 36, 36, 0.6);
+}
+
+.favorites-image-card {
+  display: flex;
+  width: 100%;
+  max-width: 335px;
+  height: 119px;
   overflow: hidden;
+  border-radius: 20px;
 }
 
-@media screen and (min-width: 1440px) {
-  .side-image-container {
-    height: 242px;
-  }
-}
-
-.side-decor-image {
+.favorites-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* ------------------------------------------
-   WHO Info Card Styling
-   ------------------------------------------ */
-.info-card-container {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  color: #242424;
-  border: 1px solid rgba(36, 36, 36, 0.1);
-}
-
+/* FAVORITES TABLET */
 @media screen and (min-width: 768px) {
-  .info-card-container {
-    padding: 32px 40px;
+  .favorites-sidebar .quote-card {
+    min-height: 249px;
+    padding: 40px;
+  }
+
+  .favorites-sidebar .quote-title {
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .favorites-sidebar .quote-author {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .favorites-sidebar-bottom {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .favorites-daily-card,
+  .favorites-image-card {
+    width: 344px;
+    max-width: none;
+    height: 141px;
+    flex-shrink: 0;
+  }
+
+  .favorites-daily-title {
+    font-size: 24px;
+    line-height: 1.33;
   }
 }
 
-.info-card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
+/* FAVORITES DESKTOP */
+@media screen and (min-width: 1440px) {
+  .favorites-sidebar {
+    width: 494px;
+    flex-shrink: 0;
+  }
 
-.info-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background-color: #242424;
-  color: #f4f4f4;
-  border-radius: 50%;
-}
+  .favorites-sidebar .quote-card {
+    width: 494px;
+    min-height: 230px;
+    padding: 40px;
+  }
 
-.info-header-titles {
-  display: flex;
-  flex-direction: column;
-}
-
-.info-number {
-  font-family: var(--font-family);
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.info-subtitle {
-  font-family: var(--font-family);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.33;
-  color: rgba(36, 36, 36, 0.6);
-}
-
-.info-text {
-  font-family: var(--font-family);
-  font-size: var(--font-size-sm);
-  font-weight: 400;
-  line-height: 1.43;
-  color: rgba(36, 36, 36, 0.6);
-}
-
-@media screen and (min-width: 768px) {
-  .info-text {
-    font-size: var(--font-size-base);
-    line-height: 1.5;
+  .favorites-daily-card,
+  .favorites-image-card {
+    width: 239px;
+    height: 141px;
+    flex-shrink: 0;
   }
 }

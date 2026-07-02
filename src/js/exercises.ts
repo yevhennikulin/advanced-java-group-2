@@ -7,7 +7,6 @@ import { getFilterCategories } from './api';
 
 document.addEventListener('DOMContentLoaded', () => {
   const categoriesGrid = document.getElementById('categories-grid');
-  const paginationList = document.getElementById('pagination-list');
   const fallbackBox = document.getElementById('exercises-fallback');
   const categoryTitle = document.getElementById('exercises-category-title');
   const titleDivider = document.getElementById('exercises-title-divider');
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show Loading state
     categoriesGrid.innerHTML = '<div class="loader"></div>';
     if (fallbackBox) fallbackBox.classList.add('is-hidden');
-    if (paginationList) paginationList.innerHTML = '';
 
     try {
       const response = await getFilterCategories(currentFilter, currentPage, limit);
@@ -89,9 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </li>
       `).join('');
 
-      // Render Pagination
-      renderPagination(totalPages);
-
       // Bind Card Clicks
       bindCardClicks();
 
@@ -100,37 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
       categoriesGrid.innerHTML = '';
       if (fallbackBox) fallbackBox.classList.remove('is-hidden');
     }
-  }
-
-  // Render Pagination Buttons
-  function renderPagination(totalPages: number) {
-    if (!paginationList || totalPages <= 1) return;
-
-    let paginationHtml = '';
-    for (let i = 1; i <= totalPages; i++) {
-      const isActive = i === currentPage ? 'active' : '';
-      paginationHtml += `
-        <li class="pagination-item">
-          <button type="button" class="pagination-btn ${isActive}" data-page="${i}">
-            ${i}
-          </button>
-        </li>
-      `;
-    }
-    paginationList.innerHTML = paginationHtml;
-
-    // Bind Pagination Clicks
-    const paginationButtons = paginationList.querySelectorAll('.pagination-btn');
-    paginationButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const target = e.currentTarget as HTMLButtonElement;
-        const page = parseInt(target.getAttribute('data-page') || '1', 10);
-        if (page === currentPage) return;
-
-        currentPage = page;
-        loadCategories();
-      });
-    });
   }
 
   // Bind Clicks on Category Cards

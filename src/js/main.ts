@@ -9,13 +9,10 @@
 // Import test script to display API data
 import './exercises-test';
 
-// TODO: Uncomment and import as you create these modules
-// import './header.js';      // Burger menu functionality
-// import './filters.js';     // Filter buttons logic
-import './exercises';   // Exercise/category cards
-// import './quote.js';       // Quote of the day with localStorage
-// import './favorites.js';   // localStorage favorites management
-// import './modal.js';       // Modal open/close/ESC handlers
-// import './pagination.js';  // Pagination logic
+// Import header, footer, exercises, and quote modules
+import './header.js';
+import './footer.js';
+import './exercises';
+import './quote';
 
 console.log('Your Energy app initialized');

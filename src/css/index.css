@@ -6,10 +6,12 @@
   Add new imports as you create component styles.
 */
 
-@import './variables.css';
-@import './exercises.css';
+@import "./variables.css";
+@import "./exercises.css";
 @import './exercise-list.css';
-@import './quote.css';
+@import "./quote.css";
+@import "./header.css";
+@import "./footer.css";
 
 /* TODO: Add Google Fonts import for Roboto */
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
@@ -86,6 +88,7 @@ button {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: var(--container-desktop);
+    padding: 0 96px;
   }
 }
 

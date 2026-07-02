@@ -393,3 +393,52 @@
   }
 }
 
+/* ------------------------------------------
+   Layout Columns (Side-by-side on desktop)
+   ------------------------------------------ */
+.main-layout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.exercises-content-wrapper {
+  width: 100%;
+  order: 1; /* Exercises on top on mobile/tablet */
+}
+
+.main-layout-container .quote-section {
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  order: 2; /* Quote on bottom on mobile/tablet */
+}
+
+@media screen and (min-width: 1440px) {
+  .main-layout-container {
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .exercises-content-wrapper {
+    flex-grow: 1;
+    width: 900px;
+    order: 2; /* Exercises on the right on desktop */
+  }
+
+  .main-layout-container .quote-section {
+    width: 444px !important;
+    flex-shrink: 0;
+    order: 1; /* Quote on the left on desktop */
+  }
+}
+
+/* Hide duplicate quote inside exercises section on Favorites page */
+.favorites-page .exercises-section .quote-section {
+  display: none !important;
+}
+
