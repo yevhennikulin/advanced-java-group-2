@@ -1,25 +1,20 @@
-/*
-  SCROLL UP BUTTON
-  ================
-*/
-
 .scroll-up {
   position: fixed;
-  right: var(--spacing-xl);
-  bottom: var(--spacing-xl);
+  right: 24px;
+  bottom: 24px;
   width: 100px;
   height: 100px;
-  border-radius: var(--radius-full);
-  border: none;
-  background-color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #242424;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   z-index: 100;
 }
 
@@ -29,25 +24,21 @@
   transform: translateY(0);
 }
 
-.scroll-up:hover {
-  background-color: var(--color-accent);
-}
-
 .scroll-up__icon {
   width: 33px;
   height: 33px;
 }
 
-@media screen and (max-width: 767px) {
+@media (max-width: 1439.98px) {
   .scroll-up {
+    right: 16px;
+    bottom: 16px;
     width: 40px;
     height: 40px;
-    right: var(--spacing-md);
-    bottom: var(--spacing-md);
   }
 
   .scroll-up__icon {
-    width: 13px;
-    height: 13px;
+    width: 13.2px;
+    height: 13.2px;
   }
 }
