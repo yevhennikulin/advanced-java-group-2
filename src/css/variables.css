@@ -49,6 +49,7 @@
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
+  --spacing-md-2: 20px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
@@ -81,7 +82,7 @@
      ========================================== */
   --container-mobile: 375px;
   --container-tablet: 768px;
-  --container-desktop: 1440px;
+  --container-desktop: 1376px;
 }
 
 /*
