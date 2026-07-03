@@ -24,7 +24,7 @@
   margin-bottom: 32px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .exercises-top-bar {
     flex-direction: row;
     justify-content: space-between;
@@ -37,10 +37,10 @@
    Section Header
    ------------------------------------------ */
 .exercises-title {
-  font-family: var(--font-family);
-  font-size: 32px;
+  font-size: 28px;
+  /* line-height: 38px; */
+  line-height: 1.35714;
   font-weight: 400;
-  line-height: 1.12;
   letter-spacing: -0.02em;
   color: #242424;
 }
@@ -76,6 +76,7 @@
 .exercises-controls {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
 }
 
