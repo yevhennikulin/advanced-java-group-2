@@ -47,9 +47,9 @@ export function renderExerciseCard(exercise: Exercise, index: number, options: C
         <span>${exercise.name}</span>
       </h3>
       <ul class="exercise-card__meta">
-        <li>Burned calories: <span>${exercise.burnedCalories} / ${exercise.time} min</span></li>
-        <li>Body part: <span>${exercise.bodyPart}</span></li>
-        <li>Target: <span>${exercise.target}</span></li>
+        <li title="${exercise.burnedCalories} / ${exercise.time} min">Burned calories: <span>${exercise.burnedCalories} / ${exercise.time} min</span></li>
+        <li title="${exercise.bodyPart}">Body part: <span>${exercise.bodyPart}</span></li>
+        <li title="${exercise.target}">Target: <span>${exercise.target}</span></li>
       </ul>
     </li>`;
 }
