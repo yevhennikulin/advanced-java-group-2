@@ -25,6 +25,10 @@
   --color-shade1: #d4d4d4;
   --color-shade2: #919191;
   --color-shade3: #E9E9E9;
+  --color-shade4: rgba(36, 36, 36, 0.6);
+  --color-overlay: rgba(17, 17, 17, 0.5);
+  --color-overlay-light: rgba(17, 17, 17, 0.15);
+  --color-secondary-muted: rgba(244, 244, 244, 0.5);
 
   /* ==========================================
      TYPOGRAPHY - UPDATE FROM FIGMA

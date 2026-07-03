@@ -32,6 +32,7 @@ interface Elements {
   titleDivider: HTMLElement;
   searchForm: HTMLFormElement;
   searchInput: HTMLInputElement;
+  searchClear: HTMLElement;
   pagination: HTMLElement;
   tabButtons: NodeListOf<HTMLButtonElement>;
 }
@@ -53,6 +54,7 @@ function getElements(): Elements | null {
     titleDivider: el('exercises-title-divider')!,
     searchForm: el('exercises-search-form') as HTMLFormElement,
     searchInput: el('exercises-search-input') as HTMLInputElement,
+    searchClear: el('exercises-search-clear')!,
     pagination: pagination,
     tabButtons: document.querySelectorAll<HTMLButtonElement>('.tabs-btn'),
   };
@@ -176,9 +178,28 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       state.keyword = els.searchInput.value.trim();
       state.page = 1;
+      updateClearButton();
       syncURL(state);
       loadExercises();
     });
+
+    els.searchInput.addEventListener('input', updateClearButton);
+
+    els.searchClear.addEventListener('click', () => {
+      els.searchInput.value = '';
+      updateClearButton();
+
+      if (state.keyword) {
+        state.keyword = '';
+        state.page = 1;
+        syncURL(state);
+        loadExercises();
+      }
+    });
+  }
+
+  function updateClearButton() {
+    els.searchClear.classList.toggle('is-hidden', !els.searchInput.value.trim());
   }
 
   function initCategoryDelegation() {
@@ -201,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function initBackButton() {
+    document.querySelector('.exercises-title')?.addEventListener('click', goBackToCategories);
     els.categoryTitle.addEventListener('click', goBackToCategories);
     els.titleDivider.addEventListener('click', goBackToCategories);
   }

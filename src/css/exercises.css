@@ -1,11 +1,6 @@
-/*
-  EXERCISES & CATEGORIES STYLES
-  =============================
-*/
-
 .exercises-section {
-  background-color: #f4f4f4; /* Main body light background as per Figma root node */
-  color: #242424; /* Dark grey text */
+  background-color: var(--color-background);
+  color: var(--color-text);
   padding-top: 40px;
   padding-bottom: 40px;
 }
@@ -33,16 +28,13 @@
   }
 }
 
-/* ------------------------------------------
-   Section Header
-   ------------------------------------------ */
 .exercises-title {
   font-size: 28px;
-  /* line-height: 38px; */
   line-height: 1.35714;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: #242424;
+  color: var(--color-primary);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -53,16 +45,19 @@
 }
 
 .exercises-title-divider {
-  color: rgba(36, 36, 36, 0.5);
   margin-left: 4px;
   margin-right: 4px;
   cursor: pointer;
 }
 
 .exercises-title-accent {
-  color: rgba(36, 36, 36, 0.5);
+  color: var(--color-text-secondary);
   text-transform: capitalize;
   cursor: pointer;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
 }
 
 .exercises-title-accent:hover,
@@ -70,9 +65,6 @@
   color: var(--color-primary);
 }
 
-/* ------------------------------------------
-   Controls: Search and Tabs
-   ------------------------------------------ */
 .exercises-controls {
   display: flex;
   flex-direction: column;
@@ -88,7 +80,6 @@
   }
 }
 
-/* Search input */
 .exercises-search-form {
   position: relative;
   width: 100%;
@@ -106,9 +97,9 @@
   height: 44px;
   padding: 12px 40px 12px 14px;
   background-color: transparent;
-  border: 1px solid rgba(36, 36, 36, 0.2);
+  border: 1px solid var(--color-border);
   border-radius: 30px;
-  color: #242424;
+  color: var(--color-text);
   font-size: var(--font-size-sm);
   line-height: 1.5;
   outline: none;
@@ -123,11 +114,11 @@
 }
 
 .exercises-search-input:focus {
-  border-color: #242424;
+  border-color: var(--color-primary);
 }
 
 .exercises-search-input::placeholder {
-  color: rgba(36, 36, 36, 0.5);
+  color: var(--color-text-secondary);
 }
 
 .exercises-search-btn {
@@ -141,7 +132,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: #242424;
+  color: var(--color-primary);
   cursor: pointer;
   transition: color var(--transition-base);
 }
@@ -151,7 +142,26 @@
   color: var(--color-accent);
 }
 
-/* Tabs list */
+.exercises-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-base);
+}
+
+.exercises-search-clear:hover {
+  color: var(--color-primary);
+}
+
 .exercises-tabs .tabs-list {
   display: flex;
   align-items: center;
@@ -163,7 +173,7 @@
   background: none;
   border: none;
   padding: 0 0 6px 0;
-  color: rgba(36, 36, 36, 0.5);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   font-weight: 400;
   line-height: 1.5;
@@ -179,11 +189,11 @@
 
 .tabs-btn:hover,
 .tabs-btn:focus {
-  color: #242424;
+  color: var(--color-primary);
 }
 
 .tabs-btn.active {
-  color: #242424;
+  color: var(--color-primary);
   font-weight: 500;
 }
 
@@ -194,7 +204,7 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: #242424;
+  background-color: var(--color-primary);
   border-radius: 2px;
 }
 
@@ -202,9 +212,6 @@
   display: block;
 }
 
-/* ------------------------------------------
-   Categories Grid
-   ------------------------------------------ */
 .categories-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -232,7 +239,7 @@
   justify-content: center;
   width: 100%;
   height: 225px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
   background-color: var(--color-primary);
@@ -250,7 +257,7 @@
 .category-card:hover,
 .category-card:focus {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.15);
+  box-shadow: 0 8px 24px var(--color-overlay-light);
 }
 
 .category-card-img {
@@ -274,7 +281,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(17, 17, 17, 0.5); /* Figma overlay style */
+  background: var(--color-overlay);
   z-index: 1;
 }
 
@@ -291,10 +298,10 @@
 }
 
 .category-card-name {
-  font-size: 20px;
+  font-size: var(--font-size-lg);
   font-weight: 400;
   line-height: 1.2;
-  color: #f4f4f4; /* White text */
+  color: var(--color-secondary);
   text-transform: capitalize;
 }
 
@@ -304,22 +311,19 @@
 
 @media screen and (min-width: 1440px) {
   .category-card-name {
-    font-size: 24px;
+    font-size: var(--font-size-xl);
   }
 }
 
 .category-card-filter {
   font-family: var(--font-family);
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 400;
   line-height: 1.5;
-  color: rgba(244, 244, 244, 0.5); /* Muted white subtitle */
+  color: var(--color-secondary-muted);
   text-transform: capitalize;
 }
 
-/* ------------------------------------------
-   Fallback Empty State
-   ------------------------------------------ */
 .exercises-fallback {
   display: flex;
   justify-content: center;
@@ -331,13 +335,10 @@
 .fallback-text {
   font-size: var(--font-size-base);
   line-height: 1.5;
-  color: rgba(36, 36, 36, 0.6);
+  color: var(--color-shade4);
   max-width: 400px;
 }
 
-/* ------------------------------------------
-   Pagination Styling
-   ------------------------------------------ */
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -366,7 +367,7 @@
   border: none;
   padding: 0 4px;
   border-radius: 50%;
-  color: rgba(36, 36, 36, 0.5);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-base);
   font-weight: 400;
   cursor: pointer;
@@ -375,26 +376,25 @@
 
 .pagination-btn:hover,
 .pagination-btn:focus {
-  color: #242424;
+  color: var(--color-primary);
 }
 
 .pagination-btn.active {
-  background-color: #242424;
-  color: #f4f4f4;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
-/* Spinner Loader */
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid rgba(36, 36, 36, 0.2);
-  border-bottom-color: #242424;
+  border: 5px solid var(--color-border);
+  border-bottom-color: var(--color-primary);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
   margin: 40px auto;
-  grid-column: 1 / -1; /* Center loader across grid columns */
+  grid-column: 1 / -1;
   justify-self: center;
 }
 
@@ -407,9 +407,6 @@
   }
 }
 
-/* ------------------------------------------
-   Layout Columns (Side-by-side on desktop)
-   ------------------------------------------ */
 .main-layout-container {
   display: flex;
   flex-direction: column;
@@ -419,7 +416,7 @@
 .exercises-content-wrapper {
   width: 100%;
   min-height: 1064px;
-  order: 1; /* Exercises on top on mobile/tablet */
+  order: 1;
 }
 
 .main-layout-container .quote-section {
@@ -437,17 +434,16 @@
   .exercises-content-wrapper {
     flex-grow: 1;
     width: 900px;
-    order: 2; /* Exercises on the right on desktop */
+    order: 2;
   }
 
   .main-layout-container .quote-section {
     width: 444px;
     flex-shrink: 0;
-    order: 1; /* Quote on the left on desktop */
+    order: 1;
   }
 }
 
-/* Hide duplicate quote inside exercises section on Favorites page */
 .favorites-page .exercises-section .quote-section {
   display: none !important;
 }
