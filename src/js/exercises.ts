@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.style.minHeight = `${currentHeight}px`;
     }
 
-    container.innerHTML = '<div class="loader"></div>';
+    container.innerHTML = '<li class="loader" role="status" aria-label="Loading"></li>';
     els.fallback.classList.add('is-hidden');
 
     try {
