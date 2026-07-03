@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     empty.classList.add('is-hidden');
     list.innerHTML = favorites
-      .map((item, i) => renderExerciseCard(item, i, { showRemove: true }))
+      .map((item, i) => renderExerciseCard(item, i, true))
       .join('');
   }
 });

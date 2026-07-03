@@ -3,10 +3,7 @@ import { renderCategoryList, renderExercisesList } from "./exercise-list";
 import { initPagination, renderPagination } from "./pagination";
 import type { FilterType, PaginatedResponse } from "./types";
 
-const FILTER_TO_PARAM: Record<
-  FilterType,
-  "muscles" | "bodypart" | "equipment"
-> = {
+const FILTER_TO_PARAM: Record<FilterType, "muscles" | "bodypart" | "equipment"> = {
   Muscles: "muscles",
   "Body parts": "bodypart",
   Equipment: "equipment",
@@ -80,6 +77,7 @@ function stateFromURL(): Partial<State> {
     const parsed = Number(page);
     if (Number.isFinite(parsed)) result.page = Math.max(1, Math.trunc(parsed));
   }
+
   const category = params.get("category");
   if (category) result.category = category;
 
@@ -103,10 +101,9 @@ function syncURL(state: State) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const maybeEls = getElements();
-
   if (!maybeEls) return;
-
   const els: Elements = maybeEls;
+
   const urlState = stateFromURL();
   const state: State = {
     filter: urlState.filter || "Muscles",
@@ -132,39 +129,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("popstate", () => {
-    const restored = stateFromURL();
-    state.filter = restored.filter || "Muscles";
-    state.page = restored.page || 1;
-    state.category = restored.category || null;
-    state.keyword = restored.keyword || "";
-
+    resetState(stateFromURL());
     setActiveTab(state.filter);
-    els.searchInput.value = state.keyword;
 
     if (state.category) {
       showExercisesView(state.category);
       showSearch(true);
       loadExercises();
     } else {
-      showSearch(false);
+      resetSearch();
       showCategoriesView();
       loadCategories();
     }
   });
+
+  function resetState(overrides: Partial<State> = {}) {
+    state.page = 1;
+    state.category = null;
+    state.keyword = "";
+    Object.assign(state, overrides);
+    els.searchInput.value = state.keyword;
+  }
+
+  function resetSearch() {
+    els.searchInput.value = "";
+    showSearch(false);
+  }
 
   function initTabButtons() {
     els.tabButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         if (btn.classList.contains("active")) return;
 
-        state.filter = (btn.dataset.filter as FilterType) || "Muscles";
-        state.page = 1;
-        state.category = null;
-        state.keyword = "";
-
+        resetState({ filter: (btn.dataset.filter as FilterType) || "Muscles" });
         setActiveTab(state.filter);
-        els.searchInput.value = "";
-        showSearch(false);
+        resetSearch();
         showCategoriesView();
         syncURL(state);
         loadCategories();
@@ -193,7 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
     els.searchClear.addEventListener("click", () => {
       els.searchInput.value = "";
       updateClearButton();
-
       if (state.keyword) {
         state.keyword = "";
         state.page = 1;
@@ -204,50 +202,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateClearButton() {
-    els.searchClear.classList.toggle(
-      "is-hidden",
-      !els.searchInput.value.trim(),
-    );
+    els.searchClear.classList.toggle("is-hidden", !els.searchInput.value.trim());
   }
 
   function initCategoryDelegation() {
     els.categoriesGrid.addEventListener("click", (e) => {
-      const card = (e.target as HTMLElement).closest<HTMLLIElement>(
-        ".category-card",
-      );
-      if (!card) return;
+      const card = (e.target as HTMLElement).closest<HTMLLIElement>(".category-card");
+      if (!card?.dataset.category) return;
 
-      state.category = card.dataset.category || null;
-      state.page = 1;
-      state.keyword = "";
-      els.searchInput.value = "";
-
-      if (state.category) {
-        showExercisesView(state.category);
-        showSearch(true);
-        syncURL(state);
-        loadExercises();
-      }
+      resetState({ category: card.dataset.category });
+      showExercisesView(state.category!);
+      showSearch(true);
+      syncURL(state);
+      loadExercises();
     });
   }
 
   function initBackButton() {
-    document
-      .querySelector(".exercises-title")
-      ?.addEventListener("click", goBackToCategories);
-    els.categoryTitle.addEventListener("click", goBackToCategories);
-    els.titleDivider.addEventListener("click", goBackToCategories);
+    document.querySelector(".exercises-top-bar")?.addEventListener("click", (e) => {
+      if (!(e.target as HTMLElement).closest(".exercises-title, .exercises-title-accent, .exercises-title-divider")) return;
+      goBackToCategories();
+    });
   }
 
   function goBackToCategories() {
     if (!state.category) return;
 
-    state.category = null;
-    state.page = 1;
-    state.keyword = "";
-    els.searchInput.value = "";
-
-    showSearch(false);
+    resetState();
+    resetSearch();
     showCategoriesView();
     syncURL(state);
     loadCategories();
@@ -257,12 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (page === state.page) return;
     state.page = page;
     syncURL(state);
-
-    if (state.category) {
-      loadExercises();
-    } else {
-      loadCategories();
-    }
+    state.category ? loadExercises() : loadCategories();
   }
 
   function showCategoriesView() {
@@ -289,6 +266,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function showEmpty(container: HTMLElement) {
+    container.innerHTML = "";
+    container.style.minHeight = "";
+    els.fallback.classList.remove("is-hidden");
+    renderPagination(els.pagination, state.page, 0);
+  }
+
   async function loadContent<T>(
     container: HTMLElement,
     fetchFn: () => Promise<{ data: PaginatedResponse<T> }>,
@@ -299,31 +283,23 @@ document.addEventListener("DOMContentLoaded", () => {
       container.style.minHeight = `${currentHeight}px`;
     }
 
-    container.innerHTML =
-      '<li class="loader" role="status" aria-label="Loading"></li>';
+    container.innerHTML = '<li class="loader" role="status" aria-label="Loading"></li>';
     els.fallback.classList.add("is-hidden");
 
     try {
       const { data } = await fetchFn();
-      const { results, totalPages } = data;
 
-      if (!results.length) {
-        container.innerHTML = "";
-        container.style.minHeight = "";
-        els.fallback.classList.remove("is-hidden");
-        renderPagination(els.pagination, state.page, 0);
+      if (!data.results.length) {
+        showEmpty(container);
         return;
       }
 
-      container.innerHTML = renderFn(results);
+      container.innerHTML = renderFn(data.results);
       container.style.minHeight = "";
-      renderPagination(els.pagination, state.page, totalPages);
+      renderPagination(els.pagination, state.page, data.totalPages);
     } catch (error) {
       console.error("Error loading content:", error);
-      container.innerHTML = "";
-      container.style.minHeight = "";
-      els.fallback.classList.remove("is-hidden");
-      renderPagination(els.pagination, state.page, 0);
+      showEmpty(container);
     }
   }
 
@@ -338,14 +314,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadExercises() {
     return loadContent(
       els.exercisesGrid,
-      () =>
-        searchExercises({
-          filter: FILTER_TO_PARAM[state.filter],
-          category: state.category!,
-          keyword: state.keyword || undefined,
-          page: state.page,
-          limit: EXERCISES_LIMIT,
-        }),
+      () => searchExercises({
+        filter: FILTER_TO_PARAM[state.filter],
+        category: state.category!,
+        keyword: state.keyword || undefined,
+        page: state.page,
+        limit: EXERCISES_LIMIT,
+      }),
       renderExercisesList,
     );
   }
