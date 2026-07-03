@@ -87,22 +87,19 @@ button {
    ========================================== */
 
 .container {
-  max-width: var(--container-mobile);
+  width: 100%;
+  padding: 0 var(--spacing-md-2);
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: var(--container-tablet);
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--spacing-md);
   }
 }
-
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1140px) {
   .container {
     max-width: var(--container-desktop);
-    padding: 0 96px;
   }
 }
 

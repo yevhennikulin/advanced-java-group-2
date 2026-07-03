@@ -34,12 +34,6 @@
 .logo {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  line-height: 1.33;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  text-transform: lowercase;
   transition: opacity var(--transition-fast);
 }
 
@@ -48,10 +42,10 @@
   opacity: 0.8;
 }
 
-.logo-accent {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--color-accent);
+.logo-icon {
+  display: block;
+  width: 132px;
+  height: 14px;
 }
 
 /* ------------------------------------------
@@ -71,15 +65,16 @@
     align-items: center;
     background-color: #242424;
     border-radius: 60px;
-    padding: 8px 12px;
+    padding: 8px 34px;
     gap: 8px;
   }
 
   .nav-link {
+    display: block;
     font-size: var(--font-size-base);
     font-weight: 400;
     line-height: 1.5;
-    color: rgba(244, 244, 244, 0.5); /* Inactive link color */
+    color: var(--color-secondary);
     padding: 6px 12px;
     border-radius: 30px;
     transition: color var(--transition-base), background-color var(--transition-base);
@@ -87,13 +82,19 @@
 
   .nav-link:hover,
   .nav-link:focus {
-    color: #ffffff;
+    opacity: 0.8;
   }
 
   .nav-link.active {
     background-color: #f4f4f4; /* Active link capsule bg */
     color: #242424; /* Active text color */
     font-weight: 400;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav-list {
+      padding: 8px 50px;
   }
 }
 
@@ -113,32 +114,33 @@
 .socials-list {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-.socials-link {
+/* Header socials - dark icons on light background */
+.header-socials .socials-link {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(36, 36, 36, 0.1);
   border-radius: 10px;
-  color: var(--color-text);
-  transition: border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+  background-color: transparent;
+  color: #242424;
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
 }
 
-.socials-link:hover,
-.socials-link:focus {
-  border-color: var(--color-text);
-  color: var(--color-accent);
-  transform: translateY(-2px);
+.header-socials .socials-link:hover,
+.header-socials .socials-link:focus {
+  background-color: rgba(36, 36, 36, 0.8);
+  color: #f4f4f4;
+  border-color: transparent;
 }
 
 .socials-icon {
-  width: 24px;
-  height: 24px;
-  stroke: currentColor;
+  display: block;
+  flex-shrink: 0;
 }
 
 /* ------------------------------------------
@@ -278,24 +280,26 @@
 .mobile-menu-socials .socials-list {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
+/* Mobile menu socials - light icons on dark background */
 .mobile-menu-socials .socials-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(244, 244, 244, 0.2);
-  border-radius: 10px;
-  color: #ffffff;
-  transition: border-color var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  border-radius: 12px;
+  background-color: transparent;
+  color: #f4f4f4;
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
 }
 
 .mobile-menu-socials .socials-link:hover,
 .mobile-menu-socials .socials-link:focus {
-  border-color: #ffffff;
-  color: var(--color-accent);
-  transform: translateY(-2px);
+  background-color: #f4f4f4;
+  color: #242424;
+  border-color: transparent;
 }

@@ -1,9 +1,9 @@
 .scroll-up {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 100px;
-  height: 100px;
+  right: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,20 +25,20 @@
 }
 
 .scroll-up__icon {
-  width: 33px;
-  height: 33px;
+  width: 13.2px;
+  height: 13.2px;
 }
 
-@media (max-width: 1439.98px) {
+@media (min-width: 1440px) {
   .scroll-up {
-    right: 16px;
-    bottom: 16px;
-    width: 40px;
-    height: 40px;
+    right: 24px;
+    bottom: 24px;
+    width: 100px;
+    height: 100px;
   }
 
   .scroll-up__icon {
-    width: 13.2px;
-    height: 13.2px;
+    width: 33px;
+    height: 33px;
   }
 }
