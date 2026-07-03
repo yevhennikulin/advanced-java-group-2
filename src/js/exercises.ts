@@ -272,6 +272,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showSearch(visible: boolean) {
     els.searchForm.classList.toggle('is-hidden', !visible);
+    if (visible) {
+      updateClearButton();
+    } else {
+      els.searchClear.classList.add('is-hidden');
+    }
   }
 
   async function loadContent<T>(
