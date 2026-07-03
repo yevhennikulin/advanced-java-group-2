@@ -144,7 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const trigger = target?.closest<HTMLElement>('[data-modal-open="exercise"]');
     if (!trigger) return;
 
+    event.preventDefault();
+
     const id = trigger.getAttribute('data-exercise-id');
-    if (id) openExerciseModal(id);
+    if (id) void openExerciseModal(id);
   });
 });
