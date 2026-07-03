@@ -188,11 +188,7 @@
     color: var(--color-primary);
   }
 
-  @media (max-width: 768px) {
-    --columns: 1;
-  }
-
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     --columns: 2;
 
     .pagination {
