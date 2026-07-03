@@ -17,6 +17,17 @@ const api = axios.create({
   baseURL: 'https://your-energy.b.goit.study/api',
 });
 
+// ============================================
+// FILTER CATEGORIES
+// ============================================
+
+/**
+ * Get categories for a filter type (Muscles, Body parts, Equipment)
+ * Used when clicking filter buttons to show category cards
+ *
+ * @example
+ * const { data } = await getFilterCategories('Muscles', 1, 12);
+ */
 export function getFilterCategories(
   filter: FilterType = 'Muscles',
   page: number = 1,
@@ -25,6 +36,14 @@ export function getFilterCategories(
   return api.get('/filters', { params: { filter, page, limit } });
 }
 
+// ============================================
+// EXERCISES BY CATEGORY
+// Used when clicking a category card
+// ============================================
+
+/**
+ * Get exercises filtered by muscle
+ */
 export function getExercisesByMuscle(
   muscle: Muscle,
   page: number = 1,
@@ -33,6 +52,9 @@ export function getExercisesByMuscle(
   return api.get('/exercises', { params: { muscles: muscle, page, limit } });
 }
 
+/**
+ * Get exercises filtered by body part
+ */
 export function getExercisesByBodyPart(
   bodypart: BodyPart,
   page: number = 1,
@@ -41,6 +63,9 @@ export function getExercisesByBodyPart(
   return api.get('/exercises', { params: { bodypart, page, limit } });
 }
 
+/**
+ * Get exercises filtered by equipment
+ */
 export function getExercisesByEquipment(
   equipment: Equipment,
   page: number = 1,
@@ -49,6 +74,18 @@ export function getExercisesByEquipment(
   return api.get('/exercises', { params: { equipment, page, limit } });
 }
 
+// ============================================
+// SEARCH EXERCISES
+// Dynamic search with filter context + keyword
+// ============================================
+
+/**
+ * Search exercises with dynamic filter and keyword
+ * Single method that handles all filter types
+ *
+ * @example
+ * searchExercises({ filter: 'muscles', category: 'lats', keyword: 'pull' });
+ */
 export function searchExercises({
   filter,
   category,
@@ -69,12 +106,27 @@ export function searchExercises({
   return api.get('/exercises', { params });
 }
 
+// ============================================
+// EXERCISE DETAILS
+// Used for modal window
+// ============================================
+
+/**
+ * Get single exercise by ID (for modal)
+ */
 export function getExerciseById(
   id: string
 ): Promise<AxiosResponse<ExerciseResponse>> {
   return api.get(`/exercises/${id}`);
 }
 
+// ============================================
+// EXERCISE RATING (Optional feature)
+// ============================================
+
+/**
+ * Add rating to an exercise
+ */
 export function addExerciseRating(
   id: string,
   { rate, email, review }: RatingRequest
@@ -82,10 +134,24 @@ export function addExerciseRating(
   return api.patch(`/exercises/${id}/rating`, { rate, email, review });
 }
 
+// ============================================
+// QUOTE OF THE DAY
+// ============================================
+
+/**
+ * Get quote of the day
+ */
 export function getQuote(): Promise<AxiosResponse<QuoteResponse>> {
   return api.get('/quote');
 }
 
+// ============================================
+// NEWSLETTER SUBSCRIPTION
+// ============================================
+
+/**
+ * Subscribe to newsletter
+ */
 export function subscribe(
   email: string
 ): Promise<AxiosResponse<SubscriptionResponse>> {
