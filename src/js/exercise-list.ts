@@ -13,7 +13,17 @@ function renderStars(rating: number): string {
   ).join("");
 }
 
-export function renderExerciseCard(exercise: Exercise, index: number): string {
+interface CardOptions {
+  showRemove?: boolean;
+}
+
+export function renderExerciseCard(exercise: Exercise, index: number, options: CardOptions = {}): string {
+  const removeBtn = options.showRemove
+    ? `<button class="exercise-card__remove" type="button" data-action="removeFavorite" data-exercise-id="${exercise._id}" aria-label="Remove from favorites">
+        <svg width="16" height="16"><use href="../../img/icons.svg#trash" /></svg>
+      </button>`
+    : '';
+
   return `
     <li class="exercise-card" style="--card-num: ${index}">
       <div class="exercise-card__header">
@@ -22,6 +32,7 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
           <span class="value">${exercise.rating.toFixed(1)}</span>
           ${renderStars(exercise.rating)}
         </span>
+        ${removeBtn}
         <button class="exercise-card__start" type="button" data-modal-open="exercise" data-exercise-id="${exercise._id}">
           Start
           <svg width="16" height="16">

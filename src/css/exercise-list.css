@@ -31,7 +31,6 @@
   .exercise-card__header {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
     margin-bottom: 25px;
   }
 
@@ -61,10 +60,15 @@
     gap: 2px;
     font-size: 12px;
     align-self: center;
+    margin-inline: 16px;
   }
 
   .exercise-card__star--empty {
     opacity: 0.2;
+  }
+
+  .favorites-page & .exercise-card__rating {
+    display: none;
   }
 
   .exercise-card__start {
@@ -151,6 +155,23 @@
     li:nth-child(1) {
       overflow: auto;
     }
+  }
+
+  .exercise-card__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-base);
+    margin-inline: 8px;
+  }
+
+  .exercise-card__remove:hover {
+    color: var(--color-accent);
   }
 
   .pagination {
