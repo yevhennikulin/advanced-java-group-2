@@ -18,6 +18,17 @@
 
 /* DM Sans (used by --font-family) is loaded via the <link> tag in index.html */
 
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ==========================================
    BASE STYLES / RESET
    ========================================== */

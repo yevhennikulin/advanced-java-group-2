@@ -1,15 +1,24 @@
-import type { Exercise } from './types';
+import type { Exercise, FilterCategory } from './types';
 
-export function renderExerciseCard(exercise: Exercise): string {
+function renderStars(rating: number): string {
+  const MAX_STARS = 5;
+  const full = Math.round(rating);
+
+  return Array.from({ length: MAX_STARS }, (_, i) =>
+    `<svg class="exercise-card__star${i < full ? '' : ' exercise-card__star--empty'}" width="14" height="14">
+      <use href="../../img/icons.svg#star" />
+    </svg>`
+  ).join('');
+}
+
+export function renderExerciseCard(exercise: Exercise, index: number): string {
   return `
-    <li class="exercise-card">
+    <li class="exercise-card" style="--card-num: ${index}">
       <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
+        <span class="exercise-card__badge">${exercise.equipment}</span>
         <span class="exercise-card__rating" aria-label="Rating ${exercise.rating} of 5">
           <span class="value">${exercise.rating.toFixed(1)}</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
+          ${renderStars(exercise.rating)}
         </span>
         <button class="exercise-card__start" type="button" data-exercise-id="${exercise._id}">
           Start
@@ -33,5 +42,21 @@ export function renderExerciseCard(exercise: Exercise): string {
 }
 
 export function renderExercisesList(exercises: Exercise[]): string {
-  return exercises.map(renderExerciseCard).join('');
+  return exercises.map((ex, i) => renderExerciseCard(ex, i)).join('');
+}
+
+export function renderCategoryCard(item: FilterCategory, index: number): string {
+  return `
+    <li class="category-card" data-category="${item.name}" data-filter="${item.filter}" style="--card-num: ${index}">
+      <img class="category-card-img" src="${item.imgURL}" alt="${item.name}" loading="lazy" />
+      <div class="category-card-overlay"></div>
+      <div class="category-card-content">
+        <h3 class="category-card-name">${item.name}</h3>
+        <p class="category-card-filter">${item.filter}</p>
+      </div>
+    </li>`;
+}
+
+export function renderCategoryList(items: FilterCategory[]): string {
+  return items.map((item, i) => renderCategoryCard(item, i)).join('');
 }

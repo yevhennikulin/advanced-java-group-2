@@ -16,7 +16,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid var(--color-primary);
+        border: 1px solid var(--color-shade3);
         border-radius: 100%;
         width: 32px;
         height: 32px;
@@ -46,7 +46,7 @@
     }
 
     .pagination__link.disabled {
-        opacity: 0.3;
+        opacity: 0.8;
         cursor: default;
         pointer-events: none;
     }
@@ -63,7 +63,16 @@
 
     .pagination__icon {
         display: block;
-        color: var(--color-primary)
+        color: var(--color-shade2);
+    }
+
+    a.pagination__nav:hover .pagination__icon {
+        color: var(--color-primary);
+    }
+
+    .pagination__ellipsis {
+        cursor: default;
+        border: none;
     }
 }
 

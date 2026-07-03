@@ -17,12 +17,15 @@
     }
 
     .exercise-card {
+        --card-num: 0;
         background: var(--color-card-bg);
         border-radius: var(--radius-15);
         padding: 16px;
         display: flex;
         flex-direction: column;
         width: calc((100% - var(--gap) * (var(--columns) - 1)) / var(--columns));
+        animation: cardFadeIn 0.3s ease both;
+        animation-delay: calc(var(--card-num) * 0.06s);
     }
 
     .exercise-card__header {
@@ -60,6 +63,10 @@
         align-self: center;
     }
 
+    .exercise-card__star--empty {
+        opacity: 0.2;
+    }
+
     .exercise-card__start {
         font-weight: 400;
         font-size: 14px;
@@ -92,6 +99,11 @@
         span {
             overflow: hidden;
             text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        span::first-letter {
+            text-transform: capitalize;
         }
     }
 
