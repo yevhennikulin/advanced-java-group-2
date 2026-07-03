@@ -8,7 +8,7 @@
 */
 
 import { getExerciseById } from './api';
-import { isFavorite, toggleFavorite, type IExercise } from './favorites';
+import { isFavorite, toggleFavorite, type IExercise } from './services/favorites-service';
 
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('exercise-modal');
