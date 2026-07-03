@@ -8,7 +8,7 @@ function renderStars(rating: number): string {
     { length: MAX_STARS },
     (_, i) =>
       `<svg class="exercise-card__star${i < full ? "" : " exercise-card__star--empty"}" width="14" height="14">
-      <use href="../../img/icons.svg#star" />
+      <use href="./img/icons.svg#star" />
     </svg>`,
   ).join("");
 }
@@ -25,13 +25,13 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
         <button class="exercise-card__start" type="button" data-modal-open="exercise" data-exercise-id="${exercise._id}">
           Start
           <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
+            <use href="./img/icons.svg#arrow" />
           </svg>
         </button>
       </div>
       <h3 class="exercise-card__title">
         <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
+          <use href="./img/icons.svg#runner" />
         </svg>
         <span>${exercise.name}</span>
       </h3>

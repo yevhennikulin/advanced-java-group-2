@@ -1,5 +1,5 @@
 function icon(id: string): string {
-  return `<svg class="pagination__icon" width="20" height="20"><use href="../../img/icons.svg#${id}" /></svg>`;
+  return `<svg class="pagination__icon" width="20" height="20"><use href="./img/icons.svg#${id}" /></svg>`;
 }
 
 function navLink(
