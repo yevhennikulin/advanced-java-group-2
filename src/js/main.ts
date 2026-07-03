@@ -14,6 +14,7 @@ import './header.js';
 import './footer.js';
 import './exercises';
 import './quote';
+import './modal';
 import './scroll-up.js';
 
 console.log('Your Energy app initialized');

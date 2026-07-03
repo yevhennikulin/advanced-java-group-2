@@ -14,9 +14,9 @@
 @import "./header.css";
 @import "./footer.css";
 @import './scroll-up.css';
+@import './modals.css';
 
-/* TODO: Add Google Fonts import for Roboto */
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
+/* DM Sans (used by --font-family) is loaded via the <link> tag in index.html */
 
 /* ==========================================
    BASE STYLES / RESET
@@ -121,6 +121,7 @@ button {
 /* @import './footer.css'; */
 /* @import './hero.css'; */
 /* @import './filters.css'; */
-/* Quote css imported at top */
-/* @import './modals.css'; */
+/* @import './exercises.css'; */
+/* @import './quote.css'; */
+/* Modals css imported at top */
 /* @import './loader.css'; */
