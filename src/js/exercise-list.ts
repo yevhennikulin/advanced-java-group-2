@@ -15,7 +15,7 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
   return `
     <li class="exercise-card" style="--card-num: ${index}">
       <div class="exercise-card__header">
-        <span class="exercise-card__badge">${exercise.equipment}</span>
+        <span class="exercise-card__badge">Workout</span>
         <span class="exercise-card__rating" aria-label="Rating ${exercise.rating} of 5">
           <span class="value">${exercise.rating.toFixed(1)}</span>
           ${renderStars(exercise.rating)}
