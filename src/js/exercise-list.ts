@@ -22,7 +22,7 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
           <span class="value">${exercise.rating.toFixed(1)}</span>
           ${renderStars(exercise.rating)}
         </span>
-        <button class="exercise-card__start" type="button" data-exercise-id="${exercise._id}">
+        <button class="exercise-card__start" type="button" data-modal-open="exercise" data-exercise-id="${exercise._id}">
           Start
           <svg width="16" height="16">
             <use href="../../img/icons.svg#arrow" />
