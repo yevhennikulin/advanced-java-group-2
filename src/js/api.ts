@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from "axios";
 import type {
   BodyPart,
   Equipment,
@@ -11,10 +11,10 @@ import type {
   SubscriptionResponse,
   RatingRequest,
   SearchExercisesParams,
-} from './types';
+} from "./types";
 
 const api = axios.create({
-  baseURL: 'https://your-energy.b.goit.study/api',
+  baseURL: "https://your-energy.b.goit.study/api",
 });
 
 // ============================================
@@ -29,11 +29,11 @@ const api = axios.create({
  * const { data } = await getFilterCategories('Muscles', 1, 12);
  */
 export function getFilterCategories(
-  filter: FilterType = 'Muscles',
+  filter: FilterType = "Muscles",
   page: number = 1,
-  limit: number = 12
+  limit: number = 12,
 ): Promise<AxiosResponse<FiltersResponse>> {
-  return api.get('/filters', { params: { filter, page, limit } });
+  return api.get("/filters", { params: { filter, page, limit } });
 }
 
 // ============================================
@@ -47,9 +47,9 @@ export function getFilterCategories(
 export function getExercisesByMuscle(
   muscle: Muscle,
   page: number = 1,
-  limit: number = 10
+  limit: number = 10,
 ): Promise<AxiosResponse<ExercisesResponse>> {
-  return api.get('/exercises', { params: { muscles: muscle, page, limit } });
+  return api.get("/exercises", { params: { muscles: muscle, page, limit } });
 }
 
 /**
@@ -58,9 +58,9 @@ export function getExercisesByMuscle(
 export function getExercisesByBodyPart(
   bodypart: BodyPart,
   page: number = 1,
-  limit: number = 10
+  limit: number = 10,
 ): Promise<AxiosResponse<ExercisesResponse>> {
-  return api.get('/exercises', { params: { bodypart, page, limit } });
+  return api.get("/exercises", { params: { bodypart, page, limit } });
 }
 
 /**
@@ -69,9 +69,9 @@ export function getExercisesByBodyPart(
 export function getExercisesByEquipment(
   equipment: Equipment,
   page: number = 1,
-  limit: number = 10
+  limit: number = 10,
 ): Promise<AxiosResponse<ExercisesResponse>> {
-  return api.get('/exercises', { params: { equipment, page, limit } });
+  return api.get("/exercises", { params: { equipment, page, limit } });
 }
 
 // ============================================
@@ -103,7 +103,7 @@ export function searchExercises({
     params.keyword = keyword;
   }
 
-  return api.get('/exercises', { params });
+  return api.get("/exercises", { params });
 }
 
 // ============================================
@@ -115,7 +115,7 @@ export function searchExercises({
  * Get single exercise by ID (for modal)
  */
 export function getExerciseById(
-  id: string
+  id: string,
 ): Promise<AxiosResponse<ExerciseResponse>> {
   return api.get(`/exercises/${id}`);
 }
@@ -129,7 +129,7 @@ export function getExerciseById(
  */
 export function addExerciseRating(
   id: string,
-  { rate, email, review }: RatingRequest
+  { rate, email, review }: RatingRequest,
 ): Promise<AxiosResponse<ExerciseResponse>> {
   return api.patch(`/exercises/${id}/rating`, { rate, email, review });
 }
@@ -142,7 +142,7 @@ export function addExerciseRating(
  * Get quote of the day
  */
 export function getQuote(): Promise<AxiosResponse<QuoteResponse>> {
-  return api.get('/quote');
+  return api.get("/quote");
 }
 
 // ============================================
@@ -153,7 +153,7 @@ export function getQuote(): Promise<AxiosResponse<QuoteResponse>> {
  * Subscribe to newsletter
  */
 export function subscribe(
-  email: string
+  email: string,
 ): Promise<AxiosResponse<SubscriptionResponse>> {
-  return api.post('/subscription', { email });
+  return api.post("/subscription", { email });
 }

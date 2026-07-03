@@ -1,14 +1,16 @@
-import type { Exercise, FilterCategory } from './types';
+import type { Exercise, FilterCategory } from "./types";
 
 function renderStars(rating: number): string {
   const MAX_STARS = 5;
   const full = Math.round(rating);
 
-  return Array.from({ length: MAX_STARS }, (_, i) =>
-    `<svg class="exercise-card__star${i < full ? '' : ' exercise-card__star--empty'}" width="14" height="14">
+  return Array.from(
+    { length: MAX_STARS },
+    (_, i) =>
+      `<svg class="exercise-card__star${i < full ? "" : " exercise-card__star--empty"}" width="14" height="14">
       <use href="../../img/icons.svg#star" />
-    </svg>`
-  ).join('');
+    </svg>`,
+  ).join("");
 }
 
 export function renderExerciseCard(exercise: Exercise, index: number): string {
@@ -42,10 +44,13 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
 }
 
 export function renderExercisesList(exercises: Exercise[]): string {
-  return exercises.map((ex, i) => renderExerciseCard(ex, i)).join('');
+  return exercises.map((ex, i) => renderExerciseCard(ex, i)).join("");
 }
 
-export function renderCategoryCard(item: FilterCategory, index: number): string {
+export function renderCategoryCard(
+  item: FilterCategory,
+  index: number,
+): string {
   return `
     <li class="category-card" data-category="${item.name}" data-filter="${item.filter}" style="--card-num: ${index}">
       <img class="category-card-img" src="${item.imgURL}" alt="${item.name}" loading="lazy" />
@@ -58,5 +63,5 @@ export function renderCategoryCard(item: FilterCategory, index: number): string 
 }
 
 export function renderCategoryList(items: FilterCategory[]): string {
-  return items.map((item, i) => renderCategoryCard(item, i)).join('');
+  return items.map((item, i) => renderCategoryCard(item, i)).join("");
 }

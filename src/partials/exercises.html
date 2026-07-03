@@ -1,34 +1,63 @@
 <section class="exercises-section" id="exercises-section">
   <div class="container exercises-container">
-    
     <!-- Top Bar: Title, Search, and Tabs (Spans entire container width) -->
     <div class="exercises-top-bar">
       <!-- Section Title (Dynamic Accent) -->
       <h2 class="exercises-title">
-        Exercises<span class="exercises-title-divider is-hidden" id="exercises-title-divider"> /</span>
-        <span class="exercises-title-accent is-hidden" id="exercises-category-title"></span>
+        Exercises<span
+          class="exercises-title-divider is-hidden"
+          id="exercises-title-divider"
+        >
+          /</span
+        >
+        <span
+          class="exercises-title-accent is-hidden"
+          id="exercises-category-title"
+        ></span>
       </h2>
 
       <div class="exercises-controls">
         <!-- Search Form (Static layout, visible only for Body parts tab and exercises view) -->
-        <form class="exercises-search-form is-hidden" id="exercises-search-form">
-          <input 
-            type="text" 
-            name="keyword" 
-            placeholder="Search" 
+        <form
+          class="exercises-search-form is-hidden"
+          id="exercises-search-form"
+        >
+          <input
+            type="text"
+            name="keyword"
+            placeholder="Search"
             class="exercises-search-input"
             id="exercises-search-input"
             aria-label="Search exercises"
           />
-          <button type="button" class="exercises-search-clear is-hidden" id="exercises-search-clear" aria-label="Clear search">
+          <button
+            type="button"
+            class="exercises-search-clear is-hidden"
+            id="exercises-search-clear"
+            aria-label="Clear search"
+          >
             <svg width="18" height="18">
               <use href="../../img/icons.svg#close" />
             </svg>
           </button>
-          <button type="submit" class="exercises-search-btn" aria-label="Search">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <button
+            type="submit"
+            class="exercises-search-btn"
+            aria-label="Search"
+          >
+            <svg
+              class="search-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </button>
         </form>
@@ -37,19 +66,34 @@
         <nav class="exercises-tabs">
           <ul class="tabs-list">
             <li class="tabs-item">
-              <button type="button" class="tabs-btn active" data-filter="Muscles" id="tab-muscles">
+              <button
+                type="button"
+                class="tabs-btn active"
+                data-filter="Muscles"
+                id="tab-muscles"
+              >
                 Muscles
                 <span class="tabs-active-line"></span>
               </button>
             </li>
             <li class="tabs-item">
-              <button type="button" class="tabs-btn" data-filter="Body parts" id="tab-body-parts">
+              <button
+                type="button"
+                class="tabs-btn"
+                data-filter="Body parts"
+                id="tab-body-parts"
+              >
                 Body parts
                 <span class="tabs-active-line"></span>
               </button>
             </li>
             <li class="tabs-item">
-              <button type="button" class="tabs-btn" data-filter="Equipment" id="tab-equipment">
+              <button
+                type="button"
+                class="tabs-btn"
+                data-filter="Equipment"
+                id="tab-equipment"
+              >
                 Equipment
                 <span class="tabs-active-line"></span>
               </button>
@@ -67,6 +111,5 @@
       <!-- Right Side: Quote, Side Image, WHO news -->
       <load src="partials/quote.html" />
     </div>
-
   </div>
 </section>
