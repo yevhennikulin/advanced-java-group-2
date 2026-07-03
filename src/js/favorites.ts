@@ -2,10 +2,10 @@ import { getFavorites } from './services/favorites-service';
 import { renderExerciseCard } from './exercise-list';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const list: HTMLElement = document.getElementById('favorites-list')!;
-  const empty: HTMLElement = document.getElementById('favorites-empty')!;
+  const list = document.getElementById('favorites-list');
+  const empty = document.getElementById('favorites-empty');
 
-  if (!list || !empty) return;
+  if (!(list instanceof HTMLElement) || !(empty instanceof HTMLElement)) return;
 
   document.addEventListener('favorites:change', render);
   render();
