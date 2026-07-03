@@ -8,7 +8,7 @@ import{a as N,i as M}from"./vendor-DdHXTJIf.js";(function(){const t=document.cre
           <span class="value">${e.rating.toFixed(1)}</span>
           ${W(e.rating)}
         </span>
-        <button class="exercise-card__start" type="button" data-exercise-id="${e._id}">
+        <button class="exercise-card__start" type="button" data-modal-open="exercise" data-exercise-id="${e._id}">
           Start
           <svg width="16" height="16">
             <use href="../../img/icons.svg#arrow" />
@@ -47,4 +47,4 @@ import{a as N,i as M}from"./vendor-DdHXTJIf.js";(function(){const t=document.cre
             </svg>
           </span>
         `).join("")}function k(o){c=o,o.gifUrl?(n.gif.src=o.gifUrl,n.gif.alt=o.name||""):(n.gif.removeAttribute("src"),n.gif.alt=""),n.name.textContent=o.name||"",n.ratingValue.textContent=typeof o.rating=="number"?o.rating.toFixed(1):"",y(o.rating),n.target.textContent=o.target||"",n.bodyPart.textContent=o.bodyPart||"",n.equipment.textContent=o.equipment||"",n.popularity.textContent=String(o.popularity??""),n.calories.textContent=o.burnedCalories!=null?`${o.burnedCalories} Cal / ${o.time} min`:"",n.description.textContent=o.description||"",g()}function f(){e.classList.add("is-hidden"),e.setAttribute("aria-hidden","true"),document.body.style.overflow="",t.removeEventListener("click",f),i.removeEventListener("click",f),l&&(document.removeEventListener("keydown",l),l=null)}function L(){e.classList.remove("is-hidden"),e.setAttribute("aria-hidden","false"),document.body.style.overflow="hidden",l=o=>{o.key==="Escape"&&f()},t.addEventListener("click",f),i.addEventListener("click",f),document.addEventListener("keydown",l),i.focus({preventScroll:!0})}async function p(o){try{const{data:d}=await Y(o);k(d),L()}catch(d){console.error("Failed to load exercise details:",d)}}r.addEventListener("click",()=>{c&&(de(c),g())}),document.addEventListener("click",o=>{const d=o.target,u=d==null?void 0:d.closest('[data-modal-open="exercise"]');if(!u)return;o.preventDefault();const a=u.getAttribute("data-exercise-id");a&&p(a)})});const S=document.getElementById("scroll-up");if(S){const t=()=>{window.scrollY>400?S.classList.add("scroll-up--visible"):S.classList.remove("scroll-up--visible")},i=()=>{window.scrollTo({top:0,behavior:"smooth"})};window.addEventListener("scroll",t),S.addEventListener("click",i),t()}console.log("Your Energy app initialized");
-//# sourceMappingURL=main-CsQud1ba.js.map
+//# sourceMappingURL=main-exXMDRFZ.js.map
