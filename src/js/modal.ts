@@ -119,6 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     backdrop.addEventListener('click', closeExerciseModal);
     closeBtn.addEventListener('click', closeExerciseModal);
     document.addEventListener('keydown', handleKeydown);
+
+    closeBtn.focus({ preventScroll: true });
   }
 
   async function openExerciseModal(id: string): Promise<void> {
