@@ -3,9 +3,16 @@ function icon(id: string): string {
 }
 
 function navLink(iconId: string, targetPage: number, disabled: boolean): string {
+  const label =
+    iconId === 'begin' ? 'First page' :
+    iconId === 'back' ? 'Previous page' :
+    iconId === 'next' ? 'Next page' :
+    iconId === 'end' ? 'Last page' :
+    'Pagination';
+
   return disabled
-    ? `<li><span class="pagination__link pagination__nav disabled">${icon(iconId)}</span></li>`
-    : `<li><a class="pagination__link pagination__nav" href="#" data-page="${targetPage}">${icon(iconId)}</a></li>`;
+    ? `<li><span class="pagination__link pagination__nav disabled" aria-disabled="true" aria-label="${label}">${icon(iconId)}</span></li>`
+    : `<li><a class="pagination__link pagination__nav" href="#" data-page="${targetPage}" aria-label="${label}">${icon(iconId)}</a></li>`;
 }
 
 function pageLink(page: number, isCurrent: boolean): string {
