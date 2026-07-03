@@ -15,8 +15,7 @@ import './footer.js';      // Newsletter subscription logic
 // import './filters.js';     // Filter buttons logic
 // import './exercises.js';   // Exercise/category cards
 import "./quote"; // Quote of the day with localStorage
-// import './favorites.js';   // localStorage favorites management
-// import './modal.js';       // Modal open/close/ESC handlers
+import './modal';             // Modal open/close/ESC handlers
 // import './pagination.js';  // Pagination logic
 import './scroll-up.js';
 
