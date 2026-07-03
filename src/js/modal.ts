@@ -71,8 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderExercise(exercise: IExercise): void {
     currentExercise = exercise;
-    fields.gif.src = exercise.gifUrl || '';
-    fields.gif.alt = exercise.name || '';
+    if (exercise.gifUrl) {
+      fields.gif.src = exercise.gifUrl;
+      fields.gif.alt = exercise.name || '';
+    } else {
+      fields.gif.removeAttribute('src');
+      fields.gif.alt = '';
+    }
     fields.name.textContent = exercise.name || '';
     fields.ratingValue.textContent =
       typeof exercise.rating === 'number' ? exercise.rating.toFixed(1) : '';
