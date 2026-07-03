@@ -7,11 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/final-advanced-js-2/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/vendor-DdHXTJIf.js">
-    <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/scroll-up-DylexGML.js">
+    <script type="module" crossorigin src="/final-advanced-js-2/assets/vendor-DdHXTJIf.js"></script>
+    <script type="module" crossorigin src="/final-advanced-js-2/assets/main-CsQud1ba.js"></script>
+    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/main-u_SedUFX.css">
     <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/vendor-D_nxXpU-.css">
-    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/scroll-up-0qYz6Fqr.css">
   </head>
   <body>
     <!-- TODO: Implement header partial -->
@@ -181,30 +180,64 @@
       <!-- TODO: Implement exercises partial -->
       <section class="exercises-section" id="exercises-section">
   <div class="container exercises-container">
-    
     <!-- Top Bar: Title, Search, and Tabs (Spans entire container width) -->
     <div class="exercises-top-bar">
       <!-- Section Title (Dynamic Accent) -->
       <h2 class="exercises-title">
-        Exercises<span class="exercises-title-divider is-hidden" id="exercises-title-divider"> /</span>
-        <span class="exercises-title-accent is-hidden" id="exercises-category-title"></span>
+        Exercises<span
+          class="exercises-title-divider is-hidden"
+          id="exercises-title-divider"
+        >
+          /</span
+        >
+        <span
+          class="exercises-title-accent is-hidden"
+          id="exercises-category-title"
+        ></span>
       </h2>
 
       <div class="exercises-controls">
         <!-- Search Form (Static layout, visible only for Body parts tab and exercises view) -->
-        <form class="exercises-search-form is-hidden" id="exercises-search-form">
-          <input 
-            type="text" 
-            name="keyword" 
-            placeholder="Search" 
+        <form
+          class="exercises-search-form is-hidden"
+          id="exercises-search-form"
+        >
+          <input
+            type="text"
+            name="keyword"
+            placeholder="Search"
             class="exercises-search-input"
             id="exercises-search-input"
             aria-label="Search exercises"
           />
-          <button type="submit" class="exercises-search-btn" aria-label="Search">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <button
+            type="button"
+            class="exercises-search-clear is-hidden"
+            id="exercises-search-clear"
+            aria-label="Clear search"
+          >
+            <svg width="18" height="18">
+              <use href="../../img/icons.svg#close" />
+            </svg>
+          </button>
+          <button
+            type="submit"
+            class="exercises-search-btn"
+            aria-label="Search"
+          >
+            <svg
+              class="search-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </button>
         </form>
@@ -213,19 +246,34 @@
         <nav class="exercises-tabs">
           <ul class="tabs-list">
             <li class="tabs-item">
-              <button type="button" class="tabs-btn active" data-filter="Muscles" id="tab-muscles">
+              <button
+                type="button"
+                class="tabs-btn active"
+                data-filter="Muscles"
+                id="tab-muscles"
+              >
                 Muscles
                 <span class="tabs-active-line"></span>
               </button>
             </li>
             <li class="tabs-item">
-              <button type="button" class="tabs-btn" data-filter="Body parts" id="tab-body-parts">
+              <button
+                type="button"
+                class="tabs-btn"
+                data-filter="Body parts"
+                id="tab-body-parts"
+              >
                 Body parts
                 <span class="tabs-active-line"></span>
               </button>
             </li>
             <li class="tabs-item">
-              <button type="button" class="tabs-btn" data-filter="Equipment" id="tab-equipment">
+              <button
+                type="button"
+                class="tabs-btn"
+                data-filter="Equipment"
+                id="tab-equipment"
+              >
                 Equipment
                 <span class="tabs-active-line"></span>
               </button>
@@ -239,165 +287,23 @@
     <div class="main-layout-container">
       <!-- Left Side: Exercises, grid, pagination -->
       <div class="exercises-content-wrapper">
-  <div class="exercise-list">
-  <ul class="exercise__grid">
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-  <!-- Categories List Container -->
   <div class="categories-container" id="categories-container">
-    <ul class="categories-grid" id="categories-grid">
-      <!-- Category cards will be injected here dynamically -->
-    </ul>
+    <ul class="categories-grid" id="categories-grid"></ul>
   </div>
 
-  <!-- Exercises Cards Grid (initially hidden, dynamic rendering in Task 7) -->
   <div class="exercises-grid-container is-hidden" id="exercises-grid-container">
-    <ul class="exercises-cards-grid" id="exercises-cards-grid">
-      <!-- Exercise cards will be injected here dynamically -->
-    </ul>
+    <ul class="exercises-cards-grid" id="exercises-cards-grid"></ul>
   </div>
 
-  <!-- Fallback Empty State Message -->
   <div class="exercises-fallback is-hidden" id="exercises-fallback">
-    <p class="fallback-text">Nothing was found for your request. Try another filter or search term.</p>
+    <p class="fallback-text">
+      Nothing was found for your request. Try another filter or search term.
+    </p>
   </div>
 
-  <!-- Pagination Container -->
-
-  <nav class="pagination" aria-label="Сторінки тренувань">
-    <ul class="pagination__list">
-      <li><a class="pagination__link" href="?page=1" aria-current="page">1</a></li>
-      <li><a class="pagination__link" href="?page=2">2</a></li>
-      <li><a class="pagination__link" href="?page=3">3</a></li>
-    </ul>
-  </nav>
-
+  <nav class="pagination is-hidden" id="pagination" aria-label="Pages"></nav>
 </div>
+
 
 
       <!-- Right Side: Quote, Side Image, WHO news -->
@@ -490,7 +396,6 @@
 </section>
 
     </div>
-
   </div>
 </section>
 
@@ -587,7 +492,11 @@
   All text/data fields below are placeholders filled in by src/js/modal.ts.
 -->
 
-<div class="modal exercise-modal is-hidden" id="exercise-modal" aria-hidden="true">
+<div
+  class="modal exercise-modal is-hidden"
+  id="exercise-modal"
+  aria-hidden="true"
+>
   <div class="modal__backdrop" data-modal-backdrop></div>
 
   <div
@@ -602,7 +511,13 @@
       aria-label="Close modal"
       data-modal-close
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
         <path
           d="M6 6L18 18M18 6L6 18"
           stroke="currentColor"
@@ -613,18 +528,21 @@
     </button>
 
     <div class="exercise-modal__media">
-      <img
-        class="exercise-modal__gif"
-        data-field="gif"
-        alt=""
-      />
+      <img class="exercise-modal__gif" data-field="gif" alt="" />
     </div>
 
     <div class="exercise-modal__body">
-      <h3 class="exercise-modal__title" id="exercise-modal-title" data-field="name"></h3>
+      <h3
+        class="exercise-modal__title"
+        id="exercise-modal-title"
+        data-field="name"
+      ></h3>
 
       <div class="exercise-modal__rating">
-        <span class="exercise-modal__rating-value" data-field="rating-value"></span>
+        <span
+          class="exercise-modal__rating-value"
+          data-field="rating-value"
+        ></span>
         <span class="exercise-modal__stars" data-field="stars"></span>
       </div>
 
@@ -641,11 +559,17 @@
         </div>
         <div class="exercise-modal__stat">
           <span class="exercise-modal__stat-label">Equipment</span>
-          <span class="exercise-modal__stat-value" data-field="equipment"></span>
+          <span
+            class="exercise-modal__stat-value"
+            data-field="equipment"
+          ></span>
         </div>
         <div class="exercise-modal__stat">
           <span class="exercise-modal__stat-label">Popularity</span>
-          <span class="exercise-modal__stat-value" data-field="popularity"></span>
+          <span
+            class="exercise-modal__stat-value"
+            data-field="popularity"
+          ></span>
         </div>
         <div class="exercise-modal__stat">
           <span class="exercise-modal__stat-label">Burned calories</span>
