@@ -1,192 +1,199 @@
-.exercise-list {
-    --fs-base: 12px;
-    --fs-lg: 18px;
-    --fs-xl: 20px;
-    --gap: 20px;
-    --columns: 1;
+.exercises-grid-container {
+  --fs-base: 12px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --gap: 20px;
+  --columns: 1;
 
-    .exercise__grid {
-        font-size: var(--fs-base);
-        list-style: none;
-        margin: 0 0 20px 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--gap);
-        width: 100%;
+  .exercises-cards-grid {
+    font-size: var(--fs-base);
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    width: 100%;
+  }
+
+  .exercise-card {
+    --card-num: 0;
+    background: var(--color-card-bg);
+    border-radius: var(--radius-15);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    width: calc((100% - var(--gap) * (var(--columns) - 1)) / var(--columns));
+    animation: cardFadeIn 0.3s ease both;
+    animation-delay: calc(var(--card-num) * 0.06s);
+  }
+
+  .exercise-card__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+
+  .exercise-card__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    border: 1px solid var(--color-text);
+    border-radius: 15px;
+    padding-block: 5px;
+    padding-inline: 8px;
+    height: 26px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: 12px;
+  }
+
+  .exercise-card__rating {
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    align-self: center;
+  }
+
+  .exercise-card__star--empty {
+    opacity: 0.2;
+  }
+
+  .exercise-card__start {
+    font-weight: 400;
+    font-size: 14px;
+
+    /* line-height: 18px; */
+    line-height: 1.28571;
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    gap: 8px;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+  }
+
+  .exercise-card__title {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 20px;
+    /* line-height: 20px; */
+    line-height: 1;
+    color: var(--color-text);
+    gap: 16px;
+    margin-bottom: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: auto;
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
     }
 
-    .exercise-card {
-        background: var(--color-card-bg);
-        border-radius: var(--radius-15);
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        width: calc((100% - var(--gap) * (var(--columns) - 1)) / var(--columns));
+    span::first-letter {
+      text-transform: capitalize;
     }
+  }
 
-    .exercise-card__header {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 25px;
-    }
+  .exercise-card__icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
 
-    .exercise-card__badge {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        gap: 10px;
-        border: 1px solid var(--color-text);
-        border-radius: 15px;
-        padding-block: 5px;
-        padding-inline: 8px;
-        height: 26px;
-        text-transform: uppercase;
-        font-weight: 500;
-        color: var(--color-text);
-        font-size: 12px;
-    }
+  .exercise-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    font-weight: 400;
+    font-size: 12px;
 
-    .exercise-card__rating {
-        font-weight: 400;
-        line-height: 1.5;
-        color: var(--color-text);
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        font-size: 12px;
-        align-self: center;
-    }
+    /* line-height: 18px; */
+    line-height: 1.5;
+    color: rgba(36, 36, 36, 0.4);
+    white-space: nowrap;
 
-    .exercise-card__start {
-        font-weight: 400;
-        font-size: 14px;
+    li {
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      gap: 2px;
 
-        /* line-height: 18px; */
-        line-height: 1.28571;
-        display: flex;
-        flex: 1;
-        justify-content: end;
-        gap: 8px;
-        align-items: center;
-    }
-
-    .exercise-card__title {
-        display: flex;
-        align-items: center;
-        font-weight: 400;
-        font-size: 20px;
-        /* line-height: 20px; */
-        line-height: 1;
-        color: var(--color-text);
-        gap: 16px;
-        margin-bottom: 16px;
-        white-space: nowrap;
+      span {
         overflow: hidden;
-        width: auto;
-
-        span {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
-
-    .exercise-card__icon {
-        flex: none;
-        width: 24px;
-        height: 24px;
-        min-width: 24px;
-        min-height: 24px;
-
-    }
-
-    .exercise-card__meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 10px;
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
+        text-overflow: ellipsis;
         font-weight: 400;
-        font-size: 12px;
-
-        /* line-height: 18px; */
+        color: var(--color-text);
         line-height: 1.5;
-        color: rgba(36, 36, 36, 0.4);
-        white-space: nowrap;
-
-        li {
-            display: flex;
-            flex-wrap: nowrap;
-            white-space: nowrap;
-            gap: 2px;
-
-            span {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                font-weight: 400;
-                color: var(--color-text);
-                line-height: 1.5;
-
-            }
-        }
-
-        li:nth-child(1) {
-            overflow: auto;
-        }
+      }
     }
+
+    li:nth-child(1) {
+      overflow: auto;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .pagination__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 12px;
+  }
+
+  .pagination__link {
+    font-weight: 400;
+    font-size: 24px;
+
+    /* line-height: 32px; */
+    line-height: 1.33333;
+    letter-spacing: 0.04em;
+    color: var(--color-shade1);
+  }
+
+  .pagination__link[aria-current="page"] {
+    border: 1px solid var(--color-primary);
+    border-radius: 18px;
+    padding-block: 0px;
+    padding-inline: 12px;
+    width: 32px;
+    height: 32px;
+    color: var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    --columns: 2;
 
     .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
+      margin-top: 32px;
+      margin-bottom: 32px;
     }
-
-    .pagination__list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        gap: 12px;
-    }
-
-    .pagination__link {
-        font-weight: 400;
-        font-size: 24px;
-
-        /* line-height: 32px; */
-        line-height: 1.33333;
-        letter-spacing: 0.04em;
-        color: var(--color-shade1);
-    }
-
-    .pagination__link[aria-current="page"] {
-        border: 1px solid var(--color-primary);
-        border-radius: 18px;
-        padding-block: 0px;
-        padding-inline: 12px;
-        width: 32px;
-        height: 32px;
-        color: var(--color-primary);
-    }
-
-
-    @media (max-width: 768px) {
-        --columns: 1;
-    }
-
-    @media (min-width: 769px) {
-        --columns: 2;
-
-        .pagination {
-            margin-top: 32px;
-            margin-bottom: 32px;
-        }
-    }
+  }
 }

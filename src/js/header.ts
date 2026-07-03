@@ -1,39 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const burgerBtn = document.querySelector('.burger-btn');
-  const closeBtn = document.querySelector('.mobile-menu-close-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
+document.addEventListener('DOMContentLoaded', (): void => {
+  const burgerBtn = document.querySelector<HTMLButtonElement>('.burger-btn');
+  const closeBtn = document.querySelector<HTMLButtonElement>('.mobile-menu-close-btn');
+  const mobileMenu = document.querySelector<HTMLElement>('.mobile-menu');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
 
   if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => {
+    burgerBtn.addEventListener('click', (): void => {
       mobileMenu.classList.add('is-open');
     });
   }
 
   if (closeBtn && mobileMenu) {
-    closeBtn.addEventListener('click', () => {
+    closeBtn.addEventListener('click', (): void => {
       mobileMenu.classList.remove('is-open');
     });
   }
 
-  // Close menu when clicking mobile links
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+  navLinks.forEach((link: HTMLAnchorElement): void => {
+    link.addEventListener('click', (): void => {
       if (mobileMenu) {
         mobileMenu.classList.remove('is-open');
       }
     });
   });
 
-  // Highlight active navigation links based on URL path
-  const currentPath = window.location.pathname;
-  const desktopLinks = document.querySelectorAll('.nav-link');
+  const currentPath: string = window.location.pathname;
+  const desktopLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
 
-  function checkActive(link) {
+  function checkActive(link: HTMLAnchorElement): void {
     const href = link.getAttribute('href');
     if (!href) return;
     
-    // Check if the current page matches the link destination
     const isHome = href.includes('index.html');
     const isFavorites = href.includes('favorites.html');
     

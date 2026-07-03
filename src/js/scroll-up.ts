@@ -9,9 +9,9 @@
 const scrollUpBtn = document.getElementById('scroll-up');
 
 if (scrollUpBtn) {
-  const SHOW_AFTER_PX = 400; // TODO: adjust threshold after design review
+  const SHOW_AFTER_PX: number = 400;
 
-  const toggleVisibility = () => {
+  const toggleVisibility = (): void => {
     if (window.scrollY > SHOW_AFTER_PX) {
       scrollUpBtn.classList.add('scroll-up--visible');
     } else {
@@ -19,13 +19,12 @@ if (scrollUpBtn) {
     }
   };
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   window.addEventListener('scroll', toggleVisibility);
   scrollUpBtn.addEventListener('click', scrollToTop);
 
-  // Set initial state on page load
   toggleVisibility();
 }
