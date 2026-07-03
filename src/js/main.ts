@@ -6,9 +6,6 @@
   Add new imports as you create component scripts.
 */
 
-// Import test script to display API data
-import './exercises-test';
-
 // Import header, footer, exercises, and quote modules
 import './header.js';
 import './footer.js';
