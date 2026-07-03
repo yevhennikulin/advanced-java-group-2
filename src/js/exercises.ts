@@ -73,8 +73,10 @@ function stateFromURL(): Partial<State> {
   }
 
   const page = params.get('page');
-  if (page) result.page = Math.max(1, Number(page));
-
+  if (page) {
+    const parsed = Number(page);
+    if (Number.isFinite(parsed)) result.page = Math.max(1, Math.trunc(parsed));
+  }
   const category = params.get('category');
   if (category) result.category = category;
 
