@@ -11,13 +11,28 @@
     <load src="./partials/header.html" />
 
     <main>
-      <!-- Quote of the day — Favorites -->
-      <div class="container">
-        <load src="./partials/quote-favorites.html" />
-      </div>
+      <section class="favorites-section">
+        <div class="container">
+          <h2 class="favorites-title">Favorites</h2>
+          <div class="favorites-layout">
+            <!-- Quote of the day -->
+            <load src="./partials/quote-favorites.html" />
 
-      <!-- TODO: Favorites exercises list -->
-      <load src="./partials/exercises.html" />
+            <!-- Right column for favorites.
+                 tbd by Serhii. Classe names etc is up to you -->
+            <div class="favorites-main">
+              <ul class="js-favorites-list" id="favorites-list"></ul>
+              <div class="favorites-empty js-favorites-empty" hidden>
+                <p class="favorites-empty-text">
+                  It appears that you haven't added any exercises to your
+                  favorites yet. To get started, you can add exercises that you
+                  like to your favorites for easier access in the future.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- TODO: Implement footer partial -->
@@ -28,7 +43,7 @@
     <load src="./partials/modals/rating-modal.html" />
 
     <!-- Modal -->
-     <load src="./partials/scroll-up.html" />
+    <load src="./partials/scroll-up.html" />
 
     <script type="module" src="./js/main.js"></script>
   </body>
