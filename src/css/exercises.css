@@ -422,13 +422,8 @@
 }
 
 .main-layout-container .quote-section {
-  width: 100% !important;
-  max-width: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  order: 2; /* Quote on bottom on mobile/tablet */
+  width: 100%;
+  order: 2;
 }
 
 @media screen and (min-width: 1440px) {
@@ -445,7 +440,7 @@
   }
 
   .main-layout-container .quote-section {
-    width: 444px !important;
+    width: 444px;
     flex-shrink: 0;
     order: 1; /* Quote on the left on desktop */
   }
@@ -455,4 +450,3 @@
 .favorites-page .exercises-section .quote-section {
   display: none !important;
 }
-

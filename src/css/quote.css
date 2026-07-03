@@ -1,27 +1,6 @@
 /* HOME */
 .quote-section {
   width: 100%;
-  max-width: 375px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .quote-section {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .quote-section {
-    max-width: 1440px;
-    padding-left: 96px;
-    padding-right: 96px;
-  }
 }
 
 .quote-list {
@@ -366,5 +345,24 @@
     width: 239px;
     height: 141px;
     flex-shrink: 0;
+  }
+}
+
+/* FAVORITES LAYOUT */
+.favorites-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media screen and (min-width: 1440px) {
+  .favorites-layout {
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .favorites-main {
+    flex-grow: 1;
   }
 }
