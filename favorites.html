@@ -6,8 +6,8 @@
     <title>Favorites - Your Energy</title>
     <script type="module" crossorigin src="/final-advanced-js-2/favorites.js"></script>
     <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/vendor-DdHXTJIf.js">
-    <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/scroll-up-CsqlUVtz.js">
-    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/scroll-up-q-JygqPd.css">
+    <link rel="modulepreload" crossorigin href="/final-advanced-js-2/assets/scroll-up-DylexGML.js">
+    <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/scroll-up-0qYz6Fqr.css">
     <link rel="stylesheet" crossorigin href="/final-advanced-js-2/assets/vendor-D_nxXpU-.css">
   </head>
   <body>
@@ -123,9 +123,12 @@
 
 
     <main>
-      <!-- Quote of the day — Favorites -->
-      <div class="container">
-        <div class="favorites-sidebar">
+      <section class="favorites-section">
+        <div class="container">
+          <h2 class="favorites-title">Favorites</h2>
+          <div class="favorites-layout">
+            <!-- Quote of the day -->
+            <div class="favorites-sidebar">
   <div class="quote-card">
     <div class="quote-icon-box">
       <svg
@@ -187,324 +190,22 @@
   </div>
 </div>
 
-      </div>
 
-      <!-- TODO: Favorites exercises list -->
-      <section class="exercises-section" id="exercises-section">
-  <div class="container exercises-container">
-    
-    <!-- Top Bar: Title, Search, and Tabs (Spans entire container width) -->
-    <div class="exercises-top-bar">
-      <!-- Section Title (Dynamic Accent) -->
-      <h2 class="exercises-title">
-        Exercises<span class="exercises-title-divider is-hidden" id="exercises-title-divider"> /</span>
-        <span class="exercises-title-accent is-hidden" id="exercises-category-title"></span>
-      </h2>
-
-      <div class="exercises-controls">
-        <!-- Search Form (Static layout, visible only for Body parts tab and exercises view) -->
-        <form class="exercises-search-form is-hidden" id="exercises-search-form">
-          <input 
-            type="text" 
-            name="keyword" 
-            placeholder="Search" 
-            class="exercises-search-input"
-            id="exercises-search-input"
-            aria-label="Search exercises"
-          />
-          <button type="submit" class="exercises-search-btn" aria-label="Search">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </button>
-        </form>
-
-        <!-- Filter Tabs (Muscles, Body parts, Equipment) -->
-        <nav class="exercises-tabs">
-          <ul class="tabs-list">
-            <li class="tabs-item">
-              <button type="button" class="tabs-btn active" data-filter="Muscles" id="tab-muscles">
-                Muscles
-                <span class="tabs-active-line"></span>
-              </button>
-            </li>
-            <li class="tabs-item">
-              <button type="button" class="tabs-btn" data-filter="Body parts" id="tab-body-parts">
-                Body parts
-                <span class="tabs-active-line"></span>
-              </button>
-            </li>
-            <li class="tabs-item">
-              <button type="button" class="tabs-btn" data-filter="Equipment" id="tab-equipment">
-                Equipment
-                <span class="tabs-active-line"></span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Columns Block: Side-by-side content -->
-    <div class="main-layout-container">
-      <!-- Left Side: Exercises, grid, pagination -->
-      <div class="exercises-content-wrapper">
-  <div class="exercise-list">
-  <ul class="exercise__grid">
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-    <li class="exercise-card">
-      <div class="exercise-card__header">
-        <span class="exercise-card__badge">Workout</span>
-        <span class="exercise-card__rating" aria-label="Рейтинг 4.0 з 5">
-          <span class="value">4.0</span>
-          <svg width="18" height="18">
-            <use href="../../img/icons.svg#star" />
-          </svg>
-        </span>
-
-        <a class="exercise-card__start" href="/exercise/air-bike">
-          Start
-          <svg width="16" height="16">
-            <use href="../../img/icons.svg#arrow" />
-          </svg>
-        </a>
-      </div>
-
-      <h3 class="exercise-card__title">
-        <svg class="exercise-card__icon" width="24" height="24">
-          <use href="../../img/icons.svg#runner" />
-        </svg>
-        <span>Barbell reverse preacher curl asdf asdf asdf</span>
-      </h3>
-
-      <ul class="exercise-card__meta">
-        <li>Burned calories: <span>312 / 3 min</span></li>
-        <li>Body part: <span>Waist</span></li>
-        <li>Target: <span>Abs</span></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-  <!-- Categories List Container -->
-  <div class="categories-container" id="categories-container">
-    <ul class="categories-grid" id="categories-grid">
-      <!-- Category cards will be injected here dynamically -->
-    </ul>
-  </div>
-
-  <!-- Exercises Cards Grid (initially hidden, dynamic rendering in Task 7) -->
-  <div class="exercises-grid-container is-hidden" id="exercises-grid-container">
-    <ul class="exercises-cards-grid" id="exercises-cards-grid">
-      <!-- Exercise cards will be injected here dynamically -->
-    </ul>
-  </div>
-
-  <!-- Fallback Empty State Message -->
-  <div class="exercises-fallback is-hidden" id="exercises-fallback">
-    <p class="fallback-text">Nothing was found for your request. Try another filter or search term.</p>
-  </div>
-
-  <!-- Pagination Container -->
-
-  <nav class="pagination" aria-label="Сторінки тренувань">
-    <ul class="pagination__list">
-      <li><a class="pagination__link" href="?page=1" aria-current="page">1</a></li>
-      <li><a class="pagination__link" href="?page=2">2</a></li>
-      <li><a class="pagination__link" href="?page=3">3</a></li>
-    </ul>
-  </nav>
-
-</div>
-
-
-      <!-- Right Side: Quote, Side Image, WHO news -->
-      <section class="quote-section">
-  <ul class="quote-list">
-    <li class="quote-card">
-      <div class="quote-icon-box">
-        <svg
-          class="quote-icon"
-          width="32"
-          height="32"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#running"></use>
-        </svg>
-      </div>
-
-      <div class="quote-content">
-        <div class="quote-header">
-          <h2 class="quote-title">Quote of the day</h2>
-
-          <svg
-            class="quote-mark-icon"
-            width="20"
-            height="20"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#quote"></use>
-          </svg>
+            <!-- Right column for favorites.
+                 tbd by Serhii. Classe names etc is up to you -->
+            <div class="favorites-main">
+              <ul class="js-favorites-list" id="favorites-list"></ul>
+              <div class="favorites-empty js-favorites-empty" hidden>
+                <p class="favorites-empty-text">
+                  It appears that you haven't added any exercises to your
+                  favorites yet. To get started, you can add exercises that you
+                  like to your favorites for easier access in the future.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <p class="quote-text" data-quote-text>Loading quote...</p>
-        <p class="quote-author" data-quote-author></p>
-      </div>
-    </li>
-
-    <li class="quote-image-card">
-      <picture>
-        <source
-          media="(min-width: 1440px)"
-          srcset="/final-advanced-js-2/assets/quote-desktop-Dz6iVYVu.jpg 1x, /final-advanced-js-2/assets/quote-desktop@2x-ChJcmWIG.jpg 2x"
-        />
-        <source
-          media="(min-width: 768px)"
-          srcset="/final-advanced-js-2/assets/quote-tablet-BkP8gky9.jpg 1x, /final-advanced-js-2/assets/quote-tablet@2x-DAWV1phb.jpg 2x"
-        />
-        <img
-          class="quote-image"
-          src="/final-advanced-js-2/assets/quote-mobile-CwmsA43i.jpg"
-          srcset="/final-advanced-js-2/assets/quote-mobile-CwmsA43i.jpg 1x, /final-advanced-js-2/assets/quote-mobile@2x-RuMAP1Uo.jpg 2x"
-          alt=""
-          width="335"
-          height="242"
-          loading="lazy"
-        />
-      </picture>
-    </li>
-
-    <li class="daily-card">
-      <div class="daily-icon-box">
-        <svg
-          class="daily-icon"
-          width="32"
-          height="32"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <use href="/final-advanced-js-2/assets/quote-icons-DwgKlbFf.svg#dumbbell"></use>
-        </svg>
-      </div>
-
-      <div class="daily-content">
-        <h3 class="daily-title">110 min</h3>
-        <p class="daily-subtitle">Daily norm of sports</p>
-
-        <p class="daily-text">
-          The World Health Organization recommends at least 150 minutes of
-          moderate-intensity aerobic physical activity throughout the week for
-          adults aged 18-64. However, what happens if we adjust that number to
-          110 minutes every day? While it might seem like a high number to hit,
-          dedicating 110 minutes daily to sporting activities may offer
-          unparalleled benefits to physical health, mental well-being, and
-          overall quality of life.
-        </p>
-      </div>
-    </li>
-  </ul>
-</section>
-
-    </div>
-
-  </div>
-</section>
-
+      </section>
     </main>
 
     <!-- TODO: Implement footer partial -->
@@ -759,7 +460,7 @@
 
 
     <!-- Modal -->
-     <button type="button" class="scroll-up" id="scroll-up" aria-label="Scroll to top">
+    <button type="button" class="scroll-up" id="scroll-up" aria-label="Scroll to top">
   <svg class="scroll-up__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
     <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
