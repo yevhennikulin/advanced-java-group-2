@@ -6,30 +6,33 @@
     <title>Favorites - Your Energy</title>
     <link rel="stylesheet" href="./css/index.css" />
   </head>
-  <body>
+  <body class="favorites-page">
     <!-- TODO: Implement header partial -->
     <load src="./partials/header.html" />
 
     <main>
-      <section class="favorites-section">
-        <div class="container">
-          <h2 class="favorites-title">Favorites</h2>
-          <div class="favorites-layout">
-            <!-- Quote of the day -->
-            <load src="./partials/quote-favorites.html" />
+      <section class="exercises-section">
+        <div class="container exercises-container">
+          <div class="exercises-top-bar">
+            <h2 class="exercises-title">Favorites</h2>
+          </div>
 
-            <!-- Right column for favorites.
-                 tbd by Serhii. Classe names etc is up to you -->
-            <div class="favorites-main">
-              <ul class="js-favorites-list" id="favorites-list"></ul>
-              <div class="favorites-empty js-favorites-empty" hidden>
-                <p class="favorites-empty-text">
-                  It appears that you haven't added any exercises to your
-                  favorites yet. To get started, you can add exercises that you
-                  like to your favorites for easier access in the future.
+          <div class="main-layout-container">
+            <div class="exercises-content-wrapper min-h-auto">
+              <div class="exercises-grid-container" id="favorites-container">
+                <ul class="exercises-cards-grid" id="favorites-list"></ul>
+              </div>
+
+              <div class="exercises-fallback is-hidden" id="favorites-empty">
+                <p class="fallback-text">
+                  It appears that you haven't added any exercises to your favorites
+                  yet. To get started, you can add exercises that you like to your
+                  favorites for easier access in the future.
                 </p>
               </div>
             </div>
+
+            <load src="./partials/quote-favorites.html" />
           </div>
         </div>
       </section>

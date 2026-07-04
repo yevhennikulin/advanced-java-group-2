@@ -13,7 +13,13 @@ function renderStars(rating: number): string {
   ).join("");
 }
 
-export function renderExerciseCard(exercise: Exercise, index: number): string {
+export function renderExerciseCard(exercise: Exercise, index: number, showRemove = false): string {
+  const removeBtn = showRemove
+    ? `<button class="exercise-card__remove" type="button" data-action="removeFavorite" data-exercise-id="${exercise._id}" aria-label="Remove from favorites">
+        <svg width="16" height="16"><use href="../../img/icons.svg#trash" /></svg>
+      </button>`
+    : '';
+
   return `
     <li class="exercise-card" style="--card-num: ${index}">
       <div class="exercise-card__header">
@@ -22,6 +28,7 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
           <span class="value">${exercise.rating.toFixed(1)}</span>
           ${renderStars(exercise.rating)}
         </span>
+        ${removeBtn}
         <button class="exercise-card__start" type="button" data-modal-open="exercise" data-exercise-id="${exercise._id}">
           Start
           <svg width="16" height="16">
@@ -36,9 +43,9 @@ export function renderExerciseCard(exercise: Exercise, index: number): string {
         <span>${exercise.name}</span>
       </h3>
       <ul class="exercise-card__meta">
-        <li>Burned calories: <span>${exercise.burnedCalories} / ${exercise.time} min</span></li>
-        <li>Body part: <span>${exercise.bodyPart}</span></li>
-        <li>Target: <span>${exercise.target}</span></li>
+        <li title="${exercise.burnedCalories} / ${exercise.time} min">Burned calories: <span>${exercise.burnedCalories} / ${exercise.time} min</span></li>
+        <li title="${exercise.bodyPart}">Body part: <span>${exercise.bodyPart}</span></li>
+        <li title="${exercise.target}">Target: <span>${exercise.target}</span></li>
       </ul>
     </li>`;
 }

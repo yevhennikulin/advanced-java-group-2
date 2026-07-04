@@ -1,29 +1,13 @@
-/*
-  FAVORITES (localStorage)
-  ========================
-
-  Stores favorite exercises as an array of exercise objects under the
-  'favorites' key, so the favorites page can render them without another
-  API call. Reusable by any module (exercise modal, favorites.html page).
-*/
-
-export interface IExercise {
-  _id: string;
-  name: string;
-  target: string;
-  bodyPart: string;
-  equipment: string;
-  gifUrl: string;
-  description: string;
-  rating: number;
-  burnedCalories: number;
-  time: number;
-  popularity: number;
-}
+import type { Exercise } from '../types';
 
 const STORAGE_KEY = 'favorites';
 
-export function getFavorites(): IExercise[] {
+function saveFavorites(favorites: Exercise[]): void {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+  document.dispatchEvent(new CustomEvent('favorites:change', { detail: { favorites } }));
+}
+
+export function getFavorites(): Exercise[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     const parsed = raw ? JSON.parse(raw) : [];
@@ -37,7 +21,7 @@ export function isFavorite(id: string): boolean {
   return getFavorites().some(exercise => exercise._id === id);
 }
 
-export function toggleFavorite(exercise: IExercise): boolean {
+export function toggleFavorite(exercise: Exercise): boolean {
   const favorites = getFavorites();
   const index = favorites.findIndex(item => item._id === exercise._id);
 
@@ -47,8 +31,10 @@ export function toggleFavorite(exercise: IExercise): boolean {
     favorites.splice(index, 1);
   }
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-  document.dispatchEvent(new CustomEvent('favorites:change', { detail: { favorites } }));
-
+  saveFavorites(favorites);
   return index === -1;
+}
+
+export function removeFavorite(id: string): void {
+  saveFavorites(getFavorites().filter(item => item._id !== id));
 }

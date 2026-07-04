@@ -8,7 +8,8 @@
 */
 
 import { getExerciseById } from './api';
-import { isFavorite, toggleFavorite, type IExercise } from './services/favorites-service';
+import { isFavorite, toggleFavorite } from './services/favorites-service';
+import type { Exercise } from './types';
 
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('exercise-modal');
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const TOTAL_STARS = 5;
 
-  let currentExercise: IExercise | null = null;
+  let currentExercise: Exercise | null = null;
   let handleKeydown: ((event: KeyboardEvent) => void) | null = null;
 
   function renderFavoriteState(): void {
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .join('');
   }
 
-  function renderExercise(exercise: IExercise): void {
+  function renderExercise(exercise: Exercise): void {
     currentExercise = exercise;
     if (exercise.gifUrl) {
       fields.gif.src = exercise.gifUrl;
