@@ -239,6 +239,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (page === state.page) return;
     state.page = page;
     syncURL(state);
+
+    const scrollTarget = state.category
+      ? els.exercisesGridContainer
+      : els.categoriesContainer;
+    scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     state.category ? loadExercises() : loadCategories();
   }
 
