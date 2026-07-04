@@ -8,16 +8,19 @@
 */
 
 import { getExerciseById } from './api';
+
 import { isFavorite, toggleFavorite } from './services/favorites-service';
 import type { Exercise } from './types';
+import { openRatingModal } from './rating-modal';
+import { createModalController } from './modal-common';
 
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('exercise-modal');
   if (!modal) return;
 
-  const backdrop = modal.querySelector<HTMLElement>('[data-modal-backdrop]')!;
-  const closeBtn = modal.querySelector<HTMLElement>('[data-modal-close]')!;
   const favoriteBtn = modal.querySelector<HTMLButtonElement>('[data-modal-favorite-btn]')!;
+  const ratingBtn = modal.querySelector<HTMLButtonElement>('[data-modal-rating-btn]')!;
+  const modalController = createModalController(modal);
 
   const fields = {
     gif: modal.querySelector<HTMLImageElement>('[data-field="gif"]')!,
@@ -35,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const TOTAL_STARS = 5;
 
-  let currentExercise: Exercise | null = null;
   let handleKeydown: ((event: KeyboardEvent) => void) | null = null;
+  let currentExercise: Exercise | null = null;
 
   function renderFavoriteState(): void {
     if (!currentExercise) return;
@@ -96,32 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeExerciseModal(): void {
-    modal!.classList.add('is-hidden');
-    modal!.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-
-    backdrop.removeEventListener('click', closeExerciseModal);
-    closeBtn.removeEventListener('click', closeExerciseModal);
-    if (handleKeydown) {
-      document.removeEventListener('keydown', handleKeydown);
-      handleKeydown = null;
-    }
+    modalController.hide();
   }
 
   function showModal(): void {
-    modal!.classList.remove('is-hidden');
-    modal!.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    handleKeydown = event => {
-      if (event.key === 'Escape') closeExerciseModal();
-    };
-
-    backdrop.addEventListener('click', closeExerciseModal);
-    closeBtn.addEventListener('click', closeExerciseModal);
-    document.addEventListener('keydown', handleKeydown);
-
-    closeBtn.focus({ preventScroll: true });
+    modalController.show();
   }
 
   async function openExerciseModal(id: string): Promise<void> {
@@ -138,6 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentExercise) return;
     toggleFavorite(currentExercise);
     renderFavoriteState();
+  });
+
+  ratingBtn.addEventListener('click', () => {
+    if (!currentExercise) return;
+    const exerciseId = currentExercise._id;
+    closeExerciseModal();
+    openRatingModal(exerciseId, showModal);
   });
 
   document.addEventListener('click', event => {

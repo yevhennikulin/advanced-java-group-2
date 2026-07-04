@@ -1,46 +1,114 @@
-<!-- 
+<!--
   RATING MODAL (OPTIONAL FEATURE)
   ===============================
-  
+
   Triggered by: Click on "Give a rating" button in exercise modal
-  
+
   IMPORTANT: When this modal opens, exercise modal should close.
              When this modal closes, exercise modal should reopen.
-  
-  Form fields (all required):
-  - Rating: Radio buttons (1-5 stars)
-  - Email: Input with pattern validation
+
+  Form fields (all required), validated natively by the browser (no
+  "novalidate" on the form, no custom JS regex / "is-invalid" class):
+  - Rating: 5 radio inputs named "rate" (one "required" is enough for the
+    whole group, but it's set on each for clarity). Visually a row of star
+    icons -- see src/js/rating-modal.ts for the render + visually-hidden radio
+    + <label> markup.
+  - Email: type="email" + pattern validation.
     Pattern: ^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$
-  - Review: Textarea
-  
+  - Review: Textarea, required.
+
   Submit behavior:
-  - Validate all fields
-  - Send PATCH request to API
-  - On success: close modal, reopen exercise modal
-  - On error: show error notification (iziToast)
-  
+  - The "submit" listener only runs once the browser's native constraint
+    validation already passed (required/pattern), so there's no manual
+    per-field validation in JS.
+  - Send PATCH request to API via src/js/api.ts's addExerciseRating.
+  - On success: close modal, reopen exercise modal.
+  - On error (API failure only): show error notification (iziToast).
+
   CLOSE MODAL:
   - Click on backdrop
   - Click on X button
   - Press ESC key
-  
+
   API usage:
   import { addExerciseRating } from './js/api.js';
-  
+
   try {
     await addExerciseRating(exerciseId, { rate: 5, email, review });
     // Success: close modal
   } catch (error) {
     // Show error notification
   }
+
+  NOTE: the 5 star radio+label pairs inside [data-field="stars"] are rendered
+  by src/js/rating-modal.ts, reusing the same "./img/icons.svg#star" sprite
+  icon and opacity-based empty/filled convention already used for star
+  rendering in src/js/exercise-list.ts / src/css/exercise-list.css.
 -->
 
-<div class="modal rating-modal is-hidden">
-  <div class="modal__backdrop"></div>
-  <div class="modal__content">
-    <!-- TODO: Implement rating modal markup -->
-    <button class="modal__close" type="button" aria-label="Close modal">
-      <!-- X icon SVG -->
+<div class="modal rating-modal is-hidden" id="rating-modal" aria-hidden="true">
+  <div class="modal__backdrop" data-modal-backdrop></div>
+
+  <div
+    class="rating-modal__content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="rating-modal-title"
+  >
+    <button
+      class="modal__close"
+      type="button"
+      aria-label="Close modal"
+      data-modal-close
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 6L18 18M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
     </button>
+
+    <form class="rating-modal__form">
+      <span class="rating-modal__label" id="rating-modal-title">Rating</span>
+
+      <div class="rating-modal__rating">
+        <span class="rating-modal__value" data-field="rating-value">0.0</span>
+
+        <div
+          class="rating-modal__stars"
+          role="radiogroup"
+          aria-label="Rating"
+          data-field="stars"
+        ></div>
+      </div>
+
+      <input
+        class="rating-modal__email"
+        type="email"
+        name="email"
+        placeholder="Email"
+        pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        required
+      />
+
+      <textarea
+        class="rating-modal__review"
+        name="review"
+        placeholder="Your comment"
+        rows="4"
+        required
+      ></textarea>
+
+      <button class="rating-modal__submit" type="submit">Send</button>
+    </form>
   </div>
 </div>
