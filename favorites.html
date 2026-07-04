@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites - Your Energy</title>
     <script type="module" crossorigin src="/advanced-java-group-2/assets/vendor-DdHXTJIf.js"></script>
-    <script type="module" crossorigin src="/advanced-java-group-2/assets/main-CBAuMN01.js"></script>
-    <link rel="stylesheet" crossorigin href="/advanced-java-group-2/assets/main-PkbglMsb.css">
+    <script type="module" crossorigin src="/advanced-java-group-2/assets/main-BqjUS6E9.js"></script>
+    <link rel="stylesheet" crossorigin href="/advanced-java-group-2/assets/main-AuJl0iiH.css">
     <link rel="stylesheet" crossorigin href="/advanced-java-group-2/assets/vendor-D_nxXpU-.css">
   </head>
-  <body>
+  <body class="favorites-page">
     <!-- TODO: Implement header partial -->
     <header class="header">
   <div class="container header-container">
@@ -116,11 +116,27 @@
 
 
     <main>
-      <section class="favorites-section">
-        <div class="container">
-          <h2 class="favorites-title">Favorites</h2>
-          <div class="favorites-layout">
-            <!-- Quote of the day -->
+      <section class="exercises-section">
+        <div class="container exercises-container">
+          <div class="exercises-top-bar">
+            <h2 class="exercises-title">Favorites</h2>
+          </div>
+
+          <div class="main-layout-container">
+            <div class="exercises-content-wrapper min-h-auto">
+              <div class="exercises-grid-container" id="favorites-container">
+                <ul class="exercises-cards-grid" id="favorites-list"></ul>
+              </div>
+
+              <div class="exercises-fallback is-hidden" id="favorites-empty">
+                <p class="fallback-text">
+                  It appears that you haven't added any exercises to your favorites
+                  yet. To get started, you can add exercises that you like to your
+                  favorites for easier access in the future.
+                </p>
+              </div>
+            </div>
+
             <div class="favorites-sidebar">
   <div class="quote-card">
     <div class="quote-icon-box">
@@ -183,19 +199,6 @@
   </div>
 </div>
 
-
-            <!-- Right column for favorites.
-                 tbd by Serhii. Classe names etc is up to you -->
-            <div class="favorites-main">
-              <ul class="js-favorites-list" id="favorites-list"></ul>
-              <div class="favorites-empty js-favorites-empty" hidden>
-                <p class="favorites-empty-text">
-                  It appears that you haven't added any exercises to your
-                  favorites yet. To get started, you can add exercises that you
-                  like to your favorites for easier access in the future.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
