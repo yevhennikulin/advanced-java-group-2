@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentExercise) return;
     const active = isFavorite(currentExercise._id);
     favoriteBtn.setAttribute('aria-pressed', String(active));
-    fields.favoriteLabel.textContent = active ? 'Remove from favorites' : 'Add to favorites';
+    fields.favoriteLabel.textContent = active ? 'Remove favorite' : 'Add to favorites';
   }
 
   const STAR_PATH =
