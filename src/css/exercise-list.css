@@ -4,6 +4,7 @@
   --fs-xl: 20px;
   --gap: 20px;
   --columns: 1;
+  scroll-margin-top: 100px;
 
   .exercises-cards-grid {
     font-size: var(--fs-base);

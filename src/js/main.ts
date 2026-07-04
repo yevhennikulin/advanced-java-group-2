@@ -14,7 +14,7 @@ const actions: Record<string, (el: HTMLElement) => void> = {
     if (!id) return;
 
     showConfirmModal({
-      title: 'Remove from favorites?',
+      title: 'Remove favorite?',
       text: 'Are you sure you want to remove this exercise from your favorites?',
       confirmLabel: 'Remove',
       onConfirm: () => removeFavorite(id),

@@ -114,6 +114,12 @@ async function handleSubmit(event: SubmitEvent): Promise<void> {
   submitBtn.disabled = true;
   try {
     await addExerciseRating(currentExerciseId, { rate, email, review });
+    iziToast.success({
+      title: 'Thank you!',
+      message: 'Your rating has been submitted successfully.',
+      position: 'topRight',
+      timeout: 5000,
+    });
     modalController.hide();
   } catch (err) {
     const error = err as { response?: { data?: { message?: string } }; message?: string };

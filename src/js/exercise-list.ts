@@ -15,7 +15,7 @@ function renderStars(rating: number): string {
 
 export function renderExerciseCard(exercise: Exercise, index: number, showRemove = false): string {
   const removeBtn = showRemove
-    ? `<button class="exercise-card__remove" type="button" data-action="removeFavorite" data-exercise-id="${exercise._id}" aria-label="Remove from favorites">
+    ? `<button class="exercise-card__remove" type="button" data-action="removeFavorite" data-exercise-id="${exercise._id}" aria-label="Remove favorite">
         <svg width="16" height="16"><use href="../../img/icons.svg#trash" /></svg>
       </button>`
     : '';

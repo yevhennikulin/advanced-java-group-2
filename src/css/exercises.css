@@ -212,6 +212,10 @@
   display: block;
 }
 
+.categories-container {
+  scroll-margin-top: 100px;
+}
+
 .categories-grid {
   display: grid;
   grid-template-columns: 1fr;
