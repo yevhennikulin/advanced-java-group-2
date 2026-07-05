@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', (): void => {
         });
         form.reset();
       } catch (err) {
-        const error = err as Error;
+        const error = err as { response?: { data?: { message?: string } }; message?: string };
         iziToast.error({
           title: 'Error',
-          message: error.message || 'Subscription failed. Please try again later.',
+          message: error.response?.data?.message || error.message || 'Subscription failed. Please try again later.',
           position: 'topRight',
           timeout: 5000
         });
